@@ -5,9 +5,10 @@ import "./EWalletStyles.css";
 function EWallet() {
   const [balance, setBalance] = useState(1000);
   const [alert, setAlert] = useState(false);
+  var isManager = false;
   return (
     <>
-      <Header />
+      <Header user={isManager ? "manager" : "customer"} />
       <div>
         {alert && (
           <>

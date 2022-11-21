@@ -1,0 +1,119 @@
+.mynavbar {
+  background-color: #383f51;
+}
+
+.logo {
+  margin-bottom: 2px;
+  margin-right: 10%;
+}
+
+.name {
+  color: #ff8888;
+  padding-bottom: 0;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.name:hover {
+  color: #ff8888;
+}
+
+.search-bar {
+  padding: 5px;
+  font-size: 16px;
+  float: left;
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.search-button {
+  width: 50px;
+  float: left;
+  width: 8%;
+  padding: 5px;
+  background: white;
+  color: black;
+  font-size: 16px;
+}
+
+.search-button:hover {
+  background-color: white;
+}
+
+/* Dropdown  */
+.dropdown-menu {
+  text-align: right;
+  background-color: #383f51;
+  color: white;
+}
+
+.dropdown-toggle:hover {
+  color: white;
+}
+
+.dropdown-item {
+  color: white;
+}
+
+.dropdown-divider {
+  border-top: 1px solid rgba(219, 201, 201, 0.397);
+}
+
+/* Login */
+.login-button {
+  width: 130px;
+  padding: 5px;
+  background: #ff8888;
+  color: #383f51;
+  border-radius: 10px;
+}
+
+.login-button:hover {
+  background-color: #ff8888;
+}
+
+/* User */
+.user {
+  padding: 5px;
+  width: 55px;
+  margin-left: 20px;
+  position: relative;
+  right: 5px;
+  color: #ff8888;
+  text-decoration: none;
+  text-align: center;
+}
+
+a.user:hover {
+  background-color: #383f51;
+  color: #fff;
+}
+
+/* Manager */
+.manager {
+  padding: 5px;
+  width: 40px;
+  margin-left: 20px;
+  position: relative;
+  right: 5px;
+  color: #ff8888;
+  text-align: center;
+}
+
+a.manager:hover {
+  background-color: #383f51;
+  color: #fff;
+}
+
+/* Admin */
+.admin {
+  text-decoration: none;
+  color: #ff8888;
+  margin-left: 20px;
+  pointer-events: none;
+  font-weight: bold;
+}
+
+.admin:hover {
+  color: #ff8888;
+}

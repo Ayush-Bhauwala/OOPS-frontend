@@ -1,6 +1,6 @@
 .accountform {
   margin: auto;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   display: block;
   border-radius: 0.625rem;
   border: 1px solid black;
@@ -10,7 +10,7 @@
 
 .Headings {
   text-align: center;
-  margin: 1.5rem auto;
+  margin: 1rem auto;
 }
 
 .save-forgotpassword {

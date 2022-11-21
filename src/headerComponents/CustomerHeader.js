@@ -3,24 +3,25 @@ import "./Headerstyles.css";
 function CustomerHeader() {
   return (
     <>
-      <a href="/orders" class="user">
+      <a href="/orders" class="customer">
         Orders
       </a>
-      <a href="/cart" class="user">
+      <a href="/cart" class="customer">
         <i class="fa-solid fa-cart-shopping"></i>
       </a>
       <div class="dropdown">
         <button
-          class="btn dropdown-toggle user"
+          class="btn dropdown-toggle customer"
           data-bs-toggle="dropdown"
           aria-expanded="false"
           type="button"
+          style={{ width: "100%" }}
         >
           <i class="fa-solid fa-user"></i>
         </button>
         <ul class="dropdown-menu dropdown-menu-end">
           <li>
-            <a class="dropdown-item" href="/account">
+            <a class="dropdown-item" href="/accountinfo">
               Profile
             </a>
           </li>

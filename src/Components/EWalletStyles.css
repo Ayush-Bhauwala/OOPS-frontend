@@ -28,15 +28,10 @@
   width: 80%;
 }
 
-form::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
 .topupbtn {
   font-weight: bold;
   margin-top: 1%;
+  width: 40%;
 }
 
 .ewalletInput::-webkit-outer-spin-button,

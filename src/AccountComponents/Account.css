@@ -1,0 +1,34 @@
+.accountform {
+  margin: auto;
+  margin-bottom: 1.5rem;
+  display: block;
+  border-radius: 0.625rem;
+  border: 1px solid black;
+  width: 35%;
+  padding: 0.7%;
+}
+
+.Headings {
+  text-align: center;
+  margin: 1.5rem auto;
+}
+
+.save-forgotpassword {
+  margin-left: 33%;
+  margin-right: 33%;
+}
+
+#save {
+  display: inline;
+  background-color: #ff8888;
+  color: #383f51;
+  width: 48%;
+  margin-right: 4%;
+}
+
+#pwd {
+  display: inline;
+  background-color: #ff8888;
+  color: #383f51;
+  width: 48%;
+}

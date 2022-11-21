@@ -1,0 +1,19 @@
+.login-img {
+  height: 24rem;
+  width: 22rem;
+}
+
+.login-logo {
+  width: 4.375rem;
+}
+
+.login-name {
+  padding-left: 1.65rem;
+  padding-bottom: -8.1rem;
+  color: #383f51;
+}
+
+.card-container {
+  height: 24rem;
+  padding: 0;
+}

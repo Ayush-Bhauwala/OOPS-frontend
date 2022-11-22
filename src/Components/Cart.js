@@ -1,19 +1,43 @@
 import { useEffect, useState } from "react";
-// import axios from "axios";
+import axios from "axios";
+
 function Cart() {
-  const [cart, setCart] = useState([]);
-  const [qty, setQty] = useState(2);
-  // function getCart() {
-  //   axios({ method: "get", url: "http://localhost:8080/get/1" }).then((res) =>
-  //     console.log(res)
-  //   );
-  //   axios({ method: "get", url: "http://localhost:8080/get/1" }).catch((err) =>
-  //     console.log(err)
-  //   );
-  // }
-  // useEffect(() => {
-  //   getCart();
-  // });
+  const [qty, setQty] = useState(0);
+  const [itemName, setItemName] = useState("");
+  const [price, setPrice] = useState(0);
+  const [imgSrc, setImgSrc] = useState("");
+  var maxQty = 1;
+  function getCart() {
+    axios({
+      method: "get",
+      url: "http://localhost:8080/customer/getcart/1",
+    }).then((res) => {
+      setQty(res.data[0].qtybought);
+      setItemName(res.data[0].itemClass.itemName);
+      setPrice(res.data[0].itemClass.price);
+      maxQty = res.data[0].itemClass.qty;
+    });
+    axios({
+      method: "get",
+      url: "http://localhost:8080/customer/getcart/1",
+    }).catch((err) => console.log(err));
+  }
+
+  useEffect(() => {
+    getCart();
+  }, []);
+  function increaseQty() {
+    if (qty < maxQty) {
+      setQty((prevQty) => prevQty + 1);
+    }
+  }
+
+  function decreaseQty() {
+    if (qty > 1) {
+      setQty((prevQty) => prevQty - 1);
+    }
+  }
+
   return (
     <div>
       <h1>Your Cart</h1>
@@ -22,7 +46,7 @@ function Cart() {
           <tr>
             <td></td>
             <td></td>
-            <td></td>
+            <td>Item Name</td>
             <td>Price</td>
             <td>Quantity</td>
             <td>Subtotal</td>
@@ -33,15 +57,17 @@ function Cart() {
             <td>
               <i className="fa-solid fa-trash"></i>
             </td>
-            <td>{/* <img src="./Images/supermarket.jpg"></img> */}</td>
-            <td>Product Name</td>
-            <td>₹999.99</td>
             <td>
-              <p>{qty}</p>
-              <button>+</button>
-              <button>-</button>
+              <img src={imgSrc}></img>
             </td>
-            <td></td>
+            <td>{itemName}</td>
+            <td>₹{price}</td>
+            <td>
+              {qty}
+              <button onClick={increaseQty}>+</button>
+              <button onClick={decreaseQty}>-</button>
+            </td>
+            <td>₹{qty * price}</td>
           </tr>
         </tbody>
       </table>

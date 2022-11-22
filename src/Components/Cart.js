@@ -40,37 +40,40 @@ function Cart() {
   }
 
   return (
-    <div>
-      <h1>Your Cart</h1>
-      <table width="100%">
-        <thead>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>Price</td>
-            <td>Quantity</td>
-            <td>Subtotal</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <i className="fa-solid fa-trash"></i>
-            </td>
-            <td>{/* <img src="./Images/supermarket.jpg"></img> */}</td>
-            <td>Product Name</td>
-            <td>₹999.99</td>
-            <td>
-              <p>{qty}</p>
-              <button>+</button>
-              <button>-</button>
-            </td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <>
+      <Header />
+      <div>
+        <h1>Your Cart</h1>
+        <table width="100%">
+          <thead>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Price</td>
+              <td>Quantity</td>
+              <td>Subtotal</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <i className="fa-solid fa-trash"></i>
+              </td>
+              <td>{/* <img src="./Images/supermarket.jpg"></img> */}</td>
+              <td>{itemName}</td>
+              <td>₹{price}</td>
+              <td>
+                {qty}
+                <button onClick={increaseQty}>+</button>
+                <button onClick={decreaseQty}>-</button>
+              </td>
+              <td>{qty * price}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 }
 

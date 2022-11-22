@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Header from "../headerComponents/Header";
 import axios from "axios";
 
 function Cart() {
@@ -46,7 +47,7 @@ function Cart() {
           <tr>
             <td></td>
             <td></td>
-            <td>Item Name</td>
+            <td></td>
             <td>Price</td>
             <td>Quantity</td>
             <td>Subtotal</td>
@@ -57,17 +58,15 @@ function Cart() {
             <td>
               <i className="fa-solid fa-trash"></i>
             </td>
+            <td>{/* <img src="./Images/supermarket.jpg"></img> */}</td>
+            <td>Product Name</td>
+            <td>₹999.99</td>
             <td>
-              <img src={imgSrc}></img>
+              <p>{qty}</p>
+              <button>+</button>
+              <button>-</button>
             </td>
-            <td>{itemName}</td>
-            <td>₹{price}</td>
-            <td>
-              {qty}
-              <button onClick={increaseQty}>+</button>
-              <button onClick={decreaseQty}>-</button>
-            </td>
-            <td>₹{qty * price}</td>
+            <td></td>
           </tr>
         </tbody>
       </table>

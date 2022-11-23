@@ -41,7 +41,7 @@ function Cart() {
 
   return (
     <>
-      <Header />
+      <Header user="customer" />
       <div>
         <h1>Your Cart</h1>
         <table width="100%">

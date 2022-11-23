@@ -3,11 +3,11 @@ import Header from "../headerComponents/Header";
 import axios from "axios";
 
 function Cart() {
-  const [qty, setQty] = useState(0);
+  const [qty, setQty] = useState(2);
   const [itemName, setItemName] = useState("");
   const [price, setPrice] = useState(0);
   const [imgSrc, setImgSrc] = useState("");
-  var maxQty = 1;
+  const [maxQty, setMaxQty] = useState(1);
   function getCart() {
     axios({
       method: "get",
@@ -16,28 +16,17 @@ function Cart() {
       setQty(res.data[0].qtybought);
       setItemName(res.data[0].itemClass.itemName);
       setPrice(res.data[0].itemClass.price);
-      maxQty = res.data[0].itemClass.qty;
+      setMaxQty(res.data[0].itemClass.qty);
     });
     axios({
       method: "get",
       url: "http://localhost:8080/customer/getcart/1",
     }).catch((err) => console.log(err));
   }
-
+  console.log(maxQty);
   useEffect(() => {
     getCart();
   }, []);
-  function increaseQty() {
-    if (qty < maxQty) {
-      setQty((prevQty) => prevQty + 1);
-    }
-  }
-
-  function decreaseQty() {
-    if (qty > 1) {
-      setQty((prevQty) => prevQty - 1);
-    }
-  }
 
   return (
     <>
@@ -49,7 +38,7 @@ function Cart() {
             <tr>
               <td></td>
               <td></td>
-              <td></td>
+              <td>Item Name</td>
               <td>Price</td>
               <td>Quantity</td>
               <td>Subtotal</td>
@@ -60,15 +49,24 @@ function Cart() {
               <td>
                 <i className="fa-solid fa-trash"></i>
               </td>
-              <td>{/* <img src="./Images/supermarket.jpg"></img> */}</td>
+              <td>
+                <img></img>
+              </td>
               <td>{itemName}</td>
               <td>₹{price}</td>
               <td>
-                {qty}
-                <button onClick={increaseQty}>+</button>
-                <button onClick={decreaseQty}>-</button>
+                <input
+                  type="number"
+                  defaultValue={qty}
+                  min="1"
+                  max={maxQty}
+                  id="x"
+                  onChange={() =>
+                    setQty(parseInt(document.getElementById("x").value))
+                  }
+                ></input>
               </td>
-              <td>{qty * price}</td>
+              <td>₹{qty * price}</td>
             </tr>
           </tbody>
         </table>

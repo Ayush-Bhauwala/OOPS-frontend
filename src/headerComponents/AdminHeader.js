@@ -4,7 +4,7 @@ import ManagerHeader from "./ManagerHeader";
 function AdminHeader() {
   return (
     <>
-      <a href="#" class="admin">
+      <a href="#" className="admin">
         ADMIN
       </a>
       <ManagerHeader />;

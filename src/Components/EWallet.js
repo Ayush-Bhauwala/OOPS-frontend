@@ -13,11 +13,11 @@ function EWallet() {
         {alert && (
           <>
             <div
-              class="alert alert-danger"
+              className="alert alert-danger"
               role="alert"
               style={{ padding: ".5%" }}
             >
-              <i class="fa-solid fa-triangle-exclamation"></i> Incorrect
+              <i className="fa-solid fa-triangle-exclamation"></i> Incorrect
               Password! Please try again
             </div>
           </>
@@ -31,7 +31,7 @@ function EWallet() {
           <p className="amount">₹ {balance}</p>
         </div>
         <div className="card text-center ewalletCard">
-          <div class="card-body">
+          <div className="card-body">
             <form method="get">
               <input
                 type="number"

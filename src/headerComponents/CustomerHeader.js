@@ -3,33 +3,33 @@ import "./Headerstyles.css";
 function CustomerHeader() {
   return (
     <>
-      <a href="/orders" class="customer">
+      <a href="/orders" className="customer">
         Orders
       </a>
-      <a href="/cart" class="customer">
-        <i class="fa-solid fa-cart-shopping"></i>
+      <a href="/cart" className="customer">
+        <i className="fa-solid fa-cart-shopping"></i>
       </a>
-      <div class="dropdown">
+      <div className="dropdown">
         <button
-          class="btn dropdown-toggle customer"
+          className="btn dropdown-toggle customer"
           data-bs-toggle="dropdown"
           aria-expanded="false"
           type="button"
           style={{ width: "100%" }}
         >
-          <i class="fa-solid fa-user"></i>
+          <i className="fa-solid fa-user"></i>
         </button>
-        <ul class="dropdown-menu dropdown-menu-end">
+        <ul className="dropdown-menu dropdown-menu-end">
           <li>
-            <a class="dropdown-item" href="/accountinfo">
+            <a className="dropdown-item" href="/accountinfo">
               Profile
             </a>
           </li>
           <li>
-            <hr class="dropdown-divider" />
+            <hr className="dropdown-divider" />
           </li>
           <li>
-            <a class="dropdown-item" href="/Logout">
+            <a className="dropdown-item" href="/Logout">
               Logout
             </a>
           </li>

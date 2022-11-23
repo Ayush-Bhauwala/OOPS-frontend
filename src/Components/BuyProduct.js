@@ -1,5 +1,7 @@
 import "./BuyProductStyles.css";
 import Header from "../headerComponents/Header";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 function Discount() {
   return (
@@ -16,6 +18,22 @@ function Discount() {
 }
 
 function BuyProduct() {
+  const [maxQty, setMaxQty] = useState(1);
+  const [itemName, setItemName] = useState("");
+  const [price, setItemPrice] = useState(0);
+  function getItemDetails() {
+    axios({
+      method: "get",
+      url: "http://localhost:8080/customer/getitem/1",
+    }).then((res) => {
+      setMaxQty(res.data.qty);
+      setItemName(res.data.itemName);
+      setItemPrice(res.data.price);
+    });
+  }
+  useEffect(() => {
+    getItemDetails();
+  }, []);
   const isDiscount = true;
 
   return (
@@ -53,11 +71,11 @@ function BuyProduct() {
                       <li className="breadcrumb-item active">Category</li>
                     </ol>
                   </nav>
-                  <div className="product_name">Product Name</div>
+                  <div className="product_name">{itemName}</div>
 
                   <div>
                     {" "}
-                    <span className="product_price">₹ 29,000</span>{" "}
+                    <span className="product_price">₹ {price}</span>{" "}
                     {isDiscount && Discount()}
                   </div>
                   <hr className="singleline" />
@@ -133,7 +151,7 @@ function BuyProduct() {
                           type="number"
                           defaultValue={1}
                           min="1"
-                          max="10"
+                          max={maxQty}
                         />
                       </div>
                     </div>

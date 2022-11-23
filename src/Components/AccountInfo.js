@@ -6,7 +6,7 @@ function AccountInfo() {
   return (
     <div>
       <Header user={isManager ? "manager" : "customer"} />
-      <h1 class="Headings">Account Details</h1>
+      <h1 className="Headings">Account Details</h1>
       <form>
         <input type="name" placeholder="Name" className="accountform"></input>
         <input type="email" placeholder="Email" className="accountform"></input>

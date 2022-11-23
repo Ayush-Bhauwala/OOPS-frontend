@@ -1,5 +1,6 @@
 import "./BuyProductStyles.css";
 import Header from "../headerComponents/Header";
+import BuyNowPopup from "./BuyNowPopup";
 
 function Discount() {
   return (
@@ -21,6 +22,7 @@ function BuyProduct() {
   return (
     <>
       <Header user="customer" />
+      <BuyNowPopup price="29000" balance="1000" />
       <div className="super_container">
         <div className="single_product py-3">
           <div
@@ -142,7 +144,12 @@ function BuyProduct() {
                       <button type="button" className="btn shop-button">
                         Add to Cart
                       </button>{" "}
-                      <button type="button" className="btn shop-button">
+                      <button
+                        type="button"
+                        className="btn shop-button"
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"
+                      >
                         Buy Now
                       </button>
                     </div>
@@ -150,93 +157,6 @@ function BuyProduct() {
                 </div>
               </div>
             </div>
-
-            {/* <div className="row row-underline">
-              <div className="col-md-6">
-                {" "}
-                <span className=" deal-text">Specifications</span>{" "}
-              </div>
-              <div className="col-md-6">
-                {" "}
-                <a href="#" data-abc="true">
-                  {" "}
-                  <span className="ml-auto view-all" />{" "}
-                </a>{" "}
-              </div>
-            </div> */}
-            {/* <div className="row">
-              <div className="col-md-12">
-                <table className="col-md-12">
-                  <tbody>
-                    <tr className="row mt-10">
-                      <td className="col-md-4">
-                        <span className="p_specification">Sales Package :</span>{" "}
-                      </td>
-                      <td className="col-md-8">
-                        <ul>
-                          <li>
-                            2 in 1 Laptop, Power Adaptor, Active Stylus Pen,
-                            User Guide, Warranty Documents
-                          </li>
-                        </ul>
-                      </td>
-                    </tr>
-                    <tr className="row mt-10">
-                      <td className="col-md-4">
-                        <span className="p_specification">Model Number :</span>{" "}
-                      </td>
-                      <td className="col-md-8">
-                        <ul>
-                          <li> 14-dh0107TU </li>
-                        </ul>
-                      </td>
-                    </tr>
-                    <tr className="row mt-10">
-                      <td className="col-md-4">
-                        <span className="p_specification">Part Number :</span>{" "}
-                      </td>
-                      <td className="col-md-8">
-                        <ul>
-                          <li>7AL87PA</li>
-                        </ul>
-                      </td>
-                    </tr>
-                    <tr className="row mt-10">
-                      <td className="col-md-4">
-                        <span className="p_specification">Color :</span>{" "}
-                      </td>
-                      <td className="col-md-8">
-                        <ul>
-                          <li>Black</li>
-                        </ul>
-                      </td>
-                    </tr>
-                    <tr className="row mt-10">
-                      <td className="col-md-4">
-                        <span className="p_specification">Suitable for :</span>{" "}
-                      </td>
-                      <td className="col-md-8">
-                        <ul>
-                          <li>Processing &amp; Multitasking</li>
-                        </ul>
-                      </td>
-                    </tr>
-                    <tr className="row mt-10">
-                      <td className="col-md-4">
-                        <span className="p_specification">
-                          Processor Brand :
-                        </span>{" "}
-                      </td>
-                      <td className="col-md-8">
-                        <ul>
-                          <li>Intel</li>
-                        </ul>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div> 
-            </div>*/}
           </div>
         </div>
       </div>

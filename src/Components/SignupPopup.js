@@ -1,9 +1,9 @@
-function Popup() {
+function SignupPopup() {
   return (
     <div
       class="modal fade"
       id="exampleModal"
-      tabindex="-1"
+      tabIndex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
@@ -32,4 +32,4 @@ function Popup() {
     </div>
   );
 }
-export default Popup;
+export default SignupPopup;

@@ -1,5 +1,5 @@
 import "./SignUpStyles.css";
-import Popup from "./Popup";
+import SignupPopup from "./SignupPopup";
 
 function SignUp() {
   return (
@@ -111,7 +111,7 @@ function SignUp() {
                         data-bs-target="#exampleModal"
                       >
                         Sign Up
-                        <Popup />
+                        <SignupPopup />
                       </button>
                     </div>
                   </div>

@@ -3,7 +3,7 @@ import "./Headerstyles.css";
 function CustomerHeader() {
   return (
     <>
-      <a href="/orders" className="customer">
+      <a href="/orders" className="customer" style={{ marginLeft: "-5%" }}>
         Orders
       </a>
       <a href="/cart" className="customer">

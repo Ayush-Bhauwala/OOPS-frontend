@@ -24,7 +24,7 @@
 
 .search-bar {
   padding: 1%;
-  font-size: 16px;
+  font-size: 18px;
   float: left;
   background: #f1f1f1;
   border-radius: 0.625rem;
@@ -38,7 +38,7 @@
   padding: 1%;
   background: white;
   color: black;
-  font-size: 16px;
+  font-size: 18px;
   border-radius: 0.625rem;
 }
 
@@ -88,6 +88,7 @@
   color: #ff8888;
   text-decoration: none;
   text-align: center;
+  font-size: 25px;
 }
 
 a.customer:hover {

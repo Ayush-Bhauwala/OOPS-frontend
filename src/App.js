@@ -20,7 +20,7 @@ function App() {
         <Route path="/accountinfo" element={<AccountInfo />}></Route>
         <Route path="/searchresults" element={<SearchResults />}></Route>
         <Route path="/buyproduct" element={<BuyProduct />}></Route>
-        <Route path="/header" element={<Header />}></Route>
+        <Route path="/header" element={<Header user="customer" />}></Route>
       </Routes>
     </BrowserRouter>
   );

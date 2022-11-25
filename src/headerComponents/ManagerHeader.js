@@ -8,7 +8,7 @@ function ManagerHeader() {
       </a>
       <div className="dropdown">
         <button
-          className="btn dropdown-toggle manager"
+          className="btn dropdown-toggle manager me-1"
           data-bs-toggle="dropdown"
           aria-expanded="false"
           type="button"

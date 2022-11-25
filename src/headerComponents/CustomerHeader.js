@@ -11,7 +11,7 @@ function CustomerHeader() {
       </a>
       <div className="dropdown">
         <button
-          className="btn dropdown-toggle customer"
+          className="btn dropdown-toggle customer me-1"
           data-bs-toggle="dropdown"
           aria-expanded="false"
           type="button"

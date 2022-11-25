@@ -4,24 +4,12 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import BuyNowPopup from "./BuyNowPopup";
 
-function Discount() {
-  return (
-    <>
-      <strike className="product_discount">
-        <span style={{ color: "black" }}>₹ 31,000</span>
-      </strike>
-      <div>
-        <span className="product_saved">You Saved:</span>{" "}
-        <span style={{ color: "#383f51", fontSize: "18px" }}>₹ 2,000</span>
-      </div>
-    </>
-  );
-}
-
 function BuyProduct() {
   const [maxQty, setMaxQty] = useState(1);
   const [itemName, setItemName] = useState("");
   const [price, setItemPrice] = useState(0);
+  const [discount, setItemDiscount] = useState(0);
+
   function getItemDetails() {
     axios({
       method: "get",
@@ -30,12 +18,28 @@ function BuyProduct() {
       setMaxQty(res.data.qty);
       setItemName(res.data.itemName);
       setItemPrice(res.data.price);
+      setItemDiscount(res.data.offer);
     });
   }
   useEffect(() => {
     getItemDetails();
   }, []);
-  const isDiscount = true;
+
+  function Discount() {
+    return (
+      <>
+        <strike className="product_discount">
+          <span style={{ color: "black" }}>₹ {price}</span>
+        </strike>
+        <div>
+          <span className="product_saved">You Saved:</span>{" "}
+          <span style={{ color: "#383f51", fontSize: "18px" }}>
+            ₹ {discount}
+          </span>
+        </div>
+      </>
+    );
+  }
 
   return (
     <>
@@ -77,8 +81,10 @@ function BuyProduct() {
 
                   <div>
                     {" "}
-                    <span className="product_price">₹ {price}</span>{" "}
-                    {isDiscount && Discount()}
+                    <span className="product_price">
+                      ₹ {price - discount}
+                    </span>{" "}
+                    {discount > 0 && Discount()}
                   </div>
                   <hr className="singleline" />
                   <div className="row">

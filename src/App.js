@@ -1,4 +1,3 @@
-import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Cart from "./Components/Cart";
 import Login from "./Components/Login";
@@ -6,7 +5,7 @@ import SignUp from "./Components/SignUp";
 import AccountInfo from "./Components/AccountInfo";
 import EWallet from "./Components/EWallet";
 import BuyProduct from "./Components/BuyProduct";
-// import Header from "./headerComponents/Header";
+
 function App() {
   return (
     <BrowserRouter>

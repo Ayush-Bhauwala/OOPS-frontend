@@ -9,7 +9,12 @@ function CreateTable(props) {
       <tbody>
         <tr>
           <td>
-            <i className="fa-solid fa-trash"></i>
+            <button
+              style={{ border: "none", backgroundColor: "transparent" }}
+              onClick={deleteItem}
+            >
+              <i className="fa-solid fa-trash"></i>
+            </button>
           </td>
           <td>
             <img></img>
@@ -56,9 +61,11 @@ function Cart() {
   return (
     <>
       <Header user="customer" />
-      <h1>Your Cart</h1>
-      <table width="100%">
-        <thead>
+      <h1 style={{ padding: "1%", margin: "auto", width: "fit-content" }}>
+        Your Cart
+      </h1>
+      <table style={{ padding: "10%", width: "100%", margin: "2%" }}>
+        <thead style={{ margin: "2%", padding: "2%" }}>
           <tr>
             <td></td>
             <td></td>

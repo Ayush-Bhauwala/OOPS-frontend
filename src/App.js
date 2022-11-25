@@ -7,6 +7,7 @@ import AccountInfo from "./Components/AccountInfo";
 import EWallet from "./Components/EWallet";
 import BuyProduct from "./Components/BuyProduct";
 import SearchResults from "./Components/SearchResults";
+import Header from "./headerComponents/Header";
 
 function App() {
   return (
@@ -18,8 +19,8 @@ function App() {
         <Route path="/ewallet" element={<EWallet />}></Route>
         <Route path="/accountinfo" element={<AccountInfo />}></Route>
         <Route path="/searchresults" element={<SearchResults />}></Route>
-
         <Route path="/buyproduct" element={<BuyProduct />}></Route>
+        <Route path="/header" element={<Header />}></Route>
       </Routes>
     </BrowserRouter>
   );

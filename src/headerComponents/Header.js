@@ -11,7 +11,7 @@ function Header(props) {
         <div className="container-fluid">
           <div>
             <a
-              className="navbar-brand mb-0 h1 nav-link active name"
+              className="navbar-brand mb-0 me-4 h1 nav-link active name"
               aria-current="page"
               href="/"
             >

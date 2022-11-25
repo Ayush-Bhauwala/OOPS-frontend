@@ -3,7 +3,7 @@ import "./Headerstyles.css";
 function CustomerHeader() {
   return (
     <>
-      <a href="/orders" className="customer">
+      <a href="/orders" className="customer" style={{ marginLeft: "-5%" }}>
         Orders
       </a>
       <a href="/cart" className="customer">
@@ -11,7 +11,7 @@ function CustomerHeader() {
       </a>
       <div className="dropdown">
         <button
-          className="btn dropdown-toggle customer"
+          className="btn dropdown-toggle customer me-1"
           data-bs-toggle="dropdown"
           aria-expanded="false"
           type="button"

@@ -6,7 +6,8 @@ import SignUp from "./Components/SignUp";
 import AccountInfo from "./Components/AccountInfo";
 import EWallet from "./Components/EWallet";
 import BuyProduct from "./Components/BuyProduct";
-// import Header from "./headerComponents/Header";
+import SearchResults from "./Components/SearchResults";
+
 function App() {
   return (
     <BrowserRouter>
@@ -16,6 +17,8 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/ewallet" element={<EWallet />}></Route>
         <Route path="/accountinfo" element={<AccountInfo />}></Route>
+        <Route path="/searchresults" element={<SearchResults />}></Route>
+
         <Route path="/buyproduct" element={<BuyProduct />}></Route>
       </Routes>
     </BrowserRouter>

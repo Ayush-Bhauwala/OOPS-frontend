@@ -1,0 +1,14 @@
+@media (max-width: 767.98px) {
+  .border-sm-start-none {
+    border-left: none !important;
+  }
+}
+
+.details-btn,
+.details-btn:hover {
+  background-color: #ff8888;
+  color: #383f51;
+  border-radius: 0.625rem;
+  font-size: 24px;
+  font-weight: bold;
+}

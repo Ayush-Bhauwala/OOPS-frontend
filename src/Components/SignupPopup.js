@@ -13,23 +13,27 @@ function SignupPopup() {
       >
         <div className="modal-content">
           <div className="modal-header">
-            <h1 className="modal-title fs-5 w-100" id="exampleModalLabel">
+            <h1
+              className="modal-title fw-bold fs-25 w-100"
+              id="exampleModalLabel"
+            >
               Sign up as
             </h1>
           </div>
           <div className="modal-body">
             <button
               type="button"
-              className="btn signupBtn"
+              className="btn fw-bold signupBtn"
               data-bs-dismiss="modal"
-              style={{ marginRight: "4%" }}
+              style={{ marginRight: "5%", fontSize: "25px" }}
             >
               Customer
             </button>
             <button
               type="button"
-              className="btn signupBtn"
+              className="btn fw-bold signupBtn"
               data-bs-dismiss="modal"
+              style={{ fontSize: "25px" }}
             >
               Manager
             </button>

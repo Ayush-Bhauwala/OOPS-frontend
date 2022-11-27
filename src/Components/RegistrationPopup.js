@@ -1,4 +1,8 @@
-function SignupPopup() {
+import { useNavigate } from "react-router-dom";
+
+function RegistrationPopup() {
+  const navigate = useNavigate();
+
   return (
     <div
       className="modal fade"
@@ -11,7 +15,7 @@ function SignupPopup() {
         className="modal-dialog modal-dialog-centered"
         style={{ width: "35%" }}
       >
-        <div className="modal-content">
+        <div className="modal-content text-center">
           <div className="modal-header">
             <h1
               className="modal-title fw-bold fs-25 w-100"
@@ -26,6 +30,7 @@ function SignupPopup() {
               className="btn fw-bold signupBtn"
               data-bs-dismiss="modal"
               style={{ marginRight: "5%", fontSize: "25px" }}
+              onClick={() => navigate("/signup")}
             >
               Customer
             </button>
@@ -34,6 +39,7 @@ function SignupPopup() {
               className="btn fw-bold signupBtn"
               data-bs-dismiss="modal"
               style={{ fontSize: "25px" }}
+              onClick={() => navigate("/signup")}
             >
               Manager
             </button>
@@ -43,4 +49,4 @@ function SignupPopup() {
     </div>
   );
 }
-export default SignupPopup;
+export default RegistrationPopup;

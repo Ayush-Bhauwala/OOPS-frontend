@@ -1,5 +1,5 @@
 import "./SignUpStyles.css";
-import SignupPopup from "./SignupPopup";
+import MinimalTopupPopup from "./MinimalTopupPopup";
 
 function SignUp() {
   return (
@@ -47,6 +47,7 @@ function SignUp() {
                         placeholder="Email address"
                       />
                     </div>
+
                     <div
                       className="d-md-flex justify-content-start align-items-center mb-3"
                       style={{ fontSize: "20px" }}
@@ -115,10 +116,10 @@ function SignUp() {
                         type="submit"
                         className="btn btn-lg btn-block w-50 login-button"
                         data-bs-toggle="modal"
-                        data-bs-target="#exampleModal"
+                        data-bs-target="#staticBackdrop"
                       >
                         Sign Up
-                        <SignupPopup />
+                        <MinimalTopupPopup />
                       </button>
                     </div>
                   </div>

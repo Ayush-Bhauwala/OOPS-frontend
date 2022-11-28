@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-function RegistrationPopup() {
+function LoginPopup() {
   const navigate = useNavigate();
 
   return (
@@ -49,4 +49,4 @@ function RegistrationPopup() {
     </div>
   );
 }
-export default RegistrationPopup;
+export default LoginPopup;

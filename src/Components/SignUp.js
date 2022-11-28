@@ -68,7 +68,10 @@ function SignUp() {
                       </div>
                       <div className="form-outline mb-3">
                         <input
-                          type="tel"
+                          type="text"
+                          pattern="\d*"
+                          minlength="10"
+                          maxlength="10"
                           name="phone"
                           className="form-control signup-input-field"
                           placeholder="Phone no."

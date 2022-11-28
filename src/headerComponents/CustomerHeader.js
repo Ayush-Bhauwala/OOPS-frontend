@@ -21,8 +21,16 @@ function CustomerHeader() {
         </button>
         <ul className="dropdown-menu dropdown-menu-end">
           <li>
-            <a className="dropdown-item" href="/accountinfo">
+            <a className="dropdown-item" href="/accountdetails">
               Profile
+            </a>
+          </li>
+          <li>
+            <hr className="dropdown-divider" />
+          </li>
+          <li>
+            <a className="dropdown-item" href="/ewallet">
+              E-Wallet
             </a>
           </li>
           <li>

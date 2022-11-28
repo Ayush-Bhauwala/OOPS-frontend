@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
 import "./LoginStyles.css";
-import RegistrationPopup from "./RegistrationPopup";
+import LoginPopup from "./LoginPopup";
 
 function Login() {
   return (
@@ -81,15 +82,15 @@ function Login() {
                         style={{ Color: "#393f81", fontSize: "23px" }}
                       >
                         Don't have an account?{" "}
-                        <a
-                          href="#"
+                        <Link
+                          to="#"
                           data-bs-toggle="modal"
                           data-bs-target="#exampleModal"
                           style={{ color: "#393f81" }}
                         >
                           Register here
-                          <RegistrationPopup />
-                        </a>
+                          <LoginPopup />
+                        </Link>
                       </p>
                     </form>
                   </div>

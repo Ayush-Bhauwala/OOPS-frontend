@@ -8,7 +8,7 @@ import AccountDetails from "./CustomerComponents/AccountDetails";
 import EWallet from "./CustomerComponents/EWallet";
 import SearchResults from "./CustomerComponents/SearchResults";
 import BuyProduct from "./CustomerComponents/BuyProduct";
-import Cart from "./CustomerComponents/Cart";
+import CartNew from "./CustomerComponents/CartNew";
 import Orders from "./CustomerComponents/Orders";
 
 function App() {
@@ -37,7 +37,7 @@ function App() {
         <Route path="/ewallet" element={<EWallet />}></Route>
         <Route path="/searchresults" element={<SearchResults />}></Route>
         <Route path="/buyproduct" element={<BuyProduct />}></Route>
-        <Route path="/cart" element={<Cart />}></Route>
+        <Route path="/cart" element={<CartNew />}></Route>
         <Route path="/orders" element={<Orders />}></Route>
 
         {/* <Route path="/header" element={<Header user="admin" />}></Route> */}

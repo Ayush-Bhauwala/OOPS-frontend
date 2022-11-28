@@ -1,14 +1,15 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Cart from "./Components/Cart";
-import Login from "./Components/Login";
-import SignUp from "./Components/SignUp";
-import AccountDetails from "./Components/AccountDetails";
-import EWallet from "./Components/EWallet";
-import BuyProduct from "./Components/BuyProduct";
-import SearchResults from "./Components/SearchResults";
-import Header from "./headerComponents/Header";
 import { useState } from "react";
 import axios from "axios";
+
+import Login from "./CustomerComponents/Login";
+import SignUp from "./CustomerComponents/SignUp";
+import AccountDetails from "./CustomerComponents/AccountDetails";
+import EWallet from "./CustomerComponents/EWallet";
+import SearchResults from "./CustomerComponents/SearchResults";
+import BuyProduct from "./CustomerComponents/BuyProduct";
+import Cart from "./CustomerComponents/Cart";
+import Orders from "./CustomerComponents/Orders";
 
 function App() {
   const [files, setFile] = useState();
@@ -30,14 +31,15 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/cart" element={<Cart />}></Route>
-        <Route path="/signup" element={<SignUp />}></Route>
         <Route path="/login" element={<Login />}></Route>
-        <Route path="/ewallet" element={<EWallet />}></Route>
+        <Route path="/signup" element={<SignUp />}></Route>
         <Route path="/accountdetails" element={<AccountDetails />}></Route>
-
+        <Route path="/ewallet" element={<EWallet />}></Route>
         <Route path="/searchresults" element={<SearchResults />}></Route>
         <Route path="/buyproduct" element={<BuyProduct />}></Route>
+        <Route path="/cart" element={<Cart />}></Route>
+        <Route path="/orders" element={<Orders />}></Route>
+
         {/* <Route path="/header" element={<Header user="admin" />}></Route> */}
       </Routes>
       {/* <label htmlFor="image"></label>

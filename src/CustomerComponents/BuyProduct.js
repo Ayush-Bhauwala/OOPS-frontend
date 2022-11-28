@@ -2,6 +2,7 @@ import "./BuyProductStyles.css";
 import Header from "../headerComponents/Header";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import BuyNowPopup from "./BuyNowPopup";
 
 function BuyProduct() {
@@ -69,10 +70,10 @@ function BuyProduct() {
                   <nav>
                     <ol className="breadcrumb">
                       <li className="breadcrumb-item">
-                        <a href="/">Home</a>
+                        <Link to="/">Home</Link>
                       </li>
                       <li className="breadcrumb-item">
-                        <a href="/products">Products</a>
+                        <Link to="/products">Products</Link>
                       </li>
                       <li className="breadcrumb-item active">Category</li>
                     </ol>

@@ -1,14 +1,15 @@
 import "./Headerstyles.css";
+import { Link } from "react-router-dom";
 
 function CustomerHeader() {
   return (
     <>
-      <a href="/orders" className="customer" style={{ marginLeft: "-5%" }}>
+      <Link to="/orders" className="customer" style={{ marginLeft: "-5%" }}>
         Orders
-      </a>
-      <a href="/cart" className="customer">
+      </Link>
+      <Link to="/cart" className="customer">
         <i className="fa-solid fa-cart-shopping"></i>
-      </a>
+      </Link>
       <div className="dropdown">
         <button
           className="btn dropdown-toggle customer me-1"
@@ -21,25 +22,25 @@ function CustomerHeader() {
         </button>
         <ul className="dropdown-menu dropdown-menu-end">
           <li>
-            <a className="dropdown-item" href="/accountdetails">
+            <Link to="/accountdetails" className="dropdown-item">
               Profile
-            </a>
+            </Link>
           </li>
           <li>
             <hr className="dropdown-divider" />
           </li>
           <li>
-            <a className="dropdown-item" href="/ewallet">
+            <Link to="/ewallet" className="dropdown-item">
               E-Wallet
-            </a>
+            </Link>
           </li>
           <li>
             <hr className="dropdown-divider" />
           </li>
           <li>
-            <a className="dropdown-item" href="/Logout">
+            <Link to="/logout" className="dropdown-item">
               Logout
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

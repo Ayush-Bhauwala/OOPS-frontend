@@ -1,11 +1,12 @@
 import "./Headerstyles.css";
+import { Link } from "react-router-dom";
 
 function ManagerHeader() {
   return (
     <>
-      <a href="/addItem" className="manager">
+      <Link to="/addItem" className="manager">
         <i className="fa-solid fa-circle-plus"></i>
-      </a>
+      </Link>
       <div className="dropdown">
         <button
           className="btn dropdown-toggle manager me-1"

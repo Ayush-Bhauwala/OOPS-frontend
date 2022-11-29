@@ -1,10 +1,14 @@
 #ewalletHeading {
   margin: 2% auto;
   text-align: center;
+  font-size: 50px;
 }
 
 .balance {
   text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  color: #383f51;
 }
 
 .amount {
@@ -14,21 +18,24 @@
 }
 
 .ewalletCard {
-  margin: auto;
+  margin: 3% auto;
   width: 40%;
   background-color: #383f51;
   padding: 0;
 }
 
 .ewalletInput {
+  font-size: 30px;
   display: block;
-  border-radius: 0.625rem;
+  border-radius: 1rem;
   border: 1px solid black;
   margin: 5% auto;
   width: 80%;
 }
 
 .topupbtn {
+  border-radius: 1rem;
+  font-size: 40px;
   font-weight: bold;
   margin-top: 1%;
   width: 40%;

@@ -36,7 +36,7 @@ function EWallet() {
               <input
                 type="number"
                 name="topupAmount"
-                placeholder="Enter Amount"
+                placeholder="Enter Amount (₹)"
                 className="ewalletInput"
                 id="topup"
               />

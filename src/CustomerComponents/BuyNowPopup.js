@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function BuyNowPopup(props) {
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ function BuyNowPopup(props) {
               style={{ padding: ".75%", fontSize: "25px" }}
             >
               <i className="fa-solid fa-triangle-exclamation"></i> Insufficient
-              funds! <a href="/ewallet">Top Up</a>
+              funds! <Link to="/ewallet">Top Up</Link>
             </div>
           </>
         )}

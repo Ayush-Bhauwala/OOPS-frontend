@@ -5,9 +5,9 @@ function SearchResultsProduct(props) {
   const navigate = useNavigate();
 
   return (
-    <div className="row justify-content-center mb-3">
+    <div className="row justify-content-center mb-5">
       <div className="col-md-12 col-xl-10">
-        <div className="card shadow-0 border rounded-3">
+        <div className="card shadow-0 border rounded-4">
           <div className="card-body">
             <div className="row">
               <div className="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
@@ -77,12 +77,6 @@ function SearchResultsProduct(props) {
                     >
                       Details
                     </button>
-                    {/* <button
-                    className="btn btn-outline-primary btn-sm mt-2"
-                    type="button"
-                  >
-                    Add to wishlist
-                  </button> */}
                   </div>
                 </div>
               </div>

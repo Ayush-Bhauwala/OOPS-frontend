@@ -9,9 +9,9 @@ import SearchResults from "./Components/SearchResults";
 import Header from "./headerComponents/Header";
 import { useState } from "react";
 import axios from "axios";
+import ForgotPassword from "./Components/ForgotPassword";
 
 function App() {
-  const [files, setFile] = useState();
   // function handleImage(e) {
   //   const files = e.target.files;
   //   console.log(document.getElementById("image").files);
@@ -37,6 +37,7 @@ function App() {
         <Route path="/accountinfo" element={<AccountInfo />}></Route>
         <Route path="/searchresults" element={<SearchResults />}></Route>
         <Route path="/buyproduct" element={<BuyProduct />}></Route>
+        <Route path="/forgotpassword" element={<ForgotPassword />}></Route>
         {/* <Route path="/header" element={<Header user="admin" />}></Route> */}
       </Routes>
       {/* <label htmlFor="image"></label>

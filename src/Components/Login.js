@@ -71,7 +71,7 @@ function Login() {
 
                       <a
                         className="small text-muted"
-                        href="#!"
+                        href="/forgotpassword"
                         style={{ fontSize: "20px" }}
                       >
                         Forgot password?

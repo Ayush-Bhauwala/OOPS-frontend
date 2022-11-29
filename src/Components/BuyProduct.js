@@ -9,16 +9,17 @@ function BuyProduct() {
   const [itemName, setItemName] = useState("");
   const [price, setItemPrice] = useState(0);
   const [discount, setItemDiscount] = useState(0);
-
+  const [data, setImg] = useState("");
   function getItemDetails() {
     axios({
       method: "get",
-      url: "http://localhost:8080/customer/getitem/1",
+      url: "http://localhost:8080/customer/getitem/2",
     }).then((res) => {
       setMaxQty(res.data.qty);
       setItemName(res.data.itemName);
       setItemPrice(res.data.price);
       setItemDiscount(res.data.offer);
+      setImg(res.data.image.imageData);
     });
   }
   useEffect(() => {
@@ -59,7 +60,7 @@ function BuyProduct() {
               <div className="col-lg-6 order-lg-2 order-1">
                 <div className="image_selected">
                   <img
-                    src="https://i.imgur.com/qEwct2O.jpg"
+                    src={`data:image/jpeg;base64,${data}`}
                     alt="product img"
                   />
                 </div>

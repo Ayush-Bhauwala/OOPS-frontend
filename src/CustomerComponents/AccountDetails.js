@@ -54,7 +54,6 @@ function AccountDetails() {
                           Account Details
                         </h1>
 
-<<<<<<< Updated upstream
                         <div className="form-floating mb-4">
                           <input
                             type="name"
@@ -62,21 +61,9 @@ function AccountDetails() {
                             className="form-control add-item-input"
                             id="username"
                             placeholder="Name"
+                            defaultValue={accountDetails.name}
                           />
                           <label for="username"> Name</label>
-=======
-                        <div className="row">
-                          <div className="form-outline mb-4">
-                            <input
-                              type="name"
-                              className="form-control login-input-field"
-                              placeholder="Name"
-                              defaultValue={accountDetails.name}
-                              id="name"
-                              name="name"
-                            />
-                          </div>
->>>>>>> Stashed changes
                         </div>
                         <div className="row">
                           <div className="col col-lg-6 col-md-6">
@@ -101,7 +88,6 @@ function AccountDetails() {
                                 minlength="10"
                                 maxlength="10"
                                 className="form-control add-item-input"
-                                id="phone"
                                 placeholder="Phone No."
                                 defaultValue={accountDetails.phoneNo}
                                 id="phone"
@@ -113,14 +99,8 @@ function AccountDetails() {
                         </div>
                         <div className="form-floating mb-3">
                           <textarea
-<<<<<<< Updated upstream
                             className="form-control add-item-input"
-                            id="address"
                             name="Address"
-=======
-                            className="login-input-field"
-                            name="address"
->>>>>>> Stashed changes
                             placeholder="Address"
                             style={{ width: "100%" }}
                             id="address"

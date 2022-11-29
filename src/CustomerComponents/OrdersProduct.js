@@ -1,6 +1,7 @@
 import "./OrdersStyles.css";
 
 function OrdersProduct(props) {
+  const data = props.image;
   return (
     <div className="row justify-content-center mb-5">
       <div className="col-md-12 col-xl-10">
@@ -12,7 +13,11 @@ function OrdersProduct(props) {
             <div className="row">
               <div className="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
                 <div className="bg-image hover-zoom ripple rounded ripple-surface">
-                  <img src={props.image} className="w-100" alt="product img" />
+                  <img
+                    src={`data:image/jpeg;base64,${data}`}
+                    className="w-100"
+                    alt="product img"
+                  />
                   <a href="#!">
                     <div className="hover-overlay">
                       <div

@@ -11,10 +11,27 @@ function BuyProduct() {
   const [price, setItemPrice] = useState(0);
   const [discount, setItemDiscount] = useState(0);
   const [data, setImg] = useState("");
-  function getItemDetails() {
+  const [balance, setBalance] = useState(0);
+  const userid = localStorage.getItem("userid");
+  const productid = 2;
+
+  const [itemsDetails, setItemsDetails] = useState([]);
+  function getCart() {
+    const id = localStorage.getItem("userid");
+    const url = `http://localhost:8080/customer/getcart/${id}`;
     axios({
       method: "get",
-      url: "http://localhost:8080/customer/getitem/2",
+      url: url,
+    }).then((res) => {
+      setItemsDetails(res.data);
+    });
+  }
+
+  function getItemDetails() {
+    const url = `http://localhost:8080/customer/getitem/${productid}`;
+    axios({
+      method: "get",
+      url: url,
     }).then((res) => {
       setMaxQty(res.data.qty);
       setItemName(res.data.itemName);
@@ -23,8 +40,71 @@ function BuyProduct() {
       setImg(res.data.image.imageData);
     });
   }
+
+  function addToCart() {
+    var qtyInCart = 0;
+    const qtybought = parseInt(document.getElementById("quantity_input").value);
+    const exist = itemsDetails.find((x) => x.itemClass.itemId === productid);
+    for (var i = 0; i < itemsDetails.length; i++) {
+      qtyInCart =
+        itemsDetails[i].itemClass.itemId === productid &&
+        itemsDetails[i].qtybought;
+    }
+    console.log("qtybought " + qtybought);
+    console.log("qtyincart " + qtyInCart);
+    const totalqty = qtyInCart + qtybought;
+    console.log(totalqty);
+    if (maxQty >= totalqty) {
+      if (exist) {
+        setItemsDetails(
+          itemsDetails.map((x) =>
+            x.itemClass.itemId === productid
+              ? {
+                  ...exist,
+                  qtybought: exist.qtybought + qtybought,
+                }
+              : x
+          )
+        );
+      }
+      axios
+        .post("http://localhost:8080/customer/addtocart", {
+          userid: userid,
+          productid: productid,
+          qtybought: qtybought,
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      alert("Added successfully!");
+    } else {
+      alert("Max quantity reached");
+    }
+    getCart();
+  }
+  function getBalance() {
+    axios
+      .post("http://localhost:8080/ewallet/getbalance", {
+        id: userid,
+      })
+      .then(function (response) {
+        console.log(response.data);
+        setBalance(response.data.balance);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  function buyNow() {}
+
   useEffect(() => {
+    getCart();
     getItemDetails();
+    getBalance();
   }, []);
 
   function Discount() {
@@ -46,7 +126,7 @@ function BuyProduct() {
   return (
     <>
       <Header user="customer" />
-      <BuyNowPopup price="29000" balance="1000" />
+      <BuyNowPopup price={price} balance={balance} handleClick={buyNow} />
       <div className="super_container">
         <div className="single_product py-3">
           <div
@@ -167,9 +247,13 @@ function BuyProduct() {
                     </div>
                     <div className="col-xs-6">
                       {" "}
-                      <button type="button" className="btn shop-button">
+                      <button
+                        type="button"
+                        className="btn shop-button"
+                        onClick={() => addToCart()}
+                      >
                         Add to Cart
-                      </button>{" "}
+                      </button>
                       <button
                         type="button"
                         className="btn shop-button"

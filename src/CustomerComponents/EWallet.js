@@ -1,11 +1,34 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "../headerComponents/Header";
 import "./EWalletStyles.css";
-
+import axios from "axios";
 function EWallet() {
   const [balance, setBalance] = useState(1000);
   const [alert, setAlert] = useState(false);
   var isManager = false;
+  function getUserInfo() {
+    const id = localStorage.getItem("userid");
+    const url = `http://localhost:8080/admin/getuser/${id}`;
+    axios({
+      method: "get",
+      url: url,
+    }).then((res) => {
+      setBalance(res.data.ewallet.balance);
+    });
+  }
+
+  function topUp() {
+    const password = document.getElementById("pswd").value;
+    const amount = parseInt(document.getElementById("topup").value);
+    password === "123"
+      ? setBalance(parseInt(balance) + parseInt(amount))
+      : setAlert(true);
+  }
+
+  useEffect(() => {
+    getUserInfo();
+    console.log("Inside use effect");
+  }, []);
   return (
     <>
       <Header user={isManager ? "manager" : "customer"} />
@@ -51,13 +74,7 @@ function EWallet() {
               <button
                 type="button"
                 className="btn login-button topupbtn"
-                onClick={() => {
-                  const password = document.getElementById("pswd").value;
-                  const amount = document.getElementById("topup").value;
-                  password === "123"
-                    ? setBalance(parseInt(balance) + parseInt(amount))
-                    : setAlert(true);
-                }}
+                onClick={() => topUp()}
               >
                 Top Up
               </button>

@@ -35,6 +35,8 @@ function Cart() {
           )
         );
       }
+    } else {
+      alert("Max quantity reached");
     }
   }
   function decQty(product) {
@@ -62,7 +64,7 @@ function Cart() {
     );
     axios
       .post("http://localhost:8080/customer/deletefromcart", {
-        userid: 1,
+        userid: localStorage.getItem("userid"),
         productid: product.itemClass.itemId,
       })
       .then(function (response) {

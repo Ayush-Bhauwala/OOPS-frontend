@@ -13,7 +13,6 @@ function BuyNowPopup(props) {
       setAlert(true);
     }
   }
-  // const handleClick = props.handleClick;
 
   return (
     <>

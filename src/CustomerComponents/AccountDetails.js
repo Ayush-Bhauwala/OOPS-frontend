@@ -31,48 +31,54 @@ function AccountDetails() {
                           Account Details
                         </h1>
 
-                        <div className="row">
-                          <div className="form-outline mb-4">
-                            <input
-                              type="name"
-                              className="form-control login-input-field"
-                              placeholder="Name"
-                              // defaultValue={}
-                            />
-                          </div>
+                        <div className="form-floating mb-4">
+                          <input
+                            type="name"
+                            name="name"
+                            className="form-control add-item-input"
+                            id="username"
+                            placeholder="Name"
+                          />
+                          <label for="username"> Name</label>
                         </div>
                         <div className="row">
                           <div className="col col-lg-6 col-md-6">
-                            <div className="form-outline mb-4">
+                            <div className="form-floating mb-4">
                               <input
                                 type="email"
-                                className="form-control login-input-field"
+                                className="form-control add-item-input"
+                                id="email"
                                 placeholder="Email address"
                                 readOnly="true"
                               />
+                              <label for="email">Email Address</label>
                             </div>
                           </div>
 
                           <div className="col col-lg-6 col-md-6">
-                            <div className="form-outline mb-4">
+                            <div className="form-floating mb-4">
                               <input
                                 type="text"
                                 pattern="\d*"
                                 minlength="10"
                                 maxlength="10"
-                                className="form-control login-input-field"
+                                className="form-control add-item-input"
+                                id="phone"
                                 placeholder="Phone No."
                               />
+                              <label for="phone">Phone No.</label>
                             </div>
                           </div>
                         </div>
-                        <div className="form-outline mb-3">
+                        <div className="form-floating mb-3">
                           <textarea
-                            className="login-input-field"
+                            className="form-control add-item-input"
+                            id="address"
                             name="Address"
                             placeholder="Address"
                             style={{ width: "100%" }}
                           />
+                          <label for="address">Address</label>
                         </div>
                         <div className="row">
                           <div className="col col-lg-6 col-md-6 pt-1 mb-3 ">

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function ManagerHeader() {
   return (
     <>
-      <Link to="/addItem" className="manager">
+      <Link to="/additem" className="manager">
         <i className="fa-solid fa-circle-plus"></i>
       </Link>
       <div className="dropdown">

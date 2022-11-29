@@ -7,10 +7,13 @@ import Login from "./CustomerComponents/Login";
 import SignUp from "./CustomerComponents/SignUp";
 import AccountDetails from "./CustomerComponents/AccountDetails";
 import EWallet from "./CustomerComponents/EWallet";
+
 import SearchResults from "./CustomerComponents/SearchResults";
 import BuyProduct from "./CustomerComponents/BuyProduct";
 import Cart from "./CustomerComponents/Cart";
 import Orders from "./CustomerComponents/Orders";
+
+import AddItem from "./ManagerComponents/AddItem";
 
 function App() {
   // function handleImage(e) {
@@ -36,10 +39,13 @@ function App() {
         <Route path="/signup" element={<SignUp />}></Route>
         <Route path="/accountdetails" element={<AccountDetails />}></Route>
         <Route path="/ewallet" element={<EWallet />}></Route>
+
         <Route path="/searchresults" element={<SearchResults />}></Route>
         <Route path="/buyproduct" element={<BuyProduct />}></Route>
         <Route path="/cart" element={<Cart />}></Route>
         <Route path="/orders" element={<Orders />}></Route>
+
+        <Route path="/additem" element={<AddItem />}></Route>
 
         {/* <Route path="/forgotpassword" element={<ForgotPassword />}></Route> */}
         {/* <Route path="/header" element={<Header user="admin" />}></Route> */}

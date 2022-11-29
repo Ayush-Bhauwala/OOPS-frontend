@@ -1,0 +1,19 @@
+.gradient-custom {
+  /* fallback for old browsers */
+  background: #e5e5e5;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, #383f51, #7989ae);
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #383f51, #7989ae);
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  opacity: 1;
+}
+
+.add-item-input {
+  border-radius: 1rem;
+}

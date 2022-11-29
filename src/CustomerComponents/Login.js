@@ -1,8 +1,29 @@
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import "./LoginStyles.css";
 import LoginPopup from "./LoginPopup";
+import axios from "axios";
 
 function Login() {
+  function handleClick(e) {
+    e.preventDefault();
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("pass").value;
+    console.log(email, password);
+    axios
+      .post("http://localhost:8080/login", {
+        email: email,
+        password: password,
+      })
+      .then(function (response) {
+        console.log(response);
+        if (response.data != null) {
+          localStorage.setItem("userid", response.data);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
   return (
     <section
       className="vh-100"
@@ -22,11 +43,7 @@ function Login() {
                 </div>
                 <div className="col-md-6 col-lg-6 d-flex align-items-center">
                   <div className="card-body p-4 p-lg-3 ms-3 me-3 card-container ">
-                    <form
-                      style={{ height: "100%" }}
-                      action="/home"
-                      method="post"
-                    >
+                    <form style={{ height: "100%" }}>
                       <div className="d-flex align-items-center mb-3 pb-1">
                         <img
                           className="login-logo"
@@ -50,6 +67,8 @@ function Login() {
                           type="email"
                           className="form-control login-input-field"
                           placeholder="Email address"
+                          id="email"
+                          name="email"
                         />
                       </div>
 
@@ -58,6 +77,8 @@ function Login() {
                           type="password"
                           className="form-control login-input-field"
                           placeholder="Password"
+                          id="pass"
+                          name="pass"
                         />
                       </div>
 
@@ -65,6 +86,7 @@ function Login() {
                         <button
                           className="btn btn-lg btn-block w-50 login-button"
                           type="submit"
+                          onClick={(e) => handleClick(e)}
                         >
                           Login
                         </button>

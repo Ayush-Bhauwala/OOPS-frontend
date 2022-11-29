@@ -1,18 +1,24 @@
 import "./CartNewStyles.css";
-
+import BuyNowPopup from "./BuyNowPopup";
 function CartNew(props) {
   const cartItems = props.itemsDetails;
   const delItem = props.delItem;
   const incQty = props.incQty;
   const decQty = props.decQty;
+  const onCheckout = props.checkout;
   const total = cartItems.reduce(
     (a, c) => a + c.itemClass.price * c.qtybought,
     0
   );
   return (
     <>
+      <BuyNowPopup
+        price={total}
+        balance="0"
+        handleClick={onCheckout}
+      ></BuyNowPopup>
       <section className="h-100 gradient-custom" style={{ height: "100%" }}>
-        <div className="container py-5">
+        <div className="container py-5" style={{ height: "100vh" }}>
           <div className="row d-flex justify-content-center my-4">
             <div className="col-md-8">
               <div className="card mb-4">
@@ -207,6 +213,8 @@ function CartNew(props) {
                         color: "#383f51",
                         backgroundColor: "#ff8888",
                       }}
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
                     >
                       Checkout
                     </button>

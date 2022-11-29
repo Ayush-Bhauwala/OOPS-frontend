@@ -4,11 +4,16 @@ import { useNavigate, Link } from "react-router-dom";
 function BuyNowPopup(props) {
   const navigate = useNavigate();
   const [alert, setAlert] = useState(false);
+  const buy = props.handleClick;
   function handleClick() {
-    parseInt(props.price) < parseInt(props.balance)
-      ? navigate("/orders")
-      : setAlert(true);
+    if (parseInt(props.price) <= parseInt(props.balance)) {
+      buy();
+      navigate("/orders");
+    } else {
+      setAlert(true);
+    }
   }
+  // const handleClick = props.handleClick;
 
   return (
     <>
@@ -54,7 +59,7 @@ function BuyNowPopup(props) {
                   backgroundColor: "#ff8888",
                   fontWeight: "bold",
                 }}
-                onClick={handleClick}
+                onClick={() => handleClick()}
               >
                 CONFIRM
               </button>

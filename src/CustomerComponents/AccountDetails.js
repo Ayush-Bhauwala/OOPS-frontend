@@ -1,4 +1,5 @@
 import Header from "../headerComponents/Header";
+import axios from "axios";
 
 function AccountDetails() {
   var isManager = false;
@@ -22,11 +23,7 @@ function AccountDetails() {
                 <div className="row g-0">
                   <div className="d-flex align-items-center">
                     <div className="card-body p-4 p-lg-3 ms-3 me-3 card-container ">
-                      <form
-                        style={{ height: "100%" }}
-                        action="/home"
-                        method="post"
-                      >
+                      <form style={{ height: "100%" }}>
                         <h1
                           className="text-center mb-3 pb-1 fw-bold fs-25"
                           style={{ color: "#383f51" }}
@@ -40,6 +37,7 @@ function AccountDetails() {
                               type="name"
                               className="form-control login-input-field"
                               placeholder="Name"
+                              // defaultValue={}
                             />
                           </div>
                         </div>

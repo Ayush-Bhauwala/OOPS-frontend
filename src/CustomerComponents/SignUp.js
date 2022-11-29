@@ -2,7 +2,7 @@ import "./SignUpStyles.css";
 import MinimalTopupPopup from "./MinimalTopupPopup";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-
+import axios from "axios";
 function SignUp() {
   const [popup, setPopup] = useState(false);
   const [alert, setAlert] = useState(false);
@@ -24,6 +24,21 @@ function SignUp() {
       data.address &&
       data.password === data.confirmedPassword
     ) {
+      axios
+        .post("http://localhost:8080/customer/buyfromcart", {
+          name: data.name,
+          email: data.email,
+          phoneNo: data.phone,
+          role: "CUSTOMER",
+          balance: 0,
+          password: data.password,
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
       setPopup(true);
     }
   };

@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
 import Header from "../headerComponents/Header";
 import axios from "axios";
-import BuyNowPopup from "./BuyNowPopup";
-import CreateCart from "./CreateCart";
 import CartNew from "./CartNew";
 
 function Cart() {
   const [itemsDetails, setItemsDetails] = useState([]);
-
   function getCart() {
+    const id = localStorage.getItem("userid");
+    const url = `http://localhost:8080/customer/getcart/${id}`;
     axios({
       method: "get",
-      url: "http://localhost:8080/customer/getcart/1",
+      url: url,
     }).then((res) => {
       setItemsDetails(res.data);
     });
@@ -61,6 +60,30 @@ function Cart() {
     setItemsDetails(
       itemsDetails.filter((x) => x.itemClass.itemId != product.itemClass.itemId)
     );
+    axios
+      .post("http://localhost:8080/customer/deletefromcart", {
+        userid: 1,
+        productid: product.itemClass.itemId,
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+  function checkout() {
+    setItemsDetails([]);
+    axios
+      .post("http://localhost:8080/customer/buyfromcart", {
+        user_id: 1,
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
   return (
     <>
@@ -70,6 +93,7 @@ function Cart() {
         incQty={incQty}
         decQty={decQty}
         delItem={delItem}
+        checkout={checkout}
       ></CartNew>
     </>
   );

@@ -35,13 +35,6 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-<<<<<<< Updated upstream
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/signup" element={<SignUp />}></Route>
-        <Route path="/accountdetails" element={<AccountDetails />}></Route>
-        <Route path="/ewallet" element={<EWallet />}></Route>
-
-=======
         <Route
           path="/login"
           element={id != null ? <Navigate to="/" /> : <Login />}
@@ -58,7 +51,6 @@ function App() {
           path="/ewallet"
           element={id === null ? <Navigate to="/login" /> : <EWallet />}
         ></Route>
->>>>>>> Stashed changes
         <Route path="/searchresults" element={<SearchResults />}></Route>
         <Route path="/buyproduct" element={<BuyProduct />}></Route>
         <Route

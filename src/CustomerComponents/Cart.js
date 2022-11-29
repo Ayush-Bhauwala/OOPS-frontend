@@ -3,6 +3,7 @@ import Header from "../headerComponents/Header";
 import axios from "axios";
 import BuyNowPopup from "./BuyNowPopup";
 import CreateCart from "./CreateCart";
+import CartNew from "./CartNew";
 
 function Cart() {
   const [itemsDetails, setItemsDetails] = useState([]);
@@ -21,13 +22,55 @@ function Cart() {
     console.log("Inside use effect");
   }, []);
 
-  function incQty() {}
-  function decQty() {}
-  function delItem() {}
+  function incQty(product) {
+    if (product.itemClass.qty != product.qtybought) {
+      const exist = itemsDetails.find(
+        (x) => x.itemClass.itemId === product.itemClass.itemId
+      );
+      if (exist) {
+        setItemsDetails(
+          itemsDetails.map((x) =>
+            x.itemClass.itemId === product.itemClass.itemId
+              ? { ...exist, qtybought: exist.qtybought + 1 }
+              : x
+          )
+        );
+      }
+    }
+  }
+  function decQty(product) {
+    if (product.qtybought > 1) {
+      const exist = itemsDetails.find(
+        (x) => x.itemClass.itemId === product.itemClass.itemId
+      );
+      if (exist) {
+        setItemsDetails(
+          itemsDetails.map((x) =>
+            x.itemClass.itemId === product.itemClass.itemId
+              ? { ...exist, qtybought: exist.qtybought - 1 }
+              : x
+          )
+        );
+      }
+    }
+  }
+  function delItem(product) {
+    const exist = itemsDetails.find(
+      (x) => x.itemClass.itemId === product.itemClass.itemId
+    );
+    setItemsDetails(
+      itemsDetails.filter((x) => x.itemClass.itemId != product.itemClass.itemId)
+    );
+  }
   return (
     <>
-      <Header></Header>
-      <CreateCart itemsDetails={itemsDetails}></CreateCart>
+      <Header user="customer" />
+      <CartNew
+        itemsDetails={itemsDetails}
+        incQty={incQty}
+        decQty={decQty}
+        delItem={delItem}
+      ></CartNew>
     </>
   );
   // const [total, setTotal] = useState(0);

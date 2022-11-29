@@ -1,7 +1,7 @@
 import "./CartNewStyles.css";
 import { useState } from "react";
 
-function CartNewProduct() {
+function CartNewProduct(props) {
   const [check, setCheck] = useState(true);
 
   return (
@@ -15,7 +15,7 @@ function CartNewProduct() {
           <img
             src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/12a.webp"
             className="w-100"
-            alt="Blue Jeans Jacket"
+            alt={props.name}
             style={{ height: "11rem" }}
           />
           <a href="#!">
@@ -32,7 +32,7 @@ function CartNewProduct() {
       <div className="col-lg-5 col-md-6 mb-4 mb-lg-0 ">
         {/* Data */}
         <p className="fw-bold" style={{ fontSize: "30px" }}>
-          Product Name
+          {props.name}
         </p>
 
         <p style={{ fontSize: "25px" }}>Seller: </p>

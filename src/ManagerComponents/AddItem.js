@@ -162,13 +162,26 @@ function AddItem() {
                     <label for="product-category">Category</label>
                   </div>
 
-                  <div className="d-flex justify-content-end pt-2">
-                    <button
-                      type="submit"
-                      className="btn btn-lg btn-block w-50 login-button"
-                    >
-                      Add Item
-                    </button>
+                  <div className="row">
+                    <div className="col col-lg-6 col-md-6">
+                      <button
+                        type="submit"
+                        className="btn btn-lg btn-block w-75 login-button"
+                      >
+                        Add Offer
+                      </button>
+                    </div>
+                  </div>
+                  <div className="row pt-4">
+                    <div className="col col-lg-6 col-md-6"></div>
+                    <div className="col col-lg-6 col-md-6">
+                      <button
+                        type="submit"
+                        className="btn btn-lg btn-block w-100 login-button"
+                      >
+                        Add Item
+                      </button>
+                    </div>
                   </div>
                 </form>
               </div>

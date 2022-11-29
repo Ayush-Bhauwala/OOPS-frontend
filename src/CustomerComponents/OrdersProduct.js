@@ -52,7 +52,7 @@ function OrdersProduct(props) {
                     )}
                   </div>
 
-                  <h4>Quantity ordered: {props.quantity}</h4>
+                  <h4>Quantity: {props.quantity}</h4>
                 </div>
               </div>
             </div>

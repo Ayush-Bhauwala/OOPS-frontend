@@ -5,7 +5,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 function Orders() {
-  const [orders, setOrders] = useState();
+  const [orders, setOrders] = useState([]);
 
   function getOrders() {
     const id = 1;
@@ -13,18 +13,17 @@ function Orders() {
     axios
       .get(url)
       .then(function (response) {
-        // handle success
         console.log(response);
         setOrders(response.data);
       })
       .catch(function (error) {
-        // handle error
         console.log(error);
       });
   }
 
   useEffect(() => {
     getOrders();
+    console.log("Inside use effect");
   }, []);
   return (
     <>
@@ -35,15 +34,15 @@ function Orders() {
         </div>
         <div className="container py-3 h-100">
           {orders.map((order) => {
-            console.log(order.qtyBought);
+            const data = order.item.image.imageData;
             return (
               <OrdersProduct
                 name={order.item.itemName}
                 price={order.item.price}
                 quantity={order.qtyBought}
                 discount={order.item.offer}
-                image={order.item.image.imageData}
                 edd="30/12/2022"
+                image={order.item.image.imageData}
               />
             );
           })}

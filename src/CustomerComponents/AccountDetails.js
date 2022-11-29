@@ -1,8 +1,31 @@
 import Header from "../headerComponents/Header";
 import axios from "axios";
+import { useEffect, useState } from "react";
 
 function AccountDetails() {
   var isManager = false;
+
+  const [accountDetails, setAccountDetails] = useState({});
+
+  function getAccountDetails() {
+    const id = localStorage.getItem("userid");
+    const url = `http://localhost:8080/admin/getuser/${id}`;
+    axios({
+      method: "get",
+      url: url,
+    }).then((res) => {
+      setAccountDetails(res.data);
+    });
+  }
+
+  function saveInfo() {
+    const name = document.getElementById("name").value;
+  }
+
+  useEffect(() => {
+    getAccountDetails();
+  }, []);
+
   return (
     <>
       <Header user={isManager ? "manager" : "customer"} />
@@ -31,6 +54,7 @@ function AccountDetails() {
                           Account Details
                         </h1>
 
+<<<<<<< Updated upstream
                         <div className="form-floating mb-4">
                           <input
                             type="name"
@@ -40,6 +64,19 @@ function AccountDetails() {
                             placeholder="Name"
                           />
                           <label for="username"> Name</label>
+=======
+                        <div className="row">
+                          <div className="form-outline mb-4">
+                            <input
+                              type="name"
+                              className="form-control login-input-field"
+                              placeholder="Name"
+                              defaultValue={accountDetails.name}
+                              id="name"
+                              name="name"
+                            />
+                          </div>
+>>>>>>> Stashed changes
                         </div>
                         <div className="row">
                           <div className="col col-lg-6 col-md-6">
@@ -50,6 +87,7 @@ function AccountDetails() {
                                 id="email"
                                 placeholder="Email address"
                                 readOnly="true"
+                                value={accountDetails.email}
                               />
                               <label for="email">Email Address</label>
                             </div>
@@ -65,6 +103,9 @@ function AccountDetails() {
                                 className="form-control add-item-input"
                                 id="phone"
                                 placeholder="Phone No."
+                                defaultValue={accountDetails.phoneNo}
+                                id="phone"
+                                name="phone"
                               />
                               <label for="phone">Phone No.</label>
                             </div>
@@ -72,11 +113,19 @@ function AccountDetails() {
                         </div>
                         <div className="form-floating mb-3">
                           <textarea
+<<<<<<< Updated upstream
                             className="form-control add-item-input"
                             id="address"
                             name="Address"
+=======
+                            className="login-input-field"
+                            name="address"
+>>>>>>> Stashed changes
                             placeholder="Address"
                             style={{ width: "100%" }}
+                            id="address"
+
+                            // defaultValue={accountDetails.}
                           />
                           <label for="address">Address</label>
                         </div>
@@ -84,7 +133,8 @@ function AccountDetails() {
                           <div className="col col-lg-6 col-md-6 pt-1 mb-3 ">
                             <button
                               className="btn btn-lg btn-block w-100 login-button"
-                              type="submit"
+                              type="button"
+                              onClick={() => saveInfo()}
                             >
                               Save
                             </button>

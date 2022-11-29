@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 // import ForgotPassword from "./Components/ForgotPassword";
@@ -35,15 +35,40 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+<<<<<<< Updated upstream
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<SignUp />}></Route>
         <Route path="/accountdetails" element={<AccountDetails />}></Route>
         <Route path="/ewallet" element={<EWallet />}></Route>
 
+=======
+        <Route
+          path="/login"
+          element={id != null ? <Navigate to="/" /> : <Login />}
+        ></Route>
+        <Route
+          path="/signup"
+          element={id != null ? <Navigate to="/" /> : <SignUp />}
+        ></Route>
+        <Route
+          path="/accountdetails"
+          element={id === null ? <Navigate to="/login" /> : <AccountDetails />}
+        ></Route>
+        <Route
+          path="/ewallet"
+          element={id === null ? <Navigate to="/login" /> : <EWallet />}
+        ></Route>
+>>>>>>> Stashed changes
         <Route path="/searchresults" element={<SearchResults />}></Route>
         <Route path="/buyproduct" element={<BuyProduct />}></Route>
-        <Route path="/cart" element={<Cart />}></Route>
-        <Route path="/orders" element={<Orders />}></Route>
+        <Route
+          path="/cart"
+          element={id === null ? <Navigate to="/login" /> : <Cart />}
+        ></Route>
+        <Route
+          path="/orders"
+          element={id === null ? <Navigate to="/login" /> : <Orders />}
+        ></Route>
 
         <Route path="/additem" element={<AddItem />}></Route>
 

@@ -1,7 +1,4 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { useState } from "react";
-import axios from "axios";
-// import ForgotPassword from "./Components/ForgotPassword";
 
 import Login from "./CustomerComponents/Login";
 import SignUp from "./CustomerComponents/SignUp";
@@ -16,21 +13,6 @@ import Orders from "./CustomerComponents/Orders";
 import AddItem from "./ManagerComponents/AddItem";
 
 function App() {
-  // function handleImage(e) {
-  //   const files = e.target.files;
-  //   console.log(document.getElementById("image").files);
-  //   setFile(files);
-  //   axios
-  //     .post("/user", {
-  //       image: document.getElementById("image").files,
-  //     })
-  //     .then(function (response) {
-  //       console.log(response);
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // }
   const id = localStorage.getItem("userid");
   return (
     <BrowserRouter>
@@ -63,18 +45,7 @@ function App() {
         ></Route>
 
         <Route path="/additem" element={<AddItem />}></Route>
-
-        {/* <Route path="/forgotpassword" element={<ForgotPassword />}></Route> */}
-        {/* <Route path="/header" element={<Header user="admin" />}></Route> */}
       </Routes>
-      {/* <label htmlFor="image"></label>
-      <input
-        type="file"
-        id="image"
-        name="image"
-        onChange={(e) => handleImage(e)}
-      ></input>
-      <div id="image-prev"></div> */}
     </BrowserRouter>
   );
 }

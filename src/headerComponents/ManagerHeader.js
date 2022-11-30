@@ -2,6 +2,10 @@ import "./Headerstyles.css";
 import { Link } from "react-router-dom";
 
 function ManagerHeader() {
+  function logout() {
+    localStorage.removeItem("userid");
+    window.location.reload(false);
+  }
   return (
     <>
       <Link to="/additem" className="manager">
@@ -35,7 +39,7 @@ function ManagerHeader() {
             <hr className="dropdown-divider" />
           </li>
           <li>
-            <a className="dropdown-item" href="/Logout">
+            <a className="dropdown-item" onClick={() => logout()}>
               Logout
             </a>
           </li>

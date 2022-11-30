@@ -3,9 +3,11 @@ import MinimalTopupPopup from "./MinimalTopupPopup";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { useNavigate } from "react-router";
 function SignUp() {
   const [popup, setPopup] = useState(false);
   const [alert, setAlert] = useState(false);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -25,7 +27,7 @@ function SignUp() {
       data.password === data.confirmedPassword
     ) {
       axios
-        .post("http://localhost:8080/customer/buyfromcart", {
+        .post("http://localhost:8080/signup", {
           name: data.name,
           email: data.email,
           phoneNo: data.phone,
@@ -35,6 +37,7 @@ function SignUp() {
         })
         .then(function (response) {
           console.log(response);
+          navigate("/login");
         })
         .catch(function (error) {
           console.log(error);

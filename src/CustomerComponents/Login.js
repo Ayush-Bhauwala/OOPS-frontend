@@ -3,9 +3,11 @@ import { Link, Route } from "react-router-dom";
 import "./LoginStyles.css";
 import LoginPopup from "./LoginPopup";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [Alert, setAlert] = useState(false);
+  const navigate = useNavigate();
 
   function handleClick(e) {
     e.preventDefault();
@@ -26,6 +28,7 @@ function Login() {
         console.log(response);
         if (response.data != null) {
           localStorage.setItem("userid", response.data);
+          navigate("/");
         } else {
           alert("Incorrect password!");
         }

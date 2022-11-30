@@ -6,7 +6,7 @@ import CartNew from "./CartNew";
 function Cart() {
   const [itemsDetails, setItemsDetails] = useState([]);
   function getCart() {
-    const id = 1;
+    const id = localStorage.getItem("userid");
     const url = `http://localhost:8080/customer/getcart/${id}`;
     axios({
       method: "get",

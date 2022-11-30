@@ -1,7 +1,11 @@
 import "./Headerstyles.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function CustomerHeader() {
+  function logout() {
+    localStorage.removeItem("userid");
+    window.location.reload(false);
+  }
   return (
     <>
       <Link to="/orders" className="customer" style={{ marginLeft: "-5%" }}>
@@ -38,7 +42,7 @@ function CustomerHeader() {
             <hr className="dropdown-divider" />
           </li>
           <li>
-            <Link to="/logout" className="dropdown-item">
+            <Link className="dropdown-item" onClick={() => logout()}>
               Logout
             </Link>
           </li>

@@ -5,7 +5,7 @@ import LoginPopup from "./LoginPopup";
 import axios from "axios";
 
 function Login() {
-  const [alert, setAlert] = useState(false);
+  const [Alert, setAlert] = useState(false);
 
   function handleClick(e) {
     e.preventDefault();
@@ -26,9 +26,14 @@ function Login() {
         console.log(response);
         if (response.data != null) {
           localStorage.setItem("userid", response.data);
+        } else {
+          alert("Incorrect password!");
         }
       })
       .catch(function (error) {
+        if (!(password === "" || email === "")) {
+          alert("Email does not exist");
+        }
         console.log(error);
       });
   }
@@ -37,7 +42,7 @@ function Login() {
       className="vh-100"
       style={{ backgroundColor: "#383f51", maxHeight: "100vh" }}
     >
-      {alert && (
+      {Alert && (
         <>
           <div
             className="alert alert-danger"

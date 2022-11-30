@@ -59,10 +59,6 @@ function CartNew(props) {
                             {item.itemClass.itemName}
                           </p>
 
-                          <p style={{ fontSize: "25px" }}>
-                            Seller: {item.itemClass.seller.name}
-                          </p>
-
                           <button
                             type="button"
                             className="btn me-1 mb-2"

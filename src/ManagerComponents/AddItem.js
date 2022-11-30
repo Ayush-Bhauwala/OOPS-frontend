@@ -166,7 +166,11 @@ function AddItem() {
                     <div className="col col-lg-6 col-md-6">
                       <button
                         type="submit"
-                        className="btn btn-lg btn-block w-75 login-button"
+                        className="btn fw-normal fs-5"
+                        style={{
+                          backgroundColor: "#7989ae",
+                          color: "#fff",
+                        }}
                       >
                         Add Offer
                       </button>

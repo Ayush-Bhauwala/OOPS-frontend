@@ -63,10 +63,17 @@ function AddItem() {
     );
   }
 
+  const [file, setFile] = useState();
+
+  function handleChange(e) {
+    console.log(e.target.files);
+    setFile(URL.createObjectURL(e.target.files[0]));
+  }
+
   return (
     <>
       <Header user="manager" />
-      <div className="super_container">
+      <div className="container-fluid px-0">
         <div className="single_product py-3 gradient-custom vh-100">
           <div
             className="container-fluid"
@@ -81,7 +88,9 @@ function AddItem() {
                 className="col-lg-6 order-lg-2 order-1"
                 style={{ borderRight: "1px solid black" }}
               >
-                <ImageUpload />
+                <h2>Add Image:</h2>
+                <input className="mb-4" type="file" onChange={handleChange} />
+                <img src={file} alt="" width="95%" height="75%" />
               </div>
               <div className="col-lg-6 order-3">
                 <form onSubmit={handleSubmit(onSubmit)}>

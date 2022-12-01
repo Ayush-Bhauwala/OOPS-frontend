@@ -71,20 +71,22 @@ function SignUp() {
 
                     <form onSubmit={handleSubmit(onSubmit)}>
                       <div className="row">
-                        <div className="col-md-12 mb-3">
-                          <div className="form-outline">
+                        <div className="col-md-12">
+                          <div className="form-floating mb-3">
                             <input
                               type="text"
                               name="name"
                               className="form-control signup-input-field"
+                              id="name"
                               placeholder="Name"
                               {...register("name")}
                               required
                             />
+                            <label for="name">Name</label>
                           </div>
                         </div>
                       </div>
-                      <div className="form-outline mb-3">
+                      <div className="form-floating mb-3">
                         <input
                           type="text"
                           pattern="\d*"
@@ -92,20 +94,24 @@ function SignUp() {
                           maxlength="10"
                           name="phone"
                           className="form-control signup-input-field"
+                          id="phone"
                           placeholder="Phone no."
                           {...register("phone")}
                           required
                         />
+                        <label for="phone">Phone No.</label>
                       </div>
-                      <div className="form-outline mb-3">
+                      <div className="form-floating mb-3">
                         <input
                           type="email"
                           name="email"
                           className="form-control signup-input-field"
+                          id="email"
                           placeholder="Email address"
                           {...register("email")}
                           required
                         />
+                        <label for="email">Email Address</label>
                       </div>
 
                       <div
@@ -165,35 +171,41 @@ function SignUp() {
                         </div>
                       </div>
 
-                      <div className="form-outline mb-3">
+                      <div className="form-floating mb-3">
                         <textarea
-                          className="signup-input-field"
+                          className="form-control signup-input-field"
+                          id="address"
                           name="Address"
                           placeholder="Address"
                           style={{ width: "100%" }}
                           {...register("address")}
                           required
                         />
+                        <label for="address">Address</label>
                       </div>
-                      <div className="form-outline mb-3">
+                      <div className="form-floating mb-3">
                         <input
                           type="password"
                           name="password"
                           className="form-control signup-input-field"
+                          id="password"
                           placeholder="Password"
                           {...register("password")}
                           required
                         />
+                        <label for="password">Password</label>
                       </div>
-                      <div className="form-outline mb-3">
+                      <div className="form-floating mb-3">
                         <input
                           type="password"
                           name="confirm password"
                           className="form-control signup-input-field"
+                          id="confirm-password"
                           placeholder="Confirm Password"
                           {...register("confirmedPassword")}
                           required
                         />
+                        <label for="confirm-password">Confirm Password</label>
                       </div>
                       {alert && (
                         <div

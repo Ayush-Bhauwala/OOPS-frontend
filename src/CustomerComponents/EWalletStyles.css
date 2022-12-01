@@ -25,12 +25,8 @@
 }
 
 .ewalletInput {
-  font-size: 30px;
   display: block;
   border-radius: 1rem;
-  border: 1px solid black;
-  margin: 5% auto;
-  width: 80%;
 }
 
 .topupbtn {

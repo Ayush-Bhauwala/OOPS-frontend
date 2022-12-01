@@ -3,11 +3,11 @@ import Header from "../headerComponents/Header";
 import "./EWalletStyles.css";
 import axios from "axios";
 function EWallet() {
-  const [balance, setBalance] = useState(1000);
+  const [balance, setBalance] = useState(0);
   const [alert, setAlert] = useState(false);
   var isManager = false;
+  const id = localStorage.getItem("userid");
   function getUserInfo() {
-    const id = localStorage.getItem("userid");
     const url = `https://bargainstrial-production.up.railway.app/admin/getuser/${id}`;
     axios({
       method: "get",
@@ -18,11 +18,16 @@ function EWallet() {
   }
 
   function topUp() {
+    const url =
+      "https://bargainstrial-production.up.railway.app/customer/ewallet/topup";
     const password = document.getElementById("pswd").value;
     const amount = parseInt(document.getElementById("topup").value);
-    password === "123"
-      ? setBalance(parseInt(balance) + parseInt(amount))
-      : setAlert(true);
+    axios.patch(url, {
+      user_id: id,
+      balance: amount,
+      password: password,
+    });
+    window.location.reload(false);
   }
 
   useEffect(() => {
@@ -56,21 +61,28 @@ function EWallet() {
         <div className="card text-center ewalletCard">
           <div className="card-body">
             <form method="get">
-              <input
-                type="number"
-                name="topupAmount"
-                placeholder="Enter Amount (₹)"
-                className="ewalletInput"
-                id="topup"
-              />
-              <input
-                type="password"
-                required
-                name="password"
-                placeholder="Enter Password"
-                className="ewalletInput"
-                id="pswd"
-              />
+              <div className="form-floating mb-4">
+                <input
+                  type="number"
+                  name="topupAmount"
+                  placeholder="Enter Amount (₹)"
+                  className="form-control ewalletInput"
+                  id="topup"
+                />
+                <label for="topup">Enter Amount (₹)</label>
+              </div>
+              <div className="form-floating mb-4">
+                <input
+                  type="password"
+                  required
+                  name="password"
+                  placeholder="Enter Password"
+                  className="form-control ewalletInput"
+                  id="pswd"
+                />
+                <label for="pswd">Enter Password</label>
+              </div>
+
               <button
                 type="button"
                 className="btn login-button topupbtn"

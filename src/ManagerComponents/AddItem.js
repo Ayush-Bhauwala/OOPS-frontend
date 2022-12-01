@@ -74,7 +74,7 @@ function AddItem() {
     <>
       <Header user="manager" />
       <div className="container-fluid px-0">
-        <div className="single_product py-3 gradient-custom vh-100">
+        <div className="single_product py-3 gradient-custom">
           <div
             className="container-fluid"
             style={{

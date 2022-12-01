@@ -1,14 +1,47 @@
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
+
 import "./SearchResultsStyles.css";
 import Header from "../headerComponents/Header";
 import SearchResultsProduct from "./SearchResultsProduct";
 
-function SearchResults() {
+function SearchResults(props) {
+  const [itemsDetails, setItemsDetails] = useState([]);
+  const [searchParams] = useSearchParams();
+  const [item, setItem] = useState("");
+
+  function getItems() {
+    const id = localStorage.getItem("userid");
+    const url = `https://bargainstrial-production.up.railway.app/search`;
+    console.log(item);
+    axios({
+      method: "post",
+      url: url,
+      data: {
+        userid: 2,
+        search: item,
+      },
+    }).then((res) => {
+      console.log(res.data);
+      setItem(searchParams.get("item"));
+      setItemsDetails(res.data);
+    });
+  }
+
+  useEffect(() => {
+    getItems();
+    console.log("Inside use effect");
+  }, []);
+
   return (
     <>
       <Header user="customer" />
       <section style={{ backgroundColor: "#eee" }}>
         <div className="pt-3 ms-3" style={{ color: "#383f51" }}>
-          <h3>Showing search results for 'item'.</h3>
+          <h3 onChange={() => getItems()}>
+            Showing search results for {searchParams.get("item")}.
+          </h3>
         </div>
         <div className="container py-3">
           <SearchResultsProduct

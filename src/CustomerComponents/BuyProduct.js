@@ -2,7 +2,7 @@ import "./BuyProductStyles.css";
 import Header from "../headerComponents/Header";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import BuyNowPopup from "./BuyNowPopup";
 
 function BuyProduct() {
@@ -13,7 +13,8 @@ function BuyProduct() {
   const [data, setImg] = useState("");
   const [balance, setBalance] = useState(0);
   const userid = localStorage.getItem("userid");
-  const productid = 2;
+  const params = useParams();
+  const productid = params.itemId;
 
   const [itemsDetails, setItemsDetails] = useState([]);
   function getCart() {

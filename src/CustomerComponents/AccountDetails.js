@@ -20,6 +20,9 @@ function AccountDetails() {
 
   function saveInfo() {
     const name = document.getElementById("name").value;
+    const phoneNo = parseInt(document.getElementById("phone").value);
+    const address = document.getElementById("address").value;
+    axios.post();
   }
 
   useEffect(() => {
@@ -104,8 +107,7 @@ function AccountDetails() {
                             placeholder="Address"
                             style={{ width: "100%" }}
                             id="address"
-
-                            // defaultValue={accountDetails.}
+                            defaultValue={accountDetails.address}
                           />
                           <label for="address">Address</label>
                         </div>

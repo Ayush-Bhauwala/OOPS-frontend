@@ -34,15 +34,27 @@ function SignUp() {
           role: "CUSTOMER",
           balance: 0,
           password: data.password,
+          address: data.address,
         })
         .then(function (response) {
           console.log(response);
-          navigate("/login");
         })
         .catch(function (error) {
           console.log(error);
         });
-      setPopup(true);
+      axios
+        .post("https://bargainstrial-production.up.railway.app/login", {
+          email: data.email,
+          password: data.password,
+        })
+        .then(function (response) {
+          console.log(response);
+          localStorage.setItem("userid", response.data);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      navigate("/ewallet");
     }
   };
 

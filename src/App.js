@@ -37,8 +37,12 @@ function App() {
           path="/ewallet"
           element={id === null ? <Navigate to="/login" /> : <EWallet />}
         ></Route>
-        <Route path="/searchresults" element={<SearchResults />}></Route>
-        <Route path="/buyproduct" element={<BuyProduct />}></Route>
+        <Route path="/searchresults">
+          <Route path=":searchInput" element={<SearchResults />}></Route>
+        </Route>
+        <Route path="/buyproduct">
+          <Route path=":itemId" element={<BuyProduct />}></Route>
+        </Route>
         <Route
           path="/cart"
           element={id === null ? <Navigate to="/login" /> : <Cart />}

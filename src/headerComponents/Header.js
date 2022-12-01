@@ -1,22 +1,18 @@
-import { useNavigate, createSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Headerstyles.css";
 import CustomerHeader from "./CustomerHeader";
 import LoginHeader from "./LoginHeader";
 import ManagerHeader from "./ManagerHeader";
 import AdminHeader from "./AdminHeader";
-import SearchResults from "../CustomerComponents/SearchResults";
-
 function Header(props) {
   const navigate = useNavigate();
 
   function handleSearch(e) {
     e.preventDefault();
     const search = document.getElementById("search").value;
-    search !== "" &&
-      navigate({
-        pathname: "/searchresults",
-        search: `?item=${search}`,
-      });
+    if (search !== "") {
+      navigate(`/searchresults/${search}`);
+    }
   }
 
   return (

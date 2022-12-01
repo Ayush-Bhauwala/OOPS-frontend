@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 function SearchResultsProduct(props) {
   const navigate = useNavigate();
-
+  const data = props.image;
   return (
     <div className="row justify-content-center mb-5">
       <div className="col-md-12 col-xl-10">
@@ -12,7 +12,11 @@ function SearchResultsProduct(props) {
             <div className="row">
               <div className="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
                 <div className="bg-image hover-zoom ripple rounded ripple-surface">
-                  <img src={props.image} className="w-100" alt="product img" />
+                  <img
+                    src={`data:image/jpeg;base64,${data}`}
+                    className="w-100"
+                    alt="product img"
+                  />
                   <a href="#!">
                     <div className="hover-overlay">
                       <div
@@ -47,18 +51,15 @@ function SearchResultsProduct(props) {
                     <br />
                   </span>
                 </div>
-                <p className="mt-4" style={{ color: "#383f51" }}>
-                  More from{" "}
-                  <a href="#" style={{ fontWeight: "bold" }}>
-                    {props.manager}
-                  </a>
-                </p>
               </div>
               <div className="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
                 <div className="ms-1">
                   <div className="d-flex flex-row align-items-center mb-1 ">
                     <h3 className="mb-2 me-3">
-                      ₹ {parseInt(props.price) - parseInt(props.discount)}
+                      ₹{" "}
+                      {parseInt(props.price) -
+                        (parseInt(props.discount) / 100) *
+                          parseInt(props.price)}
                     </h3>
                     {props.discount > 0 && (
                       <span className="text-danger">
@@ -73,7 +74,9 @@ function SearchResultsProduct(props) {
                     <button
                       className="btn details-btn"
                       type="button"
-                      onClick={() => navigate("/buyproduct")}
+                      onClick={() =>
+                        navigate(`/buyproduct/${parseInt(props.itemId)}`)
+                      }
                     >
                       Details
                     </button>

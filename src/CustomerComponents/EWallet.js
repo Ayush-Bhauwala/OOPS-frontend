@@ -8,7 +8,7 @@ function EWallet() {
   var isManager = false;
   function getUserInfo() {
     const id = localStorage.getItem("userid");
-    const url = `http://localhost:8080/admin/getuser/${id}`;
+    const url = `https://bargainstrial-production.up.railway.app/admin/getuser/${id}`;
     axios({
       method: "get",
       url: url,

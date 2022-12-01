@@ -5,7 +5,7 @@ import axios from "axios";
 function EWallet() {
   const [balance, setBalance] = useState(0);
   const [alert, setAlert] = useState(false);
-  var isManager = false;
+  const role = localStorage.getItem("role");
   const id = localStorage.getItem("userid");
   function getUserInfo() {
     const url = `https://bargainstrial-production.up.railway.app/admin/getuser/${id}`;
@@ -36,7 +36,7 @@ function EWallet() {
   }, []);
   return (
     <>
-      <Header user={isManager ? "manager" : "customer"} />
+      <Header user={role} />
       <div>
         {alert && (
           <>

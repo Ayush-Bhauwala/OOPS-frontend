@@ -132,7 +132,7 @@ function BuyProduct() {
 
   return (
     <>
-      <Header user="customer" />
+      <Header user="CUSTOMER" />
       <BuyNowPopup price={price} balance={balance} handleClick={buyNow} />
       <div className="super_container">
         <div className="single_product py-3">

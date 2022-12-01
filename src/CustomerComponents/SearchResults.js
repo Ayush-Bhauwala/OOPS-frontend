@@ -11,7 +11,7 @@ function SearchResults() {
   const params = useParams();
   const searchInput = params.searchInput;
   const [searchResults, setSearchResults] = useState([]);
-
+  const role = localStorage.getItem("role");
   function getItems() {
     const url = `https://bargainstrial-production.up.railway.app/search/${searchInput}`;
     axios({
@@ -29,7 +29,7 @@ function SearchResults() {
   }, [params]);
   return (
     <>
-      <Header user="customer" />
+      <Header user={role} />
       <section style={{ backgroundColor: "#eee" }}>
         <div className="pt-3 ms-3" style={{ color: "#383f51" }}>
           <h3>Showing search results for {searchInput}.</h3>

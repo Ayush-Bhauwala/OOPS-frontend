@@ -3,8 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 function AccountDetails() {
-  var isManager = false;
-
+  const role = localStorage.getItem("role");
   const [accountDetails, setAccountDetails] = useState({});
 
   function getAccountDetails() {
@@ -31,7 +30,7 @@ function AccountDetails() {
 
   return (
     <>
-      <Header user={isManager ? "manager" : "customer"} />
+      <Header user={role} />
       <section className="" style={{ maxHeight: "100vh" }}>
         <div className="container align-items-center">
           <div className="row d-flex justify-content-center align-items-center">

@@ -54,7 +54,7 @@ function SignUp() {
         .catch(function (error) {
           console.log(error);
         });
-      navigate("/ewallet");
+      navigate("/");
     }
   };
 

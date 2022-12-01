@@ -4,6 +4,7 @@ import CustomerHeader from "./CustomerHeader";
 import LoginHeader from "./LoginHeader";
 import ManagerHeader from "./ManagerHeader";
 import AdminHeader from "./AdminHeader";
+import axios from "axios";
 function Header(props) {
   const navigate = useNavigate();
 
@@ -51,11 +52,11 @@ function Header(props) {
                 <i className="fa-brands fa-searchengin"></i>
               </button>
             </form>
-            {props.user === "customer" ? (
+            {props.user === "CUSTOMER" ? (
               <CustomerHeader />
-            ) : props.user === "manager" ? (
+            ) : props.user === "MANAGER" ? (
               <ManagerHeader />
-            ) : props.user === "admin" ? (
+            ) : props.user === "ADMIN" ? (
               <AdminHeader />
             ) : (
               <LoginHeader />

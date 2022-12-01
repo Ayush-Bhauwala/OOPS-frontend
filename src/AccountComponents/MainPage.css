@@ -1,0 +1,60 @@
+.categorytag {
+    text-align: center;
+    padding: 1rem;
+    
+}
+
+#firstclass {
+    background-color: #383f51;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    
+}
+
+.categoryimg{
+    /*padding-left: 2rem;
+    padding-right: 2rem; */
+    border-radius: 1rem;
+    width: 100%;
+
+}
+
+.titlecard{
+    visibility: hidden;
+    color: white;
+    text-align: center;
+    text-shadow: #383f51;
+    background-color: rgba(0, 0, 0, 0.50);
+    
+    
+}
+
+.imgcard{
+    background-color: #383f51;
+    transition: transform .2s;
+}
+
+
+
+.imgcard:hover{
+    
+    transform: scale(1.10);
+    
+}
+
+.imgcard:hover .titlecard {
+    visibility: visible;
+    opacity: 1;
+    width: 110%;
+  }
+    
+
+#secondclass{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #383f51;
+
+}

@@ -1,10 +1,24 @@
+import { useNavigate, createSearchParams } from "react-router-dom";
 import "./Headerstyles.css";
 import CustomerHeader from "./CustomerHeader";
 import LoginHeader from "./LoginHeader";
 import ManagerHeader from "./ManagerHeader";
 import AdminHeader from "./AdminHeader";
+import SearchResults from "../CustomerComponents/SearchResults";
 
 function Header(props) {
+  const navigate = useNavigate();
+
+  function handleSearch(e) {
+    e.preventDefault();
+    const search = document.getElementById("search").value;
+    search !== "" &&
+      navigate({
+        pathname: "/searchresults",
+        search: `?item=${search}`,
+      });
+  }
+
   return (
     <header>
       <nav className="navbar navbar-expand-sm mynavbar">
@@ -30,8 +44,14 @@ function Header(props) {
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
+                id="search"
+                onKeyUp={(e) => e.key === "enter" && handleSearch(e)}
               />
-              <button className="btn search-button" type="submit">
+              <button
+                className="btn search-button"
+                type="submit"
+                onClick={(e) => handleSearch(e)}
+              >
                 <i className="fa-brands fa-searchengin"></i>
               </button>
             </form>

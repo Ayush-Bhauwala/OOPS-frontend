@@ -20,7 +20,7 @@ function Login() {
     }
     console.log(email, password);
     axios
-      .post("http://localhost:8080/login", {
+      .post("https://bargainstrial-production.up.railway.app/login", {
         email: email,
         password: password,
       })

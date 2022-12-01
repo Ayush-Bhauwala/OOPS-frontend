@@ -27,7 +27,7 @@ function SignUp() {
       data.password === data.confirmedPassword
     ) {
       axios
-        .post("http://localhost:8080/signup", {
+        .post("https://bargainstrial-production.up.railway.app/signup", {
           name: data.name,
           email: data.email,
           phoneNo: data.phone,

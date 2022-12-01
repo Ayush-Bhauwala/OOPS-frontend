@@ -34,7 +34,7 @@ function AddItem() {
   function getItemDetails() {
     axios({
       method: "get",
-      url: "http://localhost:8080/customer/getitem/2",
+      url: "https://bargainstrial-production.up.railway.app/customer/getitem/2",
     }).then((res) => {
       setMaxQty(res.data.qty);
       setItemName(res.data.itemName);

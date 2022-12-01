@@ -18,7 +18,7 @@ function BuyProduct() {
   const [itemsDetails, setItemsDetails] = useState([]);
   function getCart() {
     const id = localStorage.getItem("userid");
-    const url = `http://localhost:8080/customer/getcart/${id}`;
+    const url = `https://bargainstrial-production.up.railway.app/customer/getcart/${id}`;
     axios({
       method: "get",
       url: url,
@@ -28,7 +28,7 @@ function BuyProduct() {
   }
 
   function getItemDetails() {
-    const url = `http://localhost:8080/customer/getitem/${productid}`;
+    const url = `https://bargainstrial-production.up.railway.app/customer/getitem/${productid}`;
     axios({
       method: "get",
       url: url,
@@ -68,11 +68,14 @@ function BuyProduct() {
         );
       }
       axios
-        .post("http://localhost:8080/customer/addtocart", {
-          userid: userid,
-          productid: productid,
-          qtybought: qtybought,
-        })
+        .post(
+          "https://bargainstrial-production.up.railway.app/customer/addtocart",
+          {
+            userid: userid,
+            productid: productid,
+            qtybought: qtybought,
+          }
+        )
         .then(function (response) {
           console.log(response);
         })
@@ -87,9 +90,12 @@ function BuyProduct() {
   }
   function getBalance() {
     axios
-      .post("http://localhost:8080/ewallet/getbalance", {
-        id: userid,
-      })
+      .post(
+        "https://bargainstrial-production.up.railway.app/ewallet/getbalance",
+        {
+          id: userid,
+        }
+      )
       .then(function (response) {
         console.log(response.data);
         setBalance(response.data.balance);

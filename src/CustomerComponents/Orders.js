@@ -9,7 +9,7 @@ function Orders() {
 
   function getOrders() {
     const id = 1;
-    const url = `http://localhost:8080/customer/getpastorders/${id}`;
+    const url = `https://bargainstrial-production.up.railway.app/customer/getpastorders/${id}`;
     axios
       .get(url)
       .then(function (response) {

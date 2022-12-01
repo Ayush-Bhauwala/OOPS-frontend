@@ -7,7 +7,7 @@ function Cart() {
   const [itemsDetails, setItemsDetails] = useState([]);
   function getCart() {
     const id = localStorage.getItem("userid");
-    const url = `http://localhost:8080/customer/getcart/${id}`;
+    const url = `https://bargainstrial-production.up.railway.app/customer/getcart/${id}`;
     axios({
       method: "get",
       url: url,
@@ -63,10 +63,13 @@ function Cart() {
       itemsDetails.filter((x) => x.itemClass.itemId != product.itemClass.itemId)
     );
     axios
-      .post("http://localhost:8080/customer/deletefromcart", {
-        userid: localStorage.getItem("userid"),
-        productid: product.itemClass.itemId,
-      })
+      .post(
+        "https://bargainstrial-production.up.railway.app/customer/deletefromcart",
+        {
+          userid: localStorage.getItem("userid"),
+          productid: product.itemClass.itemId,
+        }
+      )
       .then(function (response) {
         console.log(response);
       })
@@ -77,9 +80,12 @@ function Cart() {
   function checkout() {
     setItemsDetails([]);
     axios
-      .post("http://localhost:8080/customer/buyfromcart", {
-        user_id: 1,
-      })
+      .post(
+        "https://bargainstrial-production.up.railway.app/customer/buyfromcart",
+        {
+          user_id: 1,
+        }
+      )
       .then(function (response) {
         console.log(response);
       })
@@ -110,7 +116,7 @@ function Cart() {
   //       itemsDetails.filter((item) => item.itemClass.itemId != itemID)
   //     );
   //     axios
-  //       .post("http://localhost:8080/customer/deletefromcart", {
+  //       .post("https://bargainstrial-production.up.railway.app/customer/deletefromcart", {
   //         userid: 1,
   //         productid: itemID,
   //       })
@@ -178,7 +184,7 @@ function Cart() {
   // function getCart() {
   //   axios({
   //     method: "get",
-  //     url: "http://localhost:8080/customer/getcart/1",
+  //     url: "https://bargainstrial-production.up.railway.app/customer/getcart/1",
   //   }).then((res) => {
   //     setItemsDetails(res.data);
   //   });

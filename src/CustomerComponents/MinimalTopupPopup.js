@@ -18,24 +18,24 @@ function MinimalTopupPopup() {
         style={{ width: "35%" }}
       >
         <div className="modal-content text-center">
-          <div className="modal-header">
+          {/* <div className="modal-header">
             <h1
               className="modal-title fw-bold w-100"
               id="staticBackdropLabel"
               style={{ fontSize: "25px" }}
-            >
-              Add minimum balance of ₹1000 to continue
-            </h1>
-          </div>
+            ></h1>
+          </div> */}
           <div className="modal-body">
             <button
               type="button"
               className="btn fw-bold signupBtn fs-25"
               data-bs-dismiss="modal"
               style={{ fontSize: "23px" }}
-              onClick={() => navigate("/ewallet")}
+              onClick={() =>
+                (window.location.href = "http://localhost:3000/ewallet")
+              }
             >
-              EWallet
+              Add minimum balance of ₹1000 to continue
             </button>
           </div>
         </div>

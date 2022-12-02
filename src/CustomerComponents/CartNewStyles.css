@@ -9,10 +9,8 @@
   background: linear-gradient(to right, #383f51, #7989ae);
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+.cart-quantity::-webkit-outer-spin-button,
+.cart-quantity::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
-

@@ -9,11 +9,15 @@
   background: linear-gradient(to right, #383f51, #7989ae);
 }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  opacity: 1;
-}
-
 .add-item-input {
   border-radius: 1rem;
+}
+
+.offer-input {
+  border-radius: 1rem;
+}
+
+.offer-input::-webkit-inner-spin-button,
+.offer-input::-webkit-outer-spin-button {
+  opacity: 1;
 }

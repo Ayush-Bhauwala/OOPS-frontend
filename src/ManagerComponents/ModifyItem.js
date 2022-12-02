@@ -4,17 +4,11 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Header from "../headerComponents/Header";
-import "./AddItemStyles.css";
+import "./ModifyItemStyles.css";
 import { Navigate } from "react-router";
 
-function AddItem() {
-  // const [popup, setPopup] = useState(false);
-  // const [maxQty, setMaxQty] = useState(1);
-  // const [itemName, setItemName] = useState("");
-  // const [price, setItemPrice] = useState(0);
-  // const [discount, setItemDiscount] = useState(0);
-  // const [data, setImg] = useState("");
-  const [file, setFile] = useState();
+function ModifyItem() {
+  // const [file, setFile] = useState();
   const [image, setImage] = useState();
   const [id, setId] = useState(0);
   const navigate = useNavigate();
@@ -38,7 +32,7 @@ function AddItem() {
       setTimeout(() => navigate("/productlist"), 2000);
       // setPopup(true);
       const url =
-        "https://bargainstrial-production.up.railway.app/manager/additem";
+        "https://bargainstrial-production.up.railway.app/manager/modifyitem";
       axios
         .post(url, {
           itemName: data.name,
@@ -72,11 +66,11 @@ function AddItem() {
     }
   };
 
-  function handleChange(e) {
-    e.preventDefault();
-    setFile(URL.createObjectURL(e.target.files[0]));
-    setImage(e.target.files[0]);
-  }
+  // function handleChange(e) {
+  //   e.preventDefault();
+  //   setFile(URL.createObjectURL(e.target.files[0]));
+  //   setImage(e.target.files[0]);
+  // }
 
   return (
     <>
@@ -88,7 +82,7 @@ function AddItem() {
             role="alert"
             style={{ padding: ".75%", fontSize: "20px" }}
           >
-            <i className="fa-solid"></i>Item added successfully!
+            <i className="fa-solid"></i>Item modified successfully!
           </div>
         </>
       )}
@@ -108,15 +102,15 @@ function AddItem() {
                 className="col-lg-6 order-lg-2 order-1"
                 style={{ borderRight: "1px solid black" }}
               >
-                <h2>Add Image:</h2>
-                <input
+                {/* <h2>Add Image:</h2> */}
+                {/* <input
                   className="mb-4"
                   type="file"
                   id="imageInput"
                   onChange={(e) => handleChange(e)}
                   accept="image/*"
-                />
-                <img src={file} alt="" width="95%" height="75%" />
+                /> */}
+                <img src={image} alt="product img" width="95%" height="75%" />
               </div>
               <div className="col-lg-6 order-3">
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -153,7 +147,7 @@ function AddItem() {
                       </div>
                     </div>
                     <div className="col col-lg-6 col-md-6">
-                      <div className="form-floating mb-4">
+                      <div className="form-floating mb-1">
                         <input
                           type="number"
                           min={0}
@@ -166,6 +160,7 @@ function AddItem() {
                         />
                         <label for="product-quantity">Quantity</label>
                       </div>
+                      <div className="text-success mb-4 ms-3">Qty Sold: </div>
                     </div>
                   </div>
 
@@ -200,7 +195,7 @@ function AddItem() {
                   </div>
 
                   <div className="" style={{ color: "#383F51" }}>
-                    <h1 className="fs-5 w-100 pb-2">ADD OFFER (optional)</h1>
+                    <h1 className="fs-5 w-100 pb-2">CHANGE OFFER</h1>
                     <div className="row">
                       <div className="col-md-6 col-lg-6">
                         <div className="form-floating mb-3 ">
@@ -235,7 +230,7 @@ function AddItem() {
                           type="submit"
                           className="btn btn-lg btn-block w-100 login-button"
                         >
-                          Add Item
+                          Modify Item
                         </button>
                       </div>
                     </div>
@@ -250,4 +245,4 @@ function AddItem() {
   );
 }
 
-export default AddItem;
+export default ModifyItem;

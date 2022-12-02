@@ -49,3 +49,17 @@
 }
 
  */
+
+
+.remove:hover {
+    background-color: #f6f4f3;
+    font-weight: bold;
+    transform: scale(1.1);
+    color: #383f51;
+  }
+  .remove {
+    border: 0;
+    background-color: #f6f4f3;
+    transition: transform 0.2s;
+  }
+

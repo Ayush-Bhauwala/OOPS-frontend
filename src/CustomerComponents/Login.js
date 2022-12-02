@@ -27,7 +27,8 @@ function Login() {
       .then(function (response) {
         console.log(response);
         if (response.data != null) {
-          localStorage.setItem("userid", response.data);
+          localStorage.setItem("userid", response.data.id);
+          localStorage.setItem("role", response.data.role);
           navigate("/");
         } else {
           alert("Incorrect password!");

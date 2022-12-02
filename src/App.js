@@ -12,6 +12,7 @@ import AddItem from "./ManagerComponents/AddItem";
 
 function App() {
   const id = localStorage.getItem("userid");
+  console.log(id);
   return (
     <BrowserRouter>
       <Routes>

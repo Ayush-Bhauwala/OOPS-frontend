@@ -1,13 +1,20 @@
 import axios from "axios";
 import React from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Header from "../headerComponents/Header";
-import ImageUpload from "./ImageUpload";
 import "./AddItemStyles.css";
 
 function AddItem() {
-  const [popup, setPopup] = useState(false);
+  // const [popup, setPopup] = useState(false);
+  // const [maxQty, setMaxQty] = useState(1);
+  // const [itemName, setItemName] = useState("");
+  // const [price, setItemPrice] = useState(0);
+  // const [discount, setItemDiscount] = useState(0);
+  // const [data, setImg] = useState("");
+  const [file, setFile] = useState();
+  const [image, setImage] = useState();
+  const [id, setId] = useState(0);
   const {
     register,
     handleSubmit,
@@ -23,51 +30,76 @@ function AddItem() {
       data.description &&
       data.category
     ) {
-      setPopup(true);
+      // setPopup(true);
+      const url =
+        "https://bargainstrial-production.up.railway.app/manager/additem";
+      axios
+        .post(url, {
+          itemName: data.name,
+          qty: parseInt(data.quantity),
+          category: data.category,
+          user_id: localStorage.getItem("userid"),
+          price: parseInt(data.price),
+          deliveryWithin: 1,
+        })
+        .then((res) => {
+          console.log(res);
+          setId(res.data);
+        })
+        .catch((err) => console.log(err));
+
+      const formData = new FormData();
+      formData.append("image", image);
+      formData.append("itemid", id);
+      formData.append("requesterid", localStorage.getItem("userid"));
+
+      axios({
+        method: "POST",
+        url: "http://localhost:8080/manager/uploadimage",
+        data: formData,
+        headers: { "content-type": "multipart/form-data" },
+      })
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
     }
   };
-  const [maxQty, setMaxQty] = useState(1);
-  const [itemName, setItemName] = useState("");
-  const [price, setItemPrice] = useState(0);
-  const [discount, setItemDiscount] = useState(0);
-  const [data, setImg] = useState("");
-  function getItemDetails() {
-    axios({
-      method: "get",
-      url: "https://bargainstrial-production.up.railway.app//customer/getitem/2",
-    }).then((res) => {
-      setMaxQty(res.data.qty);
-      setItemName(res.data.itemName);
-      setItemPrice(res.data.price);
-      setItemDiscount(res.data.offer);
-      setImg(res.data.image.imageData);
-    });
-  }
-  useEffect(() => {
-    getItemDetails();
-  }, []);
 
-  function Discount() {
-    return (
-      <>
-        <strike className="product_discount">
-          <span style={{ color: "black" }}>₹ {price}</span>
-        </strike>
-        <div>
-          <span className="product_saved">You Saved:</span>{" "}
-          <span style={{ color: "#383f51", fontSize: "18px" }}>
-            ₹ {discount}
-          </span>
-        </div>
-      </>
-    );
-  }
+  // function getItemDetails() {
+  //   axios({
+  //     method: "get",
+  //     url: "https://bargainstrial-production.up.railway.app//customer/getitem/2",
+  //   }).then((res) => {
+  //     setMaxQty(res.data.qty);
+  //     setItemName(res.data.itemName);
+  //     setItemPrice(res.data.price);
+  //     setItemDiscount(res.data.offer);
+  //     setImg(res.data.image.imageData);
+  //   });
+  // }
+  // useEffect(() => {
+  //   getItemDetails();
+  // }, []);
 
-  const [file, setFile] = useState();
+  // function Discount() {
+  //   return (
+  //     <>
+  //       <strike className="product_discount">
+  //         <span style={{ color: "black" }}>₹ {price}</span>
+  //       </strike>
+  //       <div>
+  //         <span className="product_saved">You Saved:</span>{" "}
+  //         <span style={{ color: "#383f51", fontSize: "18px" }}>
+  //           ₹ {discount}
+  //         </span>
+  //       </div>
+  //     </>
+  //   );
+  // }
 
   function handleChange(e) {
-    console.log(e.target.files);
+    e.preventDefault();
     setFile(URL.createObjectURL(e.target.files[0]));
+    setImage(e.target.files[0]);
   }
 
   return (
@@ -89,7 +121,13 @@ function AddItem() {
                 style={{ borderRight: "1px solid black" }}
               >
                 <h2>Add Image:</h2>
-                <input className="mb-4" type="file" onChange={handleChange} />
+                <input
+                  className="mb-4"
+                  type="file"
+                  id="imageInput"
+                  onChange={(e) => handleChange(e)}
+                  accept="image/*"
+                />
                 <img src={file} alt="" width="95%" height="75%" />
               </div>
               <div className="col-lg-6 order-3">

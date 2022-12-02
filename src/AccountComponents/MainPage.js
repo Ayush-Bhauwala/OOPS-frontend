@@ -9,17 +9,17 @@ import { useState } from "react";
 
 function MainPage() {
   const userid = localStorage.getItem("userid");
-  const [role, setRole] = useState("");
-  if (userid != null) {
-    axios({
-      method: "get",
-      url: `https://bargainstrial-production.up.railway.app/admin/getuser/${userid}`,
-    }).then((res) => {
-      console.log(res.data);
-      setRole(res.data.role);
-      localStorage.setItem("role", res.data.role);
-    });
-  }
+  const role = localStorage.getItem("role");
+  // if (userid != null) {
+  //   axios({
+  //     method: "get",
+  //     url: `https://bargainstrial-production.up.railway.app/admin/getuser/${userid}`,
+  //   }).then((res) => {
+  //     console.log(res.data);
+  //     setRole(res.data.role);
+  //     localStorage.setItem("role", res.data.role);
+  //   });
+  // }
   return (
     <div>
       <Header user={role} />

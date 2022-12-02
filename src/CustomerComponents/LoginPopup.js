@@ -30,7 +30,7 @@ function LoginPopup() {
               className="btn fw-bold signupBtn"
               data-bs-dismiss="modal"
               style={{ marginRight: "5%", fontSize: "25px" }}
-              onClick={() => navigate("/signup")}
+              onClick={() => navigate("/signup/CUSTOMER")}
             >
               Customer
             </button>
@@ -39,7 +39,7 @@ function LoginPopup() {
               className="btn fw-bold signupBtn"
               data-bs-dismiss="modal"
               style={{ fontSize: "25px" }}
-              onClick={() => navigate("/signup")}
+              onClick={() => navigate("/signup/MANAGER")}
             >
               Manager
             </button>

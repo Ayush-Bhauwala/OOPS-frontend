@@ -21,10 +21,9 @@ function App() {
           path="/login"
           element={id != null ? <Navigate to="/" /> : <Login />}
         ></Route>
-        <Route
-          path="/signup"
-          element={id != null ? <Navigate to="/" /> : <SignUp />}
-        ></Route>
+        <Route path="/signup">
+          <Route path=":user" element={<SignUp />}></Route>
+        </Route>
         <Route
           path="/accountdetails"
           element={id === null ? <Navigate to="/login" /> : <AccountDetails />}

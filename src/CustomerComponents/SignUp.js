@@ -33,15 +33,20 @@ function SignUp() {
           email: data.email,
           phoneNo: data.phone,
           role: params.user,
-          balance: 0,
+          balance: 1000,
           password: data.password,
           address: data.address,
         })
         .then(function (response) {
           console.log(response);
-          localStorage.setItem("userid", response.data.id);
-          localStorage.setItem("role", response.data.role);
-          window.location.href = "http://localhost:3000";
+          if (params.user === "CUSTOMER") {
+            localStorage.setItem("userid", response.data.id);
+            localStorage.setItem("role", response.data.role);
+          }
+          // response.data.role === "CUSTOMER"
+          //   ? setPopup(true)
+          //   : (window.location.href = "http://localhost:3000/");
+          window.location.href = "http://localhost:3000/";
         })
         .catch(function (error) {
           console.log(error);
@@ -70,7 +75,9 @@ function SignUp() {
                 <div className="col-md-6 col-lg-6 d-flex align-items-center">
                   <div className="card-body p-4 p-lg-3 ms-3 me-3 card-container">
                     <h3 className="my-3  sign-up-heading fw-bold">Sign Up</h3>
-                    {popup && <MinimalTopupPopup />}
+                    {popup && params.user === "CUSTOMER" && (
+                      <MinimalTopupPopup />
+                    )}
 
                     <form onSubmit={handleSubmit(onSubmit)}>
                       <div className="row">
@@ -223,11 +230,13 @@ function SignUp() {
                       <div className="d-flex justify-content-end pt-2">
                         <button
                           type="submit"
-                          className="btn btn-lg btn-block w-50 login-button"
+                          className="btn btn-lg btn-block w-100 login-button"
                           data-bs-toggle="modal"
                           data-bs-target="#staticBackdrop"
                         >
-                          Sign Up
+                          {params.user === "CUSTOMER"
+                            ? "Add minimum balance of ₹1000 to continue"
+                            : "Apply"}
                         </button>
                       </div>
                     </form>

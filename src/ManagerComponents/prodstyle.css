@@ -1,4 +1,4 @@
-body
+/* body
 {
     background-color: #f6f4f3;
 }
@@ -13,7 +13,7 @@ body
     font-size: 30px;
     color: #383f51;
 }
-/*.btn:hover
+.btn:hover
 {
     background-color: #383F51;
     color: #ff8888;
@@ -23,7 +23,7 @@ body
 {
     border: 0;
     background-color:#f6f4f3 
-} */
+}
 .cardashian
 {
     border-radius: 25px;
@@ -48,4 +48,4 @@ body
     color: #383F51;
 }
 
-
+ */

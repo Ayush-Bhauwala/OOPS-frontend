@@ -8,6 +8,7 @@ function ProductCard(props){
                   <img class="product img-fluid" src="https://m.media-amazon.com/images/I/71vFKBpKakL._SL1500_.jpg"  />
                   <div class="card-body cardashian-body">
                     <h4 class="card-title ptitle">{props.name}</h4>
+                    <a href="#!" class="btn remove">REMOVE PRODUCT</a>
                     
                   </div>
                 </div>

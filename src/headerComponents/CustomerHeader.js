@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 function CustomerHeader() {
   function logout() {
     localStorage.removeItem("userid");
+    localStorage.removeItem("role");
     window.location.reload(false);
   }
   return (

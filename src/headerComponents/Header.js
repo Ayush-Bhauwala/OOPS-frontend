@@ -1,22 +1,19 @@
-import { useNavigate, createSearchParams } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./Headerstyles.css";
 import CustomerHeader from "./CustomerHeader";
 import LoginHeader from "./LoginHeader";
 import ManagerHeader from "./ManagerHeader";
 import AdminHeader from "./AdminHeader";
-import SearchResults from "../CustomerComponents/SearchResults";
-
+import axios from "axios";
 function Header(props) {
   const navigate = useNavigate();
 
   function handleSearch(e) {
     e.preventDefault();
     const search = document.getElementById("search").value;
-    search !== "" &&
-      navigate({
-        pathname: "/searchresults",
-        search: `?item=${search}`,
-      });
+    if (search !== "") {
+      navigate(`/searchresults/${search}`);
+    }
   }
 
   return (
@@ -24,10 +21,10 @@ function Header(props) {
       <nav className="navbar navbar-expand-sm mynavbar">
         <div className="container-fluid">
           <div>
-            <a
+            <Link
               className="navbar-brand mb-0 me-4 h1 nav-link active name"
               aria-current="page"
-              href="/"
+              to="/"
             >
               <img
                 src="https://www.logodesign.net/logo/arrow-marketing-112ld.png"
@@ -35,7 +32,7 @@ function Header(props) {
                 className="d-inline-block align-text-top logo"
               ></img>
               BARGAINS
-            </a>
+            </Link>
           </div>
           <div className="collapse navbar-collapse">
             <form className="d-flex container-md" role="search">
@@ -55,11 +52,11 @@ function Header(props) {
                 <i className="fa-brands fa-searchengin"></i>
               </button>
             </form>
-            {props.user === "customer" ? (
+            {props.user === "CUSTOMER" ? (
               <CustomerHeader />
-            ) : props.user === "manager" ? (
+            ) : props.user === "MANAGER" ? (
               <ManagerHeader />
-            ) : props.user === "admin" ? (
+            ) : props.user === "ADMIN" ? (
               <AdminHeader />
             ) : (
               <LoginHeader />

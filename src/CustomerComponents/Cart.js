@@ -95,7 +95,7 @@ function Cart() {
   }
   return (
     <>
-      <Header user="customer" />
+      <Header user="CUSTOMER" />
       <CartNew
         itemsDetails={itemsDetails}
         incQty={incQty}

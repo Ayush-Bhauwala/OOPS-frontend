@@ -2,7 +2,7 @@ import "./BuyProductStyles.css";
 import Header from "../headerComponents/Header";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import BuyNowPopup from "./BuyNowPopup";
 
 function BuyProduct() {
@@ -11,9 +11,12 @@ function BuyProduct() {
   const [price, setItemPrice] = useState(0);
   const [discount, setItemDiscount] = useState(0);
   const [data, setImg] = useState("");
+  const [category, setCategory] = useState("");
+
   const [balance, setBalance] = useState(0);
   const userid = localStorage.getItem("userid");
-  const productid = 2;
+  const params = useParams();
+  const productid = params.itemId;
 
   const [itemsDetails, setItemsDetails] = useState([]);
   function getCart() {
@@ -38,6 +41,7 @@ function BuyProduct() {
       setItemPrice(res.data.price);
       setItemDiscount(res.data.offer);
       setImg(res.data.image.imageData);
+      setCategory(res.data.category);
     });
   }
 
@@ -131,7 +135,7 @@ function BuyProduct() {
 
   return (
     <>
-      <Header user="customer" />
+      <Header user="CUSTOMER" />
       <BuyNowPopup price={price} balance={balance} handleClick={buyNow} />
       <div className="super_container">
         <div className="single_product py-3">
@@ -157,12 +161,12 @@ function BuyProduct() {
                   <nav>
                     <ol className="breadcrumb">
                       <li className="breadcrumb-item">
-                        <Link to="/">Home</Link>
+                        <Link to="/">HOME</Link>
                       </li>
                       <li className="breadcrumb-item">
-                        <Link to="/products">Products</Link>
+                        <Link to={`/${category}`}>{category}</Link>
                       </li>
-                      <li className="breadcrumb-item active">Category</li>
+                      <li className="breadcrumb-item active">{itemName}</li>
                     </ol>
                   </nav>
                   <div className="product_name">{itemName}</div>

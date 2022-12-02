@@ -1,67 +1,58 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 
 import "./SearchResultsStyles.css";
 import Header from "../headerComponents/Header";
 import SearchResultsProduct from "./SearchResultsProduct";
+import { parseWithOptions } from "date-fns/fp";
 
-function SearchResults(props) {
-  const [itemsDetails, setItemsDetails] = useState([]);
-  const [searchParams] = useSearchParams();
-  const [item, setItem] = useState("");
-
+function SearchResults() {
+  const params = useParams();
+  const searchInput = params.searchInput;
+  const [searchResults, setSearchResults] = useState([]);
+  const role = localStorage.getItem("role");
   function getItems() {
-    const id = localStorage.getItem("userid");
-    const url = `https://bargainstrial-production.up.railway.app/search`;
-    console.log(item);
+    const url = `https://bargainstrial-production.up.railway.app/search/${searchInput}`;
     axios({
-      method: "post",
+      method: "get",
       url: url,
-      data: {
-        userid: 2,
-        search: item,
-      },
     }).then((res) => {
       console.log(res.data);
-      setItem(searchParams.get("item"));
-      setItemsDetails(res.data);
+      setSearchResults(res.data);
     });
   }
 
   useEffect(() => {
+    console.log("Search input:" + searchInput);
     getItems();
-    console.log("Inside use effect");
-  }, []);
-
+  }, [params]);
   return (
     <>
-      <Header user="customer" />
+      <Header user={role} />
       <section style={{ backgroundColor: "#eee" }}>
         <div className="pt-3 ms-3" style={{ color: "#383f51" }}>
-          <h3 onChange={() => getItems()}>
-            Showing search results for {searchParams.get("item")}.
-          </h3>
+          <h3>Showing search results for {searchInput}.</h3>
         </div>
         <div className="container py-3">
-          <SearchResultsProduct
+          {/* <SearchResultsProduct
             name="Product Name 1"
             price="10000"
             discount="2000"
             manager="Manager 1"
-          />
-          <SearchResultsProduct
-            name="Product Name 2"
-            price="20000"
-            discount="0"
-            manager="Manager 2"
-          />
-          <SearchResultsProduct
-            name="Product Name 3"
-            price="25000"
-            discount="1000"
-            manager="Manager 3"
-          />
+          /> */}
+          {searchResults.map((item) => {
+            const data = item.image.imageData;
+            return (
+              <SearchResultsProduct
+                name={item.itemName}
+                price={item.price}
+                discount={item.offer}
+                image={data}
+                itemId={item.itemId}
+              />
+            );
+          })}
         </div>
       </section>
     </>

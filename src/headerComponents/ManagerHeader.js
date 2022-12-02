@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 function ManagerHeader() {
   function logout() {
     localStorage.removeItem("userid");
+    localStorage.removeItem("role");
     window.location.reload(false);
   }
   return (

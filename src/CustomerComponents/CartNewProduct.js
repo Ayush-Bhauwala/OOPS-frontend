@@ -84,7 +84,7 @@ function CartNewProduct(props) {
                   name="quantity"
                   defaultValue={1}
                   type="number"
-                  className="form-control ms-2 text-center"
+                  className="form-control ms-2 text-center cart-quantity"
                 />
               </div>
               <div className="col col-md-3 col-lg-3">

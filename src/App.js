@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-
 import Login from "./CustomerComponents/Login";
 import SignUp from "./CustomerComponents/SignUp";
 import AccountDetails from "./CustomerComponents/AccountDetails";
@@ -9,18 +8,15 @@ import SearchResults from "./CustomerComponents/SearchResults";
 import BuyProduct from "./CustomerComponents/BuyProduct";
 import Cart from "./CustomerComponents/Cart";
 import Orders from "./CustomerComponents/Orders";
-
 import AddItem from "./ManagerComponents/AddItem";
 
 function App() {
   const id = localStorage.getItem("userid");
+  console.log(id);
   return (
     <BrowserRouter>
       <Routes>
-      <Route
-          path="/mp"
-          element={id === null ? <Navigate to="/login" /> : <MainPage />}
-        ></Route>
+        <Route path="/" element={<MainPage />}></Route>
         <Route
           path="/login"
           element={id != null ? <Navigate to="/" /> : <Login />}
@@ -37,8 +33,12 @@ function App() {
           path="/ewallet"
           element={id === null ? <Navigate to="/login" /> : <EWallet />}
         ></Route>
-        <Route path="/searchresults" element={<SearchResults />}></Route>
-        <Route path="/buyproduct" element={<BuyProduct />}></Route>
+        <Route path="/searchresults">
+          <Route path=":searchInput" element={<SearchResults />}></Route>
+        </Route>
+        <Route path="/buyproduct">
+          <Route path=":itemId" element={<BuyProduct />}></Route>
+        </Route>
         <Route
           path="/cart"
           element={id === null ? <Navigate to="/login" /> : <Cart />}
@@ -47,8 +47,6 @@ function App() {
           path="/orders"
           element={id === null ? <Navigate to="/login" /> : <Orders />}
         ></Route>
-
-
         <Route path="/additem" element={<AddItem />}></Route>
       </Routes>
     </BrowserRouter>

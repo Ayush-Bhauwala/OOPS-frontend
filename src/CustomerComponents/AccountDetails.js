@@ -3,8 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 function AccountDetails() {
-  var isManager = false;
-
+  const role = localStorage.getItem("role");
   const [accountDetails, setAccountDetails] = useState({});
 
   function getAccountDetails() {
@@ -20,6 +19,9 @@ function AccountDetails() {
 
   function saveInfo() {
     const name = document.getElementById("name").value;
+    const phoneNo = parseInt(document.getElementById("phone").value);
+    const address = document.getElementById("address").value;
+    axios.post();
   }
 
   useEffect(() => {
@@ -28,7 +30,7 @@ function AccountDetails() {
 
   return (
     <>
-      <Header user={isManager ? "manager" : "customer"} />
+      <Header user={role} />
       <section className="" style={{ maxHeight: "100vh" }}>
         <div className="container align-items-center">
           <div className="row d-flex justify-content-center align-items-center">
@@ -104,8 +106,7 @@ function AccountDetails() {
                             placeholder="Address"
                             style={{ width: "100%" }}
                             id="address"
-
-                            // defaultValue={accountDetails.}
+                            defaultValue={accountDetails.address}
                           />
                           <label for="address">Address</label>
                         </div>

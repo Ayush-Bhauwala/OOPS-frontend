@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./Headerstyles.css";
 import CustomerHeader from "./CustomerHeader";
 import LoginHeader from "./LoginHeader";
@@ -21,10 +21,10 @@ function Header(props) {
       <nav className="navbar navbar-expand-sm mynavbar">
         <div className="container-fluid">
           <div>
-            <a
+            <Link
               className="navbar-brand mb-0 me-4 h1 nav-link active name"
               aria-current="page"
-              href="/"
+              to="/"
             >
               <img
                 src="https://www.logodesign.net/logo/arrow-marketing-112ld.png"
@@ -32,7 +32,7 @@ function Header(props) {
                 className="d-inline-block align-text-top logo"
               ></img>
               BARGAINS
-            </a>
+            </Link>
           </div>
           <div className="collapse navbar-collapse">
             <form className="d-flex container-md" role="search">

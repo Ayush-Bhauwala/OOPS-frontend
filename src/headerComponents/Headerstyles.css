@@ -5,12 +5,12 @@
 .logo {
   margin-right: 50%;
   width: 4rem;
-  height: 2.5rem;
+  height: 2.75rem;
 }
 
 .name {
   color: #ff8888;
-  padding-bottom: 0;
+  /* padding-bottom: 0; */
 
   /* margin-right: 35%; */
   font-size: 35px;

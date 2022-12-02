@@ -11,6 +11,8 @@ function BuyProduct() {
   const [price, setItemPrice] = useState(0);
   const [discount, setItemDiscount] = useState(0);
   const [data, setImg] = useState("");
+  const [category, setCategory] = useState("");
+
   const [balance, setBalance] = useState(0);
   const userid = localStorage.getItem("userid");
   const params = useParams();
@@ -39,6 +41,7 @@ function BuyProduct() {
       setItemPrice(res.data.price);
       setItemDiscount(res.data.offer);
       setImg(res.data.image.imageData);
+      setCategory(res.data.category);
     });
   }
 
@@ -158,12 +161,12 @@ function BuyProduct() {
                   <nav>
                     <ol className="breadcrumb">
                       <li className="breadcrumb-item">
-                        <Link to="/">Home</Link>
+                        <Link to="/">HOME</Link>
                       </li>
                       <li className="breadcrumb-item">
-                        <Link to="/products">Products</Link>
+                        <Link to={`/${category}`}>{category}</Link>
                       </li>
-                      <li className="breadcrumb-item active">Category</li>
+                      <li className="breadcrumb-item active">{itemName}</li>
                     </ol>
                   </nav>
                   <div className="product_name">{itemName}</div>

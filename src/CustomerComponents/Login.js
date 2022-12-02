@@ -125,13 +125,13 @@ function Login() {
                         </button>
                       </div>
 
-                      <a
+                      <Link
                         className="small text-muted"
-                        href="/forgotpassword"
+                        to="/forgotpassword"
                         style={{ fontSize: "20px" }}
                       >
                         Forgot password?
-                      </a>
+                      </Link>
                       <p
                         className="mt-4 mb-5 pb-lg-2"
                         style={{ Color: "#393f81", fontSize: "23px" }}

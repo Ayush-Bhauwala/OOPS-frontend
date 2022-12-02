@@ -81,20 +81,20 @@ function AddItem() {
   return (
     <>
       <Header user="manager" />
-      {alert && (
-        <>
-          <div
-            className="alert alert-success"
-            role="alert"
-            style={{ padding: ".75%", fontSize: "20px" }}
-          >
-            <i className="fa-solid"></i>Item added successfully!
-          </div>
-        </>
-      )}
 
       <div className="container-fluid px-0">
-        <div className="single_product py-3 gradient-custom">
+        <div className="single_product py-5 px-5 gradient-custom">
+          {alert && (
+            <>
+              <div
+                className="alert alert-success"
+                role="alert"
+                style={{ padding: ".75%", fontSize: "20px" }}
+              >
+                <i className="fa-solid"></i>Item added successfully!
+              </div>
+            </>
+          )}
           <div
             className="container-fluid"
             style={{

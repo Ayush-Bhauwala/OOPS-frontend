@@ -56,8 +56,8 @@ function SignUp() {
 
   return (
     <section
-      className="vh-100"
-      style={{ backgroundColor: "#383f51", maxHeight: "100vh" }}
+      className="vh-100 gradient-custom"
+      style={{ maxHeight: "100vh" }}
     >
       <div className="container align-items-center h-100 ">
         <div className="row d-flex justify-content-center align-items-center h-100">

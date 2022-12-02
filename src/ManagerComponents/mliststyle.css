@@ -1,4 +1,4 @@
-body
+/* body
 {
     background-color: #f6f4f3;
 }
@@ -71,11 +71,11 @@ h4
 }
 
 .tmail{
-    /*text-align: left; */
+    text-align: left;
     
 
 }
 
 .ttext{
     color: #f6f4f3;
-}
+} */

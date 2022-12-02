@@ -10,14 +10,19 @@ import Cart from "./CustomerComponents/Cart";
 import Orders from "./CustomerComponents/Orders";
 import AddItem from "./ManagerComponents/AddItem";
 import ProductList from "./ManagerComponents/ProductList";
+import ManagerList from "./ManagerComponents/ManagerList";
 
 function App() {
   const id = localStorage.getItem("userid");
+  const role = localStorage.getItem("role");
   console.log(id);
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MainPage />}></Route>
+        <Route
+          path="/"
+          element={role === null || "USER" ? <MainPage /> : <ManagerList />}
+        ></Route>
         <Route
           path="/login"
           element={id != null ? <Navigate to="/" /> : <Login />}

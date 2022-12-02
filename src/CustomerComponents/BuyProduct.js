@@ -21,13 +21,14 @@ function BuyProduct() {
   const [itemsDetails, setItemsDetails] = useState([]);
   function getCart() {
     const id = localStorage.getItem("userid");
-    const url = `https://bargainstrial-production.up.railway.app/customer/getcart/${id}`;
-    axios({
-      method: "get",
-      url: url,
-    }).then((res) => {
-      setItemsDetails(res.data);
-    });
+    const url = `https://bargainstrial-production.up.railway.app/customer/getcart`;
+    axios
+      .post(url, {
+        user_id: id,
+      })
+      .then((res) => {
+        setItemsDetails(res.data);
+      });
   }
 
   function getItemDetails() {
@@ -109,7 +110,16 @@ function BuyProduct() {
       });
   }
 
-  function buyNow() {}
+  function buyNow() {
+    axios.post(
+      "https://bargainstrial-production.up.railway.app/customer/buyitem",
+      {
+        userid: userid,
+        qtybought: parseInt(document.getElementById("quantity_input").value),
+        productid: productid,
+      }
+    );
+  }
 
   useEffect(() => {
     getCart();
@@ -136,7 +146,11 @@ function BuyProduct() {
   return (
     <>
       <Header user="CUSTOMER" />
-      <BuyNowPopup price={price} balance={balance} handleClick={buyNow} />
+      <BuyNowPopup
+        price={price}
+        balance={balance}
+        handleClick={() => buyNow()}
+      />
       <div className="super_container">
         <div className="single_product py-3">
           <div

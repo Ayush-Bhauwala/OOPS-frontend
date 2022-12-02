@@ -1,8 +1,12 @@
 import "./Headerstyles.css";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function CustomerHeader() {
   function logout() {
+    axios.post("https://bargainstrial-production.up.railway.app/logout", {
+      id: localStorage.getItem("userid"),
+    });
     localStorage.removeItem("userid");
     localStorage.removeItem("role");
     window.location.reload(false);

@@ -34,6 +34,8 @@ function AddItem() {
       data.description &&
       data.category
     ) {
+      setAlert(true);
+      setTimeout(() => navigate("/productlist"), 2000);
       // setPopup(true);
       const url =
         "https://bargainstrial-production.up.railway.app/manager/additem";
@@ -221,10 +223,10 @@ function AddItem() {
                       aria-label="Floating label select example"
                       {...register("category")}
                     >
-                      <option selected>Category 1</option>
-                      <option value="1">Category 2</option>
-                      <option value="2">Category 3</option>
-                      <option value="3">Category 4</option>
+                      <option selected>Groceries</option>
+                      <option value="1">Technology</option>
+                      <option value="2">Fashion</option>
+                      <option value="3">Entertainment</option>
                     </select>
                     <label for="product-category">Category</label>
                   </div>

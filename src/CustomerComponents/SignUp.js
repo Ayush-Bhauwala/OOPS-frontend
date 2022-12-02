@@ -3,8 +3,9 @@ import MinimalTopupPopup from "./MinimalTopupPopup";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 function SignUp() {
+  const params = useParams();
   const [popup, setPopup] = useState(false);
   const [alert, setAlert] = useState(false);
   const navigate = useNavigate();
@@ -31,30 +32,20 @@ function SignUp() {
           name: data.name,
           email: data.email,
           phoneNo: data.phone,
-          role: "CUSTOMER",
+          role: params.user,
           balance: 0,
           password: data.password,
           address: data.address,
         })
         .then(function (response) {
           console.log(response);
+          localStorage.setItem("userid", response.data.id);
+          localStorage.setItem("role", response.data.role);
+          window.location.href = "http://localhost:3000";
         })
         .catch(function (error) {
           console.log(error);
         });
-      axios
-        .post("https://bargainstrial-production.up.railway.app/login", {
-          email: data.email,
-          password: data.password,
-        })
-        .then(function (response) {
-          console.log(response);
-          localStorage.setItem("userid", response.data);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-      navigate("/");
     }
   };
 

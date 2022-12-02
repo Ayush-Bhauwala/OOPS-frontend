@@ -9,9 +9,12 @@ import BuyProduct from "./CustomerComponents/BuyProduct";
 import Cart from "./CustomerComponents/Cart";
 import Orders from "./CustomerComponents/Orders";
 import AddItem from "./ManagerComponents/AddItem";
+
 import ModifyItem from "./ManagerComponents/ModifyItem";
 
 import ManagerList from "./ManagerComponents/ManagerList";
+
+import ProductList from "./ManagerComponents/ProductList";
 
 function App() {
   const id = localStorage.getItem("userid");
@@ -24,10 +27,9 @@ function App() {
           path="/login"
           element={id != null ? <Navigate to="/" /> : <Login />}
         ></Route>
-        <Route
-          path="/signup"
-          element={id != null ? <Navigate to="/" /> : <SignUp />}
-        ></Route>
+        <Route path="/signup">
+          <Route path=":user" element={<SignUp />}></Route>
+        </Route>
         <Route
           path="/accountdetails"
           element={id === null ? <Navigate to="/login" /> : <AccountDetails />}
@@ -51,9 +53,12 @@ function App() {
           element={id === null ? <Navigate to="/login" /> : <Orders />}
         ></Route>
         <Route path="/additem" element={<AddItem />}></Route>
+
         <Route path="/modifyitem" element={<ModifyItem />}></Route>
 
         <Route path="/managerlist" element={<ManagerList />}></Route>
+        <Route path="/plist" element={<ProductList />}></Route>
+
       </Routes>
     </BrowserRouter>
   );

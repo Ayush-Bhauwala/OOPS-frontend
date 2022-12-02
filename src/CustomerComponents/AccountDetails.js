@@ -4,15 +4,13 @@ import { useEffect, useState } from "react";
 
 function AccountDetails() {
   const role = localStorage.getItem("role");
+  const id = localStorage.getItem("userid");
   const [accountDetails, setAccountDetails] = useState({});
 
   function getAccountDetails() {
     const id = localStorage.getItem("userid");
-    const url = `https://bargainstrial-production.up.railway.app/admin/getuser/${id}`;
-    axios({
-      method: "get",
-      url: url,
-    }).then((res) => {
+    const url = `https://bargainstrial-production.up.railway.app/getuserinfo`;
+    axios.post(url, { id: id }).then((res) => {
       setAccountDetails(res.data);
     });
   }
@@ -21,7 +19,13 @@ function AccountDetails() {
     const name = document.getElementById("name").value;
     const phoneNo = parseInt(document.getElementById("phone").value);
     const address = document.getElementById("address").value;
-    axios.post();
+    const url = "https://bargainstrial-production.up.railway.app/modifyuser";
+    axios.post(url, {
+      id: id,
+      name: name,
+      phoneNo: phoneNo,
+      address: address,
+    });
   }
 
   useEffect(() => {

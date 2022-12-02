@@ -1,9 +1,11 @@
 import axios from "axios";
 import React from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Header from "../headerComponents/Header";
 import "./AddItemStyles.css";
+import { Navigate } from "react-router";
 
 function AddItem() {
   // const [popup, setPopup] = useState(false);
@@ -15,6 +17,8 @@ function AddItem() {
   const [file, setFile] = useState();
   const [image, setImage] = useState();
   const [id, setId] = useState(0);
+  const navigate = useNavigate();
+  const [alert, setAlert] = useState(false);
   const {
     register,
     handleSubmit,
@@ -61,6 +65,8 @@ function AddItem() {
       })
         .then((res) => console.log(res))
         .catch((err) => console.log(err));
+      setAlert(true);
+      setTimeout(() => navigate("/productlist"), 2000);
     }
   };
 
@@ -105,6 +111,18 @@ function AddItem() {
   return (
     <>
       <Header user="manager" />
+      {alert && (
+        <>
+          <div
+            className="alert alert-success"
+            role="alert"
+            style={{ padding: ".75%", fontSize: "20px" }}
+          >
+            <i className="fa-solid"></i>Item added successfully!
+          </div>
+        </>
+      )}
+
       <div className="container-fluid px-0">
         <div className="single_product py-3 gradient-custom">
           <div
@@ -153,6 +171,7 @@ function AddItem() {
                       <div className="form-floating mb-4">
                         <input
                           type="number"
+                          min={0}
                           name="price"
                           className="form-control add-item-input"
                           id="price-input"
@@ -167,6 +186,7 @@ function AddItem() {
                       <div className="form-floating mb-4">
                         <input
                           type="number"
+                          min={0}
                           name="quantity"
                           className="form-control add-item-input"
                           id="product-quantity"
@@ -194,9 +214,9 @@ function AddItem() {
                     </label>
                   </div>
 
-                  <div class="form-floating mb-4">
+                  <div className="form-floating mb-4">
                     <select
-                      class="form-select add-item-input"
+                      className="form-select add-item-input"
                       id="product-category"
                       aria-label="Floating label select example"
                       {...register("category")}
@@ -209,29 +229,45 @@ function AddItem() {
                     <label for="product-category">Category</label>
                   </div>
 
-                  <div className="row">
-                    <div className="col col-lg-6 col-md-6">
-                      <button
-                        type="submit"
-                        className="btn fw-normal fs-5"
-                        style={{
-                          backgroundColor: "#7989ae",
-                          color: "#fff",
-                        }}
-                      >
-                        Add Offer
-                      </button>
+                  <div className="" style={{ color: "#383F51" }}>
+                    <h1 className="fs-5 w-100 pb-2">ADD OFFER (optional)</h1>
+                    <div className="row">
+                      <div className="col-md-6 col-lg-6">
+                        <div className="form-floating mb-3 ">
+                          <input
+                            type="number"
+                            min={0}
+                            className="form-control offer-input"
+                            id="offer"
+                            placeholder="offer"
+                            name="offer"
+                          />
+                          <label for="offer">Offer %</label>
+                        </div>
+                      </div>
+                      <div className="col-md-6 col-lg-6">
+                        <div className="form-floating mb-3">
+                          <input
+                            type="date"
+                            className="form-control offer-input"
+                            id="validity-date"
+                            placeholder="validity-date"
+                            name="validity-date"
+                          />
+                          <label for="validity-date">Valid till</label>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  <div className="row pt-4">
-                    <div className="col col-lg-6 col-md-6"></div>
-                    <div className="col col-lg-6 col-md-6">
-                      <button
-                        type="submit"
-                        className="btn btn-lg btn-block w-100 login-button"
-                      >
-                        Add Item
-                      </button>
+                    <div className="row pt-4">
+                      <div className="col col-lg-6 col-md-6"></div>
+                      <div className="col col-lg-6 col-md-6">
+                        <button
+                          type="submit"
+                          className="btn btn-lg btn-block w-100 login-button"
+                        >
+                          Add Item
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </form>

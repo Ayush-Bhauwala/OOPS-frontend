@@ -9,6 +9,11 @@ import BuyProduct from "./CustomerComponents/BuyProduct";
 import Cart from "./CustomerComponents/Cart";
 import Orders from "./CustomerComponents/Orders";
 import AddItem from "./ManagerComponents/AddItem";
+
+import ModifyItem from "./ManagerComponents/ModifyItem";
+
+import ManagerList from "./ManagerComponents/ManagerList";
+
 import ProductList from "./ManagerComponents/ProductList";
 
 function App() {
@@ -48,7 +53,12 @@ function App() {
           element={id === null ? <Navigate to="/login" /> : <Orders />}
         ></Route>
         <Route path="/additem" element={<AddItem />}></Route>
+
+        <Route path="/modifyitem" element={<ModifyItem />}></Route>
+
+        <Route path="/managerlist" element={<ManagerList />}></Route>
         <Route path="/plist" element={<ProductList />}></Route>
+
       </Routes>
     </BrowserRouter>
   );

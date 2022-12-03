@@ -1,0 +1,53 @@
+.clannad{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.box-item{
+    background-color: #383f51;
+    margin: 1rem;
+    width: 30%;
+}
+
+.ptitle{
+    text-align: center;
+}
+
+.cardashian{
+    align-items: center;
+    justify-content: center;
+}
+
+.edit{
+    margin: 1rem;
+    background-color: #383f51;
+    transition: transform 0.2s;
+    color: #f6f4f3;
+}
+
+.remove{
+    margin: 1rem;
+}
+
+.edit:hover {
+    background-color: #383f51; 
+    font-weight: bold;
+    transform: scale(1.1);
+    color: #f6f4f3;
+  }
+
+  .remove {
+    border: 0;
+    background-color: #ff8888;
+    transition: transform 0.2s;
+    color: #383f51;
+  }
+
+  .remove:hover {
+    background-color: #ff8888; 
+    font-weight: bold;
+    transform: scale(1.1);
+    color: #383f51;
+  }

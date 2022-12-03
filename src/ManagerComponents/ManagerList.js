@@ -10,16 +10,19 @@ function ManagerList() {
     <div>
       <Header user={role} />
       <main class="my-5" />
-      <div class="container">
-        <section class="text-center">
+      <section class="text-center">
           <h3 class="managertext">
             <strong>LIST OF MANAGERS</strong>
           </h3>
+      </section>
+      <div class="container clannad">
+        
 
           <ManagerCard name="Manager 1" />
           <ManagerCard name="Manager 2" />
 
           <ManagerCard name="Manager 3" />
+          <ManagerCard name = "Manager 4" />
 
           {/* <div class="row">
             <ManagerCard name="Manager 4" />
@@ -34,12 +37,12 @@ function ManagerList() {
             <ManagerCard name="Manager 5" />
             <ManagerCard name="Manager 5" />
           </div> */}
-        </section>
-        <div class="align text-center man ">
+        
+      {/*  <div class="align text-center man ">
           <button class="btn btn-lg" type="submit">
             GENERATE REPORTS
           </button>
-        </div>
+        </div> 
 
         <nav class="my-4" aria-label="...">
           <ul class="pagination pagination-circle justify-content-center">
@@ -69,7 +72,7 @@ function ManagerList() {
               </a>
             </li>
           </ul>
-        </nav>
+        </nav> */}
       </div>
       <br />
       <br />

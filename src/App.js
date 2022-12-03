@@ -15,6 +15,7 @@ import ChangePassword from "./AccountComponents/ChangePassword";
 import ModifyItem from "./ManagerComponents/ModifyItem";
 
 import ManagerList from "./ManagerComponents/ManagerList";
+import CustomerList from "./ManagerComponents/CustomerList";
 
 
 import ListOfProducts from "./ManagerComponents/ListOfProducts";
@@ -73,6 +74,7 @@ function App() {
         </Route>
 
         <Route path="/managerlist" element={<ManagerList />}></Route>
+        <Route path="/customerlist" element={<CustomerList />}></Route>
         <Route path="/plist" element={<ProductList2 />}></Route>
         <Route
           path="/forgotpassword"

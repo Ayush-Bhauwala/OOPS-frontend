@@ -3,7 +3,7 @@ import Header from "../headerComponents/Header";
 import Footer from "../AccountComponents/Footer";
 import ManagerCard from "./ManagerCard";
 
-function ManagerList() {
+function CustomerList() {
   const role = localStorage.getItem("role");
 
   return (
@@ -12,20 +12,17 @@ function ManagerList() {
       <main class="my-5" />
       <section class="text-center">
           <h3 class="managertext">
-            <strong>LIST OF MANAGERS</strong>
+            <strong>LIST OF CUSTOMERS</strong>
           </h3>
-      </section>
-      <section class = "text-center">
-      <a href="#!" class="btn remove">Pending Managers</a>
       </section>
       <div class="container clannad">
         
 
-          <ManagerCard name="Manager 1" />
-          <ManagerCard name="Manager 2" />
+          <ManagerCard name="Customer 1" />
+          <ManagerCard name="Customer 2" />
 
-          <ManagerCard name="Manager 3"/>
-          <ManagerCard name = "Manager 4" />
+          <ManagerCard name="Customer 3" />
+          <ManagerCard name = "Customer 4" />
 
           {/* <div class="row">
             <ManagerCard name="Manager 4" />
@@ -85,4 +82,4 @@ function ManagerList() {
   );
 }
 
-export default ManagerList;
+export default CustomerList;

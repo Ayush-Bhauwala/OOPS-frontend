@@ -12,7 +12,11 @@ function ProductCard(props) {
       <div class="card cardashian">
         <img
           class="product img-fluid"
-          src={data === null ? "" : `data:image/jpeg;base64,${data}`}
+          src={
+            data === null
+              ? "https://www.logodesign.net/logo/arrow-marketing-112ld.png"
+              : `data:image/jpeg;base64,${data}`
+          }
         />
         <div class="card-body cardashian-body">
           <h4 class="card-title ptitle">{props.name}</h4>

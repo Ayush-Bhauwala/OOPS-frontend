@@ -37,7 +37,8 @@ function Orders() {
         </div>
         <div className="container py-3 h-100">
           {orders.map((order) => {
-            const data = order.item.image.imageData;
+            const data =
+              order.item.image === null ? "" : order.item.image.imageData;
             return (
               <OrdersProduct
                 name={order.item.itemName}
@@ -45,7 +46,7 @@ function Orders() {
                 quantity={order.qtyBought}
                 discount={order.item.offer}
                 // edd="30/12/2022"
-                image={order.item.image.imageData}
+                image={data}
               />
             );
           })}

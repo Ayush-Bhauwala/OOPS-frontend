@@ -28,7 +28,10 @@ function CartNew(props) {
                 </div>
                 <div className="card-body">
                   {cartItems.map((item) => {
-                    const data = item.itemClass.image.imageData;
+                    const data =
+                      item.itemClass.image === null
+                        ? ""
+                        : item.itemClass.image.imageData;
                     return (
                       <div key={item.itemClass.itemId} className="row">
                         <div className="col-lg-3 col-md-12 mb-3 mb-lg-0">

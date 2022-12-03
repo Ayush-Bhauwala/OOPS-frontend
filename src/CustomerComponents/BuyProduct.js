@@ -41,7 +41,9 @@ function BuyProduct() {
       setItemName(res.data.itemName);
       setItemPrice(res.data.price);
       setItemDiscount(res.data.offer);
-      setImg(res.data.image.imageData);
+      if (res.data.image !== null) {
+        setImg(res.data.image.imageData);
+      }
       setCategory(res.data.category);
     });
   }

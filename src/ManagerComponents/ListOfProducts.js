@@ -36,9 +36,9 @@ function ListOfProducts() {
         <h3>LIST OF PRODUCTS</h3>
       </div>
       <section style={{ backgroundColor: "#eee" }}>
-        <div className="container py-3">
+        <div className="py-3 container clannad rounded">
           {items.map((item) => {
-            const data = item.image.imageData;
+            const data = item.image === null ? "" : item.image.imageData;
             return (
               <ProductCard
                 name={item.itemName}

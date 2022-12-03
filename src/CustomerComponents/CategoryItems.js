@@ -6,6 +6,7 @@ import SearchResultsProduct from "./SearchResultsProduct";
 
 function CategoryItems() {
   const [items, setItems] = useState([]);
+  const role = localStorage.getItem("role");
   const params = useParams();
   function getItems() {
     axios
@@ -20,14 +21,14 @@ function CategoryItems() {
   useEffect(() => getItems(), []);
   return (
     <>
-      <Header user="CUSTOMER" />
+      <Header user={role} />
       <section style={{ backgroundColor: "#eee" }}>
         <div className="pt-3 ms-3" style={{ color: "#383f51" }}>
           <h3>Showing search results for {params.category.toLowerCase()}.</h3>
         </div>
         <div className="container py-3">
           {items.map((item) => {
-            const data = item.image.imageData;
+            const data = item.image === null ? "" : item.image.imageData;
             return (
               <SearchResultsProduct
                 name={item.itemName}

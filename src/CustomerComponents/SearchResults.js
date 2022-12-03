@@ -22,12 +22,13 @@ function SearchResults() {
       setSearchResults(res.data);
     });
   }
+
   function delItem(product) {
     setSearchResults(searchResults.filter((x) => x.itemId != product.itemId));
-    axios.post(
-      "https://bargainstrial-production.up.railway.app/manager/deleteitem",
-      { userid: localStorage.getItem("userid"), productid: product.itemId }
-    );
+    axios.post("https://bargainstrial-production.up.railway.app/deleteItem", {
+      userid: localStorage.getItem("userid"),
+      productid: product.itemId,
+    });
   }
   useEffect(() => {
     console.log("Search input:" + searchInput);
@@ -41,14 +42,8 @@ function SearchResults() {
           <h3>Showing search results for {searchInput}.</h3>
         </div>
         <div className="container py-3">
-          {/* <SearchResultsProduct
-            name="Product Name 1"
-            price="10000"
-            discount="2000"
-            manager="Manager 1"
-          /> */}
           {searchResults.map((item) => {
-            const data = item.image.imageData;
+            const data = item.image === null ? "" : item.image.imageData;
             if (role === "USER") {
               return (
                 <SearchResultsProduct
@@ -67,7 +62,7 @@ function SearchResults() {
                   discount={item.offer}
                   image={data}
                   itemId={item.itemId}
-                  delItem={delItem(item)}
+                  delItem={(item) => delItem(item)}
                 />
               );
             }

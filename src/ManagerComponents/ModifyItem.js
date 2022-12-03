@@ -29,7 +29,9 @@ function ModifyItem() {
     }).then((res) => {
       console.log(res.data);
       setItemDetails(res.data);
-      setData(res.data.image.imageData);
+      if (res.data.image !== null) {
+        setData(res.data.image.imageData);
+      }
       console.log(itemDetails);
     });
   }
@@ -40,31 +42,30 @@ function ModifyItem() {
   }, []);
 
   const onSubmit = (data) => {
-    if (
-      data.name &&
-      data.price &&
-      data.quantity &&
-      data.description &&
-      data.category
-    ) {
-      setAlert(true);
-      setTimeout(() => navigate("/productlist"), 2000);
-      const url =
-        "https://bargainstrial-production.up.railway.app/manager/modifyitem";
+    const name = document.getElementById("productName");
+    const price = document.getElementById("price");
+    const quantity = document.getElementById("qty");
+    const description = document.getElementById("productDescription");
+    if (name && price && quantity && description) {
+      console.log(1);
+      const url = "https://bargainstrial-production.up.railway.app/modifyitem";
       axios
-        .post(url, {
-          itemName: data.name,
-          qty: parseInt(data.quantity),
-          category: data.category,
+        .patch(url, {
+          itemName: name,
+          qty: parseInt(quantity),
+          category: itemDetails.category,
           user_id: localStorage.getItem("userid"),
-          price: parseInt(data.price),
+          price: parseInt(price),
           deliveryWithin: 1,
-          offer: parseInt(data.offer),
         })
         .then((res) => {
           console.log(res);
+          setAlert(true);
+          setTimeout(() => navigate("/listofproducts"), 2000);
         })
         .catch((err) => console.log(err));
+    } else {
+      console.log(2);
     }
   };
 
@@ -114,7 +115,7 @@ function ModifyItem() {
                           type="text"
                           name="name"
                           className="form-control add-item-input"
-                          id="product-name"
+                          id="productName"
                           placeholder="..."
                           defaultValue={itemDetails.itemName}
                           {...register("name")}
@@ -133,7 +134,7 @@ function ModifyItem() {
                           min={0}
                           name="price"
                           className="form-control add-item-input"
-                          id="price-input"
+                          id="price"
                           placeholder="₹ "
                           {...register("price")}
                           required
@@ -148,7 +149,7 @@ function ModifyItem() {
                           min={1}
                           name="quantity"
                           className="form-control add-item-input"
-                          id="product-quantity"
+                          id="qty"
                           defaultValue={itemDetails.qty}
                           {...register("quantity")}
                           required
@@ -161,7 +162,7 @@ function ModifyItem() {
                   <div className="form-floating mb-4">
                     <textarea
                       className="form-control add-item-input"
-                      id="product-description"
+                      id="productDescription"
                       name="descrption"
                       placeholder="Address"
                       style={{ width: "100%" }}
@@ -172,22 +173,6 @@ function ModifyItem() {
                     <label for="product-description">
                       Enter Product Description
                     </label>
-                  </div>
-
-                  <div className="form-floating mb-4">
-                    <select
-                      className="form-select add-item-input"
-                      id="product-category"
-                      aria-label="Floating label select example"
-                      {...register("category")}
-                    >
-                      <option selected>{itemDetails.category}</option>
-                      <option value="1">TECHNOLOGY</option>
-                      <option value="2">FASHION</option>
-                      <option value="3">ENTERTAINMENT</option>
-                      <option value="4">GROCERIES</option>
-                    </select>
-                    <label for="product-category">Category</label>
                   </div>
 
                   <div className="" style={{ color: "#383F51" }}>

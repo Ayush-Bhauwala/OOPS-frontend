@@ -15,10 +15,8 @@ function AddItem() {
   // const [discount, setItemDiscount] = useState(0);
   // const [data, setImg] = useState("");
   const [file, setFile] = useState();
-  const [image, setImage] = useState();
-  const [id, setId] = useState(0);
+  const [image, setImage] = useState(null);
   const navigate = useNavigate();
-  const [alert, setAlert] = useState(false);
   const {
     register,
     handleSubmit,
@@ -32,11 +30,9 @@ function AddItem() {
       data.price &&
       data.quantity &&
       data.description &&
-      data.category
+      data.category &&
+      image != null
     ) {
-      setAlert(true);
-      setTimeout(() => navigate("/productlist"), 2000);
-      // setPopup(true);
       const url =
         "https://bargainstrial-production.up.railway.app/manager/additem";
       axios
@@ -49,26 +45,27 @@ function AddItem() {
           deliveryWithin: 1,
         })
         .then((res) => {
-          console.log(res);
-          setId(res.data);
+          console.log(res.data);
+          const formData = new FormData();
+          formData.append("image", image);
+          formData.append("itemid", res.data);
+          formData.append("requesterId", localStorage.getItem("userid"));
+          console.log([...formData]);
+
+          axios({
+            method: "POST",
+            url: "https://bargainstrial-production.up.railway.app/manager/uploadimage",
+            data: formData,
+          })
+            .then((res) => {
+              console.log(res.data);
+              navigate("/");
+            })
+            .catch((err) => console.log(err));
         })
         .catch((err) => console.log(err));
-
-      const formData = new FormData();
-      formData.append("image", image);
-      formData.append("itemid", id);
-      formData.append("requesterid", localStorage.getItem("userid"));
-
-      axios({
-        method: "POST",
-        url: "http://localhost:8080/manager/uploadimage",
-        data: formData,
-        headers: { "content-type": "multipart/form-data" },
-      })
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err));
-      setAlert(true);
-      setTimeout(() => navigate("/productlist"), 2000);
+    } else {
+      alert("Fill all fields.");
     }
   };
 
@@ -81,10 +78,9 @@ function AddItem() {
   return (
     <>
       <Header user="manager" />
-
       <div className="container-fluid px-0">
         <div className="single_product py-5 px-5 gradient-custom">
-          {alert && (
+          {/* {alert && (
             <>
               <div
                 className="alert alert-success"
@@ -94,7 +90,7 @@ function AddItem() {
                 <i className="fa-solid"></i>Item added successfully!
               </div>
             </>
-          )}
+          )} */}
           <div
             className="container-fluid"
             style={{

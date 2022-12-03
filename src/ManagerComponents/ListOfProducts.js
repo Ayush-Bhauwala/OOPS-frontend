@@ -1,11 +1,13 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "../CustomerComponents/SearchResultsStyles.css";
 import Header from "../headerComponents/Header";
 import ManagerProduct from "./ManagerProduct";
+import ProductCard from "./ProductCard";
 function ListOfProducts() {
   const [items, setItems] = useState([]);
+  const navigate = useNavigate();
   function getItems() {
     const url = `https://bargainstrial-production.up.railway.app/items`;
     axios
@@ -17,30 +19,34 @@ function ListOfProducts() {
         setItems(res.data);
       });
   }
-
+  function delItem(product) {
+    setItems(items.filter((x) => x.itemId != product.itemId));
+    axios.post("https://bargainstrial-production.up.railway.app/deleteItem", {
+      userid: localStorage.getItem("userid"),
+      productid: product.itemId,
+    });
+  }
   useEffect(() => {
     getItems();
   }, []);
   return (
     <>
       <Header user={localStorage.getItem("role")} />
+      <div className="pt-3 ms-3" style={{ color: "#383f51" }}>
+        <h3>LIST OF PRODUCTS</h3>
+      </div>
       <section style={{ backgroundColor: "#eee" }}>
         <div className="container py-3">
-          {/* <SearchResultsProduct
-            name="Product Name 1"
-            price="10000"
-            discount="2000"
-            manager="Manager 1"
-          /> */}
           {items.map((item) => {
             const data = item.image.imageData;
             return (
-              <ManagerProduct
+              <ProductCard
                 name={item.itemName}
                 price={item.price}
-                discount={item.offer}
                 image={data}
-                itemId={item.itemId}
+                id={item.itemId}
+                item={item}
+                delItem={delItem}
               />
             );
           })}

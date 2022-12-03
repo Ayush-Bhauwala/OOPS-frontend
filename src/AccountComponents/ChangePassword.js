@@ -8,7 +8,7 @@ function ChangePassword() {
   const role = localStorage.getItem("role");
   const id = localStorage.getItem("userid");
   const [alert, setAlert] = useState(false);
-
+  const [email, setEmail] = useState("");
   const [accountDetails, setAccountDetails] = useState({});
   const navigate = useNavigate();
   const {
@@ -20,34 +20,34 @@ function ChangePassword() {
 
   const onSubmit = (data) => {
     if (data.newPassword === data.confirmPassword) {
-      setAlert(true);
-      setTimeout(() => navigate("/productlist"), 2000);
+      axios
+        .post(
+          "https://bargainstrial-production.up.railway.app/mail/changepwd",
+          {
+            userId: localStorage.getItem("userid"),
+            oldPwd: data.currentPassword,
+            newPwd: data.newPassword,
+            email: email,
+          }
+        )
+        .then((res) => {
+          setAlert(true);
+          setTimeout(() => navigate("/"), 2000);
+        });
     }
   };
-  // function getAccountDetails() {
-  //   const id = localStorage.getItem("userid");
-  //   const url = `https://bargainstrial-production.up.railway.app/getuserinfo`;
-  //   axios.post(url, { id: id }).then((res) => {
-  //     setAccountDetails(res.data);
-  //   });
-  // }
+  function getEmail() {
+    axios
+      .post("https://bargainstrial-production.up.railway.app/getuserinfo", {
+        id: localStorage.getItem("userid"),
+      })
+      .then((res) => setEmail(res.data.email));
+  }
 
-  // function saveInfo() {
-  //   const name = document.getElementById("name").value;
-  //   const phoneNo = parseInt(document.getElementById("phone").value);
-  //   const address = document.getElementById("address").value;
-  //   const url = "https://bargainstrial-production.up.railway.app/modifyuser";
-  //   axios.post(url, {
-  //     id: id,
-  //     name: name,
-  //     phoneNo: phoneNo,
-  //     address: address,
-  //   });
-  // }
-
-  // useEffect(() => {
-  //   getAccountDetails();
-  // }, []);
+  useEffect(() => {
+    getEmail();
+    console.log(email);
+  }, []);
 
   return (
     <>
@@ -94,10 +94,11 @@ function ChangePassword() {
                         <div className="form-floating mb-4">
                           <input
                             type="password"
-                            name="current-password"
+                            name="currentPassword"
                             className="form-control add-item-input"
-                            id="current-password"
+                            id="currentPassword"
                             placeholder="current-password"
+                            {...register("currentPassword")}
                             required
                           />
                           <label for="current-password">

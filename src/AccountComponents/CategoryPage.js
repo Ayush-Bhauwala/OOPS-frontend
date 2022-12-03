@@ -4,7 +4,7 @@ import "./MainPage.css";
 
 function CategoryPage(props) {
   return (
-    <Link to={`${props.title.toLowerCase()}`}>
+    <Link to={`/categoryitems/${props.title.toUpperCase()}`}>
       <span class="card imgcard" id="h2020">
         <img
           class="card-img-top rounded imgcard2"

@@ -1,6 +1,7 @@
 import { parseWithOptions } from "date-fns/fp";
 
-import "./mliststyle.css"
+import "./mliststyle.css";
+import "./plist2.css";
 
 function ManagerCard(props){
     

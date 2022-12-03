@@ -15,10 +15,11 @@ import ChangePassword from "./AccountComponents/ChangePassword";
 import ModifyItem from "./ManagerComponents/ModifyItem";
 
 import ManagerList from "./ManagerComponents/ManagerList";
-
+import CustomerList from "./ManagerComponents/CustomerList";
 
 import ListOfProducts from "./ManagerComponents/ListOfProducts";
 import ProductList2 from "./ManagerComponents/ProductList2";
+import CategoryItems from "./CustomerComponents/CategoryItems";
 
 function App() {
   const id = localStorage.getItem("userid");
@@ -32,11 +33,16 @@ function App() {
           element={
             role === "MANAGER" ? (
               <Navigate to="/listofproducts" />
+            ) : role === "USER" ? (
+              <MainPage />
             ) : (
               <MainPage />
             )
           }
         ></Route>
+        <Route path="/categoryitems">
+          <Route path=":category" element={<CategoryItems />}></Route>
+        </Route>
         <Route
           path="/login"
           element={id != null ? <Navigate to="/" /> : <Login />}
@@ -73,6 +79,7 @@ function App() {
         </Route>
 
         <Route path="/managerlist" element={<ManagerList />}></Route>
+        <Route path="/customerlist" element={<CustomerList />}></Route>
         <Route path="/plist" element={<ProductList2 />}></Route>
         <Route
           path="/forgotpassword"

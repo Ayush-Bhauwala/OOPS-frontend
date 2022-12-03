@@ -10,6 +10,7 @@ import Cart from "./CustomerComponents/Cart";
 import Orders from "./CustomerComponents/Orders";
 import AddItem from "./ManagerComponents/AddItem";
 import ForgotPassword from "./CustomerComponents/ForgotPassword";
+import ChangePassword from "./AccountComponents/ChangePassword";
 
 import ModifyItem from "./ManagerComponents/ModifyItem";
 
@@ -76,6 +77,10 @@ function App() {
         <Route
           path="/forgotpassword"
           element={id !== null ? <Navigate to="/" /> : <ForgotPassword />}
+        ></Route>
+        <Route
+          path="/changepassword"
+          element={id === null ? <Navigate to="/" /> : <ChangePassword />}
         ></Route>
         <Route
           path="/listofproducts"

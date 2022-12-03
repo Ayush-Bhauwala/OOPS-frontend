@@ -1,4 +1,4 @@
-import { parseWithOptions } from "date-fns/fp";
+
 import { useNavigate } from "react-router";
 import "./plist2.css";
 
@@ -10,6 +10,7 @@ function ProductCard(props) {
   return (
     <div class="box-item">
       <div class="card cardashian">
+      <div>
         <img
           class="product img-fluid"
           src={
@@ -18,6 +19,8 @@ function ProductCard(props) {
               : `data:image/jpeg;base64,${data}`
           }
         />
+        </div>
+         <hr style={{ borderTop: "1.5px solid black", width: "80%" }} />
         <div class="card-body cardashian-body">
           <h4 class="card-title ptitle">{props.name}</h4>
           <h4 class="card-title ptitle">₹{props.price}</h4>

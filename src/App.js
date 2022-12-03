@@ -20,6 +20,7 @@ import CustomerList from "./ManagerComponents/CustomerList";
 import ListOfProducts from "./ManagerComponents/ListOfProducts";
 import ProductList2 from "./ManagerComponents/ProductList2";
 import CategoryItems from "./CustomerComponents/CategoryItems";
+import AdminDashboard from "./ManagerComponents/AdminDashboard";
 
 function App() {
   const id = localStorage.getItem("userid");
@@ -79,6 +80,7 @@ function App() {
         </Route>
 
         <Route path="/managerlist" element={<ManagerList />}></Route>
+        <Route path="/admin" element={<AdminDashboard />}></Route>
         <Route path="/customerlist" element={<CustomerList />}></Route>
         <Route path="/plist" element={<ProductList2 />}></Route>
         <Route

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 function ManagerProduct(props) {
   const navigate = useNavigate();
   const data = props.image;
+  const delItem = props.delItem;
   return (
     <div className="row justify-content-center mb-5">
       <div className="col-md-12 col-xl-10">
@@ -31,26 +32,6 @@ function ManagerProduct(props) {
               </div>
               <div className="col-md-6 col-lg-6 col-xl-6">
                 <h4>{props.name}</h4>
-                {/* <div className="mt-1 mb-0 text-muted small">
-                  <span>100% cotton</span>
-                  <span className="text-primary"> • </span>
-                  <span>Light weight</span>
-                  <span className="text-primary"> • </span>
-                  <span>
-                    Best finish
-                    <br />
-                  </span>
-                </div> */}
-                {/* <div className="mb-2 text-muted small">
-                  <span>Unique design</span>
-                  <span className="text-primary"> • </span>
-                  <span>For men</span>
-                  <span className="text-primary"> • </span>
-                  <span>
-                    Casual
-                    <br />
-                  </span>
-                </div> */}
               </div>
               <div className="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
                 <div className="ms-1">
@@ -73,12 +54,21 @@ function ManagerProduct(props) {
                   <div className="d-flex flex-column mt-4">
                     <button
                       className="btn details-btn"
+                      style={{ backgroundColor: "#383f51", color: "white" }}
                       type="button"
                       onClick={() =>
                         navigate(`/modifyitem/${parseInt(props.itemId)}`)
                       }
                     >
                       Edit
+                    </button>
+                    <button
+                      className="btn details-btn"
+                      style={{ marginTop: "10%" }}
+                      type="button"
+                      onClick={delItem}
+                    >
+                      Delete
                     </button>
                   </div>
                 </div>

@@ -29,7 +29,12 @@ function Login() {
         if (response.data != null) {
           localStorage.setItem("userid", response.data.id);
           localStorage.setItem("role", response.data.role);
-          navigate("/");
+          // if (response.data.role == "USER") {
+          //   window.location.href = "http://localhost:3000/login";
+          // } else if (response.data.role == "MANAGER") {
+          //   window.location.href = "http://localhost:3000/listofproducts";
+          // }
+          window.location.href = "http://localhost:3000";
         } else {
           alert("Incorrect password!");
         }
@@ -42,10 +47,7 @@ function Login() {
       });
   }
   return (
-    <section
-      className="vh-100 gradient-custom"
-      style={{  maxHeight: "100vh" }}
-    >
+    <section className="vh-100 gradient-custom" style={{ maxHeight: "100vh" }}>
       {Alert && (
         <>
           <div

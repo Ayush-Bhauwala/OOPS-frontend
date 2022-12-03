@@ -17,6 +17,7 @@ function Cart() {
       )
       .then((res) => {
         setItemsDetails(res.data);
+        console.log(res.data);
       });
     const url = `https://bargainstrial-production.up.railway.app/ewallet/getbalance`;
     axios

@@ -16,9 +16,9 @@ import ModifyItem from "./ManagerComponents/ModifyItem";
 
 import ManagerList from "./ManagerComponents/ManagerList";
 
-
 import ListOfProducts from "./ManagerComponents/ListOfProducts";
 import ProductList2 from "./ManagerComponents/ProductList2";
+import CategoryItems from "./CustomerComponents/CategoryItems";
 
 function App() {
   const id = localStorage.getItem("userid");
@@ -32,11 +32,16 @@ function App() {
           element={
             role === "MANAGER" ? (
               <Navigate to="/listofproducts" />
+            ) : role === "USER" ? (
+              <MainPage />
             ) : (
               <MainPage />
             )
           }
         ></Route>
+        <Route path="/categoryitems">
+          <Route path=":category" element={<CategoryItems />}></Route>
+        </Route>
         <Route
           path="/login"
           element={id != null ? <Navigate to="/" /> : <Login />}

@@ -5,15 +5,26 @@ import CartNew from "./CartNew";
 
 function Cart() {
   const [itemsDetails, setItemsDetails] = useState([]);
+  const [balance, setBalance] = useState(0);
   function getCart() {
     const id = localStorage.getItem("userid");
-    const url = `https://bargainstrial-production.up.railway.app/customer/getcart`;
     axios
-      .post(url, {
-        user_id: id,
-      })
+      .post(
+        "https://bargainstrial-production.up.railway.app/customer/getcart",
+        {
+          id: id,
+        }
+      )
       .then((res) => {
         setItemsDetails(res.data);
+      });
+    const url = `https://bargainstrial-production.up.railway.app/ewallet/getbalance`;
+    axios
+      .post(url, {
+        id: localStorage.getItem("userid"),
+      })
+      .then((res) => {
+        setBalance(res.data.balance);
       });
   }
 
@@ -84,7 +95,7 @@ function Cart() {
       .post(
         "https://bargainstrial-production.up.railway.app/customer/buyfromcart",
         {
-          user_id: 1,
+          user_id: localStorage.getItem("userid"),
         }
       )
       .then(function (response) {
@@ -103,6 +114,7 @@ function Cart() {
         decQty={decQty}
         delItem={delItem}
         checkout={checkout}
+        balance={balance}
       ></CartNew>
     </>
   );

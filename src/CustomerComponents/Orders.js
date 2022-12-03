@@ -8,10 +8,13 @@ function Orders() {
   const [orders, setOrders] = useState([]);
 
   function getOrders() {
-    const id = 1;
-    const url = `https://bargainstrial-production.up.railway.app/customer/getpastorders/${id}`;
+    const id = localStorage.getItem("userid");
+    console.log(id);
+    const url = `https://bargainstrial-production.up.railway.app/customer/getpastorders/`;
     axios
-      .get(url)
+      .post(url, {
+        id: id,
+      })
       .then(function (response) {
         console.log(response);
         setOrders(response.data);
@@ -41,7 +44,7 @@ function Orders() {
                 price={order.item.price}
                 quantity={order.qtyBought}
                 discount={order.item.offer}
-                edd="30/12/2022"
+                // edd="30/12/2022"
                 image={order.item.image.imageData}
               />
             );

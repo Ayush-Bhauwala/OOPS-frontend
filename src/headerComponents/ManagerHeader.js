@@ -1,13 +1,15 @@
 import "./Headerstyles.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 function ManagerHeader() {
+  const navigate = useNavigate();
   function logout() {
     axios.post("https://bargainstrial-production.up.railway.app/logout", {
       id: localStorage.getItem("userid"),
     });
     localStorage.removeItem("userid");
     localStorage.removeItem("role");
+    navigate("/");
     window.location.reload(false);
   }
   return (

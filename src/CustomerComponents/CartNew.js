@@ -6,6 +6,7 @@ function CartNew(props) {
   const incQty = props.incQty;
   const decQty = props.decQty;
   const onCheckout = props.checkout;
+  const balance = props.balance;
   const total = cartItems.reduce(
     (a, c) => a + c.itemClass.price * c.qtybought,
     0
@@ -14,7 +15,7 @@ function CartNew(props) {
     <>
       <BuyNowPopup
         price={total}
-        balance="0"
+        balance={balance}
         handleClick={onCheckout}
       ></BuyNowPopup>
       <section className="h-100 gradient-custom" style={{ height: "100%" }}>

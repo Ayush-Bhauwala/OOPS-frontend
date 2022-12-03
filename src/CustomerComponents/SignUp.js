@@ -42,6 +42,14 @@ function SignUp() {
           if (params.user === "CUSTOMER") {
             localStorage.setItem("userid", response.data.id);
             localStorage.setItem("role", response.data.role);
+            axios
+              .post("https://bargainstrial-production.up.railway.app/login", {
+                email: data.email,
+                password: data.password,
+              })
+              .then(function (response) {
+                console.log(response);
+              });
           }
           // response.data.role === "CUSTOMER"
           //   ? setPopup(true)
@@ -55,10 +63,7 @@ function SignUp() {
   };
 
   return (
-    <section
-      className="vh-100 gradient-custom"
-      style={{ maxHeight: "100vh" }}
-    >
+    <section className="vh-100 gradient-custom" style={{ maxHeight: "100vh" }}>
       <div className="container align-items-center h-100 ">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col col-xl-10">

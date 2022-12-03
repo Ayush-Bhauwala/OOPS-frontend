@@ -8,13 +8,14 @@ function EWallet() {
   const role = localStorage.getItem("role");
   const id = localStorage.getItem("userid");
   function getUserInfo() {
-    const url = `https://bargainstrial-production.up.railway.app/admin/getuser/${id}`;
-    axios({
-      method: "get",
-      url: url,
-    }).then((res) => {
-      setBalance(res.data.ewallet.balance);
-    });
+    const url = `https://bargainstrial-production.up.railway.app/ewallet/getbalance`;
+    axios
+      .post(url, {
+        id: localStorage.getItem("userid"),
+      })
+      .then((res) => {
+        setBalance(res.data.balance);
+      });
   }
 
   function topUp() {

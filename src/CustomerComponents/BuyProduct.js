@@ -136,7 +136,7 @@ function BuyProduct() {
         <div>
           <span className="product_saved">You Saved:</span>{" "}
           <span style={{ color: "#383f51", fontSize: "18px" }}>
-            ₹ {discount}
+            ₹ {(discount / 100) * price}
           </span>
         </div>
       </>
@@ -147,7 +147,7 @@ function BuyProduct() {
     <>
       <Header user="CUSTOMER" />
       <BuyNowPopup
-        price={price}
+        price={price - (discount / 100) * price}
         balance={balance}
         handleClick={() => buyNow()}
       />
@@ -188,15 +188,15 @@ function BuyProduct() {
                   <div>
                     {" "}
                     <span className="product_price">
-                      ₹ {price - discount}
+                      ₹ {price - (discount / 100) * price}
                     </span>{" "}
                     {discount > 0 && Discount()}
                   </div>
                   <hr className="singleline" />
                   <div className="row">
-                    <div className="col-lg-6">
+                    <div className="col">
                       {" "}
-                      <span className="product_info">
+                      {/* <span className="product_info">
                         EMI starts at ₹ 2,000. No Cost EMI Available
                         <span>
                           <br />{" "}
@@ -223,9 +223,14 @@ function BuyProduct() {
                             </span>
                           </span>
                         </span>
-                      </span>
+                      </span> */}
+                      <p>
+                        jkfjds dangerd faf faff faf fffsd 377 your 12 3cfd gfd 3
+                        genderdfg v4hnti3vh defaultgfd 34t34tv v34t v34tv
+                        34t34tv34t 34t34tv34t3v 34v3 4v4 34 v34tv34 34 43v3 4v43
+                      </p>
                     </div>
-                    <div
+                    {/* <div
                       className="col-lg-6"
                       style={{
                         borderLeft: "1px dashed black",
@@ -253,7 +258,7 @@ function BuyProduct() {
                           </span>
                         </span>
                       </span>
-                    </div>
+                    </div> */}
                   </div>
                   <hr className="singleline" />
                   <div className="row">
@@ -269,18 +274,20 @@ function BuyProduct() {
                         />
                       </div>
                     </div>
-                    <div className="col-xs-6">
+                    <div className="col-md-6 col-lg-6">
                       {" "}
                       <button
                         type="button"
-                        className="btn shop-button"
+                        className="btn shop-button w-100"
                         onClick={() => addToCart()}
                       >
                         Add to Cart
                       </button>
+                    </div>
+                    <div className="col-md-6 col-lg-6">
                       <button
                         type="button"
-                        className="btn shop-button"
+                        className="btn shop-button "
                         data-bs-toggle="modal"
                         data-bs-target="#exampleModal"
                       >

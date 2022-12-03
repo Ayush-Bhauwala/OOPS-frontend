@@ -2,10 +2,12 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import Header from "../headerComponents/Header";
+import axios from "axios";
 
 function ForgotPassword() {
   const navigate = useNavigate();
-  const [alert, setAlert] = useState(false);
+  const [Alert, setAlert] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -15,14 +17,22 @@ function ForgotPassword() {
 
   const onSubmit = (data) => {
     if (data.email) {
-      setAlert(true);
-      setTimeout(() => navigate("/login"), 2000);
+      axios
+        .post("https://bargainstrial-production.up.railway.app/mail/resetpwd", {
+          email: data.email,
+        })
+        .then((res) => {
+          setAlert(true);
+          setTimeout(() => navigate("/login"), 2000);
+        })
+        .catch((err) => alert("Unable to send email"));
     }
   };
+
   return (
     <section className="vh-100 gradient-custom" style={{ maxHeight: "100vh" }}>
       <div className="container align-items-center h-100">
-        {alert && (
+        {Alert && (
           <div
             className="alert alert-success"
             role="alert"

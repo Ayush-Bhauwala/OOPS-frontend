@@ -5,20 +5,50 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Header from "../headerComponents/Header";
 import "./ModifyItemStyles.css";
-import { Navigate } from "react-router";
+import { useParams } from "react-router";
 
 function ModifyItem() {
-  // const [file, setFile] = useState();
-  const [image, setImage] = useState();
-  const [id, setId] = useState(0);
-  const navigate = useNavigate();
+  const params = useParams();
   const [alert, setAlert] = useState(false);
+  const [maxQty, setMaxQty] = useState(1);
+  const [itemName, setItemName] = useState("");
+  const [price, setItemPrice] = useState(0);
+  const [discount, setItemDiscount] = useState(0);
+  const [data, setImg] = useState("");
+  const [category, setCategory] = useState("");
+  const [description, setDescription] = useState("");
+  const [date, setDate] = useState("");
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm();
+
+  function getItemDetails() {
+    const url = `https://bargainstrial-production.up.railway.app/customer/getitem/${params.itemId}`;
+    axios({
+      method: "get",
+      url: url,
+    }).then((res) => {
+      console.log(res.data);
+      setMaxQty(res.data.qty);
+      setItemName(res.data.itemName);
+      setItemPrice(res.data.price);
+      setItemDiscount(res.data.offer);
+      setImg(res.data.image.imageData);
+      setCategory(res.data.category);
+      setDescription(res.data.description);
+      setDate(res.data.offerValidTill);
+    });
+  }
+
+  useEffect(() => {
+    getItemDetails();
+    console.log("Inside use effect");
+  }, []);
 
   const onSubmit = (data) => {
     if (
@@ -30,7 +60,6 @@ function ModifyItem() {
     ) {
       setAlert(true);
       setTimeout(() => navigate("/productlist"), 2000);
-      // setPopup(true);
       const url =
         "https://bargainstrial-production.up.railway.app/manager/modifyitem";
       axios
@@ -44,33 +73,10 @@ function ModifyItem() {
         })
         .then((res) => {
           console.log(res);
-          setId(res.data);
         })
         .catch((err) => console.log(err));
-
-      const formData = new FormData();
-      formData.append("image", image);
-      formData.append("itemid", id);
-      formData.append("requesterid", localStorage.getItem("userid"));
-
-      axios({
-        method: "POST",
-        url: "http://localhost:8080/manager/uploadimage",
-        data: formData,
-        headers: { "content-type": "multipart/form-data" },
-      })
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err));
-      setAlert(true);
-      setTimeout(() => navigate("/productlist"), 2000);
     }
   };
-
-  // function handleChange(e) {
-  //   e.preventDefault();
-  //   setFile(URL.createObjectURL(e.target.files[0]));
-  //   setImage(e.target.files[0]);
-  // }
 
   return (
     <>
@@ -102,15 +108,12 @@ function ModifyItem() {
                 className="col-lg-6 order-lg-2 order-1"
                 style={{ borderRight: "1px solid black" }}
               >
-                {/* <h2>Add Image:</h2> */}
-                {/* <input
-                  className="mb-4"
-                  type="file"
-                  id="imageInput"
-                  onChange={(e) => handleChange(e)}
-                  accept="image/*"
-                /> */}
-                <img src={image} alt="product img" width="95%" height="75%" />
+                <img
+                  src={`data:image/jpeg;base64,${data}`}
+                  alt="product img"
+                  width="95%"
+                  height="75%"
+                />
               </div>
               <div className="col-lg-6 order-3">
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -123,6 +126,7 @@ function ModifyItem() {
                           className="form-control add-item-input"
                           id="product-name"
                           placeholder="..."
+                          defaultValue={itemName}
                           {...register("name")}
                           required
                         />
@@ -140,6 +144,7 @@ function ModifyItem() {
                           className="form-control add-item-input"
                           id="price-input"
                           placeholder="₹ "
+                          defaultValue={price}
                           {...register("price")}
                           required
                         />
@@ -154,13 +159,13 @@ function ModifyItem() {
                           name="quantity"
                           className="form-control add-item-input"
                           id="product-quantity"
+                          defaultValue={maxQty}
                           placeholder="..."
                           {...register("quantity")}
                           required
                         />
                         <label for="product-quantity">Quantity</label>
                       </div>
-                      <div className="text-success mb-4 ms-3">Qty Sold: </div>
                     </div>
                   </div>
 
@@ -171,6 +176,7 @@ function ModifyItem() {
                       name="descrption"
                       placeholder="Address"
                       style={{ width: "100%" }}
+                      defaultValue={description}
                       {...register("description")}
                       required
                     />
@@ -186,10 +192,11 @@ function ModifyItem() {
                       aria-label="Floating label select example"
                       {...register("category")}
                     >
-                      <option selected>Groceries</option>
-                      <option value="1">Technology</option>
-                      <option value="2">Fashion</option>
-                      <option value="3">Entertainment</option>
+                      <option selected>{category}</option>
+                      <option value="1">TECHNOLOGY</option>
+                      <option value="2">FASHION</option>
+                      <option value="3">ENTERTAINMENT</option>
+                      <option value="4">GROCERIES</option>
                     </select>
                     <label for="product-category">Category</label>
                   </div>
@@ -206,6 +213,7 @@ function ModifyItem() {
                             id="offer"
                             placeholder="offer"
                             name="offer"
+                            defaultValue={discount}
                           />
                           <label for="offer">Offer %</label>
                         </div>

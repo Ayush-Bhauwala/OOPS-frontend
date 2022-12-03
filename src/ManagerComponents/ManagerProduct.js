@@ -1,7 +1,7 @@
-import "./SearchResultsStyles.css";
+import "../CustomerComponents/SearchResultsStyles.css";
 import { useNavigate } from "react-router-dom";
 
-function SearchResultsProduct(props) {
+function ManagerProduct(props) {
   const navigate = useNavigate();
   const data = props.image;
   return (
@@ -75,10 +75,10 @@ function SearchResultsProduct(props) {
                       className="btn details-btn"
                       type="button"
                       onClick={() =>
-                        navigate(`/buyproduct/${parseInt(props.itemId)}`)
+                        navigate(`/modifyitem/${parseInt(props.itemId)}`)
                       }
                     >
-                      Details
+                      Edit
                     </button>
                   </div>
                 </div>
@@ -90,4 +90,4 @@ function SearchResultsProduct(props) {
     </div>
   );
 }
-export default SearchResultsProduct;
+export default ManagerProduct;

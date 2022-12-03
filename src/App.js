@@ -16,7 +16,7 @@ import ModifyItem from "./ManagerComponents/ModifyItem";
 import ManagerList from "./ManagerComponents/ManagerList";
 
 import ProductList from "./ManagerComponents/ProductList";
-import ManagerList from "./ManagerComponents/ManagerList";
+import ListOfProducts from "./ManagerComponents/ListOfProducts";
 
 function App() {
   const id = localStorage.getItem("userid");
@@ -27,7 +27,9 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={role === null || "USER" ? <MainPage /> : <ManagerList />}
+          element={
+            role === "USER" ? <MainPage /> : <Navigate to="/listofproducts" />
+          }
         ></Route>
         <Route
           path="/login"
@@ -60,11 +62,22 @@ function App() {
         ></Route>
         <Route path="/additem" element={<AddItem />}></Route>
 
-        <Route path="/modifyitem" element={<ModifyItem />}></Route>
+        <Route path="/modifyitem">
+          <Route path=":itemId" element={<ModifyItem />}></Route>
+        </Route>
 
         <Route path="/managerlist" element={<ManagerList />}></Route>
         <Route path="/plist" element={<ProductList />}></Route>
-        <Route path="/forgotpassword" element={<ForgotPassword />}></Route>
+        <Route
+          path="/forgotpassword"
+          element={id !== null ? <Navigate to="/" /> : <ForgotPassword />}
+        ></Route>
+        <Route
+          path="/listofproducts"
+          element={
+            role !== "MANAGER" ? <Navigate to="/" /> : <ListOfProducts />
+          }
+        ></Route>
       </Routes>
     </BrowserRouter>
   );

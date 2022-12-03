@@ -1,0 +1,41 @@
+body
+{
+    background-color: #f6f4f3;
+}
+.name
+{
+    color: #f6f4f3;
+}
+.content
+{
+    align-items: center;
+    /* font-weight: bold; */
+    font-size: 30px;
+    color: #383f51;
+}
+.remove:hover
+{
+    background-color: #383F51;
+    color: #ff8888;
+}
+.remove
+{
+    border: 0;
+    background-color:#f6f4f3
+}
+.manager-text
+{
+    font-size: 1.2rem;
+    color: #ff8888;
+}
+.info
+{
+    color:#f6f4f3;
+}
+.manager
+{
+    border-radius: 15px;
+    color: #fff;
+    background-color: #383f51;
+}
+

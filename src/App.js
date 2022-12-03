@@ -28,7 +28,11 @@ function App() {
         <Route
           path="/"
           element={
-            role === "USER" ? <MainPage /> : <Navigate to="/listofproducts" />
+            role === "MANAGER" ? (
+              <Navigate to="/listofproducts" />
+            ) : (
+              <MainPage />
+            )
           }
         ></Route>
         <Route

@@ -10,14 +10,8 @@ import { useParams } from "react-router";
 function ModifyItem() {
   const params = useParams();
   const [alert, setAlert] = useState(false);
-  const [maxQty, setMaxQty] = useState(1);
-  const [itemName, setItemName] = useState("");
-  const [price, setItemPrice] = useState(0);
-  const [discount, setItemDiscount] = useState(0);
-  const [data, setImg] = useState("");
-  const [category, setCategory] = useState("");
-  const [description, setDescription] = useState("");
-  const [date, setDate] = useState("");
+  const [itemDetails, setItemDetails] = useState({});
+  const [data, setData] = useState("");
   const navigate = useNavigate();
 
   const {
@@ -34,14 +28,9 @@ function ModifyItem() {
       url: url,
     }).then((res) => {
       console.log(res.data);
-      setMaxQty(res.data.qty);
-      setItemName(res.data.itemName);
-      setItemPrice(res.data.price);
-      setItemDiscount(res.data.offer);
-      setImg(res.data.image.imageData);
-      setCategory(res.data.category);
-      setDescription(res.data.description);
-      setDate(res.data.offerValidTill);
+      setItemDetails(res.data);
+      setData(res.data.image.imageData);
+      console.log(itemDetails);
     });
   }
 
@@ -70,6 +59,7 @@ function ModifyItem() {
           user_id: localStorage.getItem("userid"),
           price: parseInt(data.price),
           deliveryWithin: 1,
+          offer: parseInt(data.offer),
         })
         .then((res) => {
           console.log(res);
@@ -80,7 +70,7 @@ function ModifyItem() {
 
   return (
     <>
-      <Header user="manager" />
+      <Header user="MANAGER" />
 
       <div className="container-fluid px-0">
         <div className="single_product py-5 px-5 gradient-custom">
@@ -126,7 +116,7 @@ function ModifyItem() {
                           className="form-control add-item-input"
                           id="product-name"
                           placeholder="..."
-                          defaultValue={itemName}
+                          defaultValue={itemDetails.itemName}
                           {...register("name")}
                           required
                         />
@@ -138,13 +128,13 @@ function ModifyItem() {
                     <div className="col col-lg-6 col-md-6">
                       <div className="form-floating mb-4">
                         <input
+                          defaultValue={itemDetails.price}
                           type="number"
                           min={0}
                           name="price"
                           className="form-control add-item-input"
                           id="price-input"
                           placeholder="₹ "
-                          defaultValue={price}
                           {...register("price")}
                           required
                         />
@@ -155,12 +145,11 @@ function ModifyItem() {
                       <div className="form-floating mb-1">
                         <input
                           type="number"
-                          min={0}
+                          min={1}
                           name="quantity"
                           className="form-control add-item-input"
                           id="product-quantity"
-                          defaultValue={maxQty}
-                          placeholder="..."
+                          defaultValue={itemDetails.qty}
                           {...register("quantity")}
                           required
                         />
@@ -176,7 +165,7 @@ function ModifyItem() {
                       name="descrption"
                       placeholder="Address"
                       style={{ width: "100%" }}
-                      defaultValue={description}
+                      defaultValue={"sdf"}
                       {...register("description")}
                       required
                     />
@@ -192,7 +181,7 @@ function ModifyItem() {
                       aria-label="Floating label select example"
                       {...register("category")}
                     >
-                      <option selected>{category}</option>
+                      <option selected>{itemDetails.category}</option>
                       <option value="1">TECHNOLOGY</option>
                       <option value="2">FASHION</option>
                       <option value="3">ENTERTAINMENT</option>
@@ -213,7 +202,7 @@ function ModifyItem() {
                             id="offer"
                             placeholder="offer"
                             name="offer"
-                            defaultValue={discount}
+                            defaultValue={itemDetails.offer}
                           />
                           <label for="offer">Offer %</label>
                         </div>
@@ -226,6 +215,7 @@ function ModifyItem() {
                             id="validity-date"
                             placeholder="validity-date"
                             name="validity-date"
+                            defaultValue={itemDetails.offerValidTill}
                           />
                           <label for="validity-date">Valid till</label>
                         </div>

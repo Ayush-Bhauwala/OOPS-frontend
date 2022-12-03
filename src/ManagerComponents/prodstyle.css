@@ -63,3 +63,21 @@
     transition: transform 0.2s;
   }
 
+  .cardcontainer{
+    display: flex;
+    flex-direction: row;
+  }
+
+.legatus{
+    flex: 1;
+}
+
+.clannad{
+    display: flex;
+    flex-direction: row;
+}
+
+.box-item{
+    background-color: grey;
+    padding: 1rem;
+}

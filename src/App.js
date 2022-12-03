@@ -15,8 +15,9 @@ import ModifyItem from "./ManagerComponents/ModifyItem";
 
 import ManagerList from "./ManagerComponents/ManagerList";
 
-import ProductList from "./ManagerComponents/ProductList";
+
 import ListOfProducts from "./ManagerComponents/ListOfProducts";
+import ProductList2 from "./ManagerComponents/ProductList2";
 
 function App() {
   const id = localStorage.getItem("userid");
@@ -71,7 +72,7 @@ function App() {
         </Route>
 
         <Route path="/managerlist" element={<ManagerList />}></Route>
-        <Route path="/plist" element={<ProductList />}></Route>
+        <Route path="/plist" element={<ProductList2 />}></Route>
         <Route
           path="/forgotpassword"
           element={id !== null ? <Navigate to="/" /> : <ForgotPassword />}

@@ -3,12 +3,13 @@ import ProductCard from "./ProductCard";
 
 function ProductList2(){
     return (
-        <div class = "container clannad">
+        <div class = "container clannad rounded">
             
 
             <ProductCard name = "Heathen"/>
 
             <ProductCard name = "Crusher"/>
+            <ProductCard name = "Hermano"/>
             
 
         </div>

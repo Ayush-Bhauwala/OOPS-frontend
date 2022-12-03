@@ -1,10 +1,12 @@
 import { parseWithOptions } from "date-fns/fp";
-import "./mliststyle.css";
+
+import "./mliststyle.css"
 
 function ManagerCard(props){
     
-  return(           <div class="col-lg-4 col-md-12 mb-4">
-            <div class="card">
+  return(   
+    <div class = "box-item">
+            <div class="card cardashian">
               
               <div class="card-body">
                 <h4 class="card-title">{props.name}</h4>
@@ -18,7 +20,9 @@ function ManagerCard(props){
                 <a href="#!" class="btn remove">REMOVE MANAGER</a>
               </div>
             </div>
-          </div>
+            </div>
+            
+          
            )
 }
 

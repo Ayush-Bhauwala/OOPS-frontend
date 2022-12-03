@@ -1,11 +1,13 @@
 import Header from "../headerComponents/Header";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function AccountDetails() {
   const role = localStorage.getItem("role");
   const id = localStorage.getItem("userid");
   const [accountDetails, setAccountDetails] = useState({});
+  const navigate = useNavigate();
 
   function getAccountDetails() {
     const id = localStorage.getItem("userid");
@@ -128,6 +130,7 @@ function AccountDetails() {
                             <button
                               className="btn btn-lg btn-block w-100 login-button"
                               type="submit"
+                              onClick={() => navigate("/changepassword")}
                             >
                               Change Password
                             </button>

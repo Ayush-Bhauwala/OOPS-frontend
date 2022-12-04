@@ -12,7 +12,7 @@ function BuyProduct() {
   const [discount, setItemDiscount] = useState(0);
   const [data, setImg] = useState("");
   const [category, setCategory] = useState("");
-
+  const [description, setDescription] = useState("");
   const [balance, setBalance] = useState(0);
   const userid = localStorage.getItem("userid");
   const params = useParams();
@@ -45,55 +45,62 @@ function BuyProduct() {
         setImg(res.data.image.imageData);
       }
       setCategory(res.data.category);
+      setDescription(res.data.description);
     });
   }
 
   function addToCart() {
-    var qtyInCart = 0;
-    const qtybought = parseInt(document.getElementById("quantity_input").value);
-    const exist = itemsDetails.find((x) => x.itemClass.itemId === productid);
-    for (var i = 0; i < itemsDetails.length; i++) {
-      qtyInCart =
-        itemsDetails[i].itemClass.itemId === productid &&
-        itemsDetails[i].qtybought;
-    }
-    console.log("qtybought " + qtybought);
-    console.log("qtyincart " + qtyInCart);
-    const totalqty = qtyInCart + qtybought;
-    console.log(totalqty);
-    if (maxQty >= totalqty) {
-      if (exist) {
-        setItemsDetails(
-          itemsDetails.map((x) =>
-            x.itemClass.itemId === productid
-              ? {
-                  ...exist,
-                  qtybought: exist.qtybought + qtybought,
-                }
-              : x
-          )
-        );
-      }
-      axios
-        .post(
-          "https://bargainstrial-production.up.railway.app/customer/addtocart",
-          {
-            userid: userid,
-            productid: productid,
-            qtybought: qtybought,
-          }
-        )
-        .then(function (response) {
-          console.log(response);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-      alert("Added successfully!");
+    if (localStorage.getItem("userid") === null) {
+      alert("Please login first.");
     } else {
-      alert("Max quantity reached");
+      var qtyInCart = 0;
+      const qtybought = parseInt(
+        document.getElementById("quantity_input").value
+      );
+      const exist = itemsDetails.find((x) => x.itemClass.itemId === productid);
+      for (var i = 0; i < itemsDetails.length; i++) {
+        qtyInCart =
+          itemsDetails[i].itemClass.itemId === productid &&
+          itemsDetails[i].qtybought;
+      }
+      console.log("qtybought " + qtybought);
+      console.log("qtyincart " + qtyInCart);
+      const totalqty = qtyInCart + qtybought;
+      console.log(totalqty);
+      if (maxQty >= totalqty) {
+        if (exist) {
+          setItemsDetails(
+            itemsDetails.map((x) =>
+              x.itemClass.itemId === productid
+                ? {
+                    ...exist,
+                    qtybought: exist.qtybought + qtybought,
+                  }
+                : x
+            )
+          );
+        }
+        axios
+          .post(
+            "https://bargainstrial-production.up.railway.app/customer/addtocart",
+            {
+              userid: userid,
+              productid: productid,
+              qtybought: qtybought,
+            }
+          )
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        alert("Added successfully!");
+      } else {
+        alert("Max quantity reached");
+      }
+      getCart();
     }
-    getCart();
   }
   function getBalance() {
     axios
@@ -147,7 +154,7 @@ function BuyProduct() {
 
   return (
     <>
-      <Header user="CUSTOMER" />
+      <Header user={localStorage.getItem("role")} />
       <BuyNowPopup
         price={price - (discount / 100) * price}
         balance={balance}
@@ -226,11 +233,7 @@ function BuyProduct() {
                           </span>
                         </span>
                       </span> */}
-                      <p>
-                        jkfjds dangerd faf faff faf fffsd 377 your 12 3cfd gfd 3
-                        genderdfg v4hnti3vh defaultgfd 34t34tv v34t v34tv
-                        34t34tv34t 34t34tv34t3v 34v3 4v4 34 v34tv34 34 43v3 4v43
-                      </p>
+                      <p>{description}</p>
                     </div>
                     {/* <div
                       className="col-lg-6"
@@ -290,7 +293,9 @@ function BuyProduct() {
                       <button
                         type="button"
                         className="btn shop-button "
-                        data-bs-toggle="modal"
+                        data-bs-toggle={
+                          localStorage.getItem("userid") !== null ? "modal" : ""
+                        }
                         data-bs-target="#exampleModal"
                       >
                         Buy Now

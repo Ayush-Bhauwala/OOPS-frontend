@@ -39,10 +39,11 @@ function AddItem() {
         .post(url, {
           itemName: data.name,
           qty: parseInt(data.quantity),
-          category: data.category,
+          category: data.category.toUpperCase(),
           user_id: localStorage.getItem("userid"),
           price: parseInt(data.price),
           deliveryWithin: 1,
+          description: data.description,
         })
         .then((res) => {
           console.log(res.data);
@@ -211,7 +212,7 @@ function AddItem() {
                           <label for="offer">Offer %</label>
                         </div>
                       </div>
-                      <div className="col-md-6 col-lg-6">
+                      {/* <div className="col-md-6 col-lg-6">
                         <div className="form-floating mb-3">
                           <input
                             type="date"
@@ -222,7 +223,7 @@ function AddItem() {
                           />
                           <label for="validity-date">Valid till</label>
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                     <div className="row pt-4">
                       <div className="col col-lg-6 col-md-6"></div>

@@ -29,11 +29,6 @@ function Login() {
         if (response.data != null) {
           localStorage.setItem("userid", response.data.id);
           localStorage.setItem("role", response.data.role);
-          // if (response.data.role == "USER") {
-          //   window.location.href = "http://localhost:3000/login";
-          // } else if (response.data.role == "MANAGER") {
-          //   window.location.href = "http://localhost:3000/listofproducts";
-          // }
           window.location.href = "http://localhost:3000";
         } else {
           alert("Incorrect password!");
@@ -41,7 +36,7 @@ function Login() {
       })
       .catch(function (error) {
         if (!(password === "" || email === "")) {
-          alert("Email does not exist");
+          alert(error.response.data.message);
         }
         console.log(error);
       });

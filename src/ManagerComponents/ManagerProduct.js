@@ -4,7 +4,13 @@ import { useNavigate } from "react-router-dom";
 function ManagerProduct(props) {
   const navigate = useNavigate();
   const data = props.image;
-  const delItem = props.delItem;
+  // const item = props.item;
+  // const delItem = props.delItem(item);
+
+  function delItem() {
+    console.log(props.item);
+    props.delItem(props.item);
+  }
   return (
     <div className="row justify-content-center mb-5">
       <div className="col-md-12 col-xl-10">

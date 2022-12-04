@@ -22,9 +22,14 @@ function SearchResults() {
       setSearchResults(res.data);
     });
   }
+  function delItem(item) {
+    console.log(item);
+    setSearchResults(searchResults.filter((x) => x.itemId !== item.itemId));
+  }
 
   function delItem(product) {
-    setSearchResults(searchResults.filter((x) => x.itemId != product.itemId));
+    setSearchResults(searchResults.filter((x) => x.itemId !== product.itemId));
+    console.log(product);
     axios.post("https://bargainstrial-production.up.railway.app/deleteItem", {
       userid: localStorage.getItem("userid"),
       productid: product.itemId,
@@ -44,7 +49,7 @@ function SearchResults() {
         <div className="container py-3">
           {searchResults.map((item) => {
             const data = item.image === null ? "" : item.image.imageData;
-            if (role === "USER") {
+            if (role === null || role === "CUSTOMER") {
               return (
                 <SearchResultsProduct
                   name={item.itemName}
@@ -52,6 +57,7 @@ function SearchResults() {
                   discount={item.offer}
                   image={data}
                   itemId={item.itemId}
+                  description={item.description}
                 />
               );
             } else {
@@ -62,7 +68,8 @@ function SearchResults() {
                   discount={item.offer}
                   image={data}
                   itemId={item.itemId}
-                  delItem={(item) => delItem(item)}
+                  delItem={delItem}
+                  item={item}
                 />
               );
             }

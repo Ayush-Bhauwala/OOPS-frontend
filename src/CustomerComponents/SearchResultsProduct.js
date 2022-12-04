@@ -51,6 +51,7 @@ function SearchResultsProduct(props) {
                     <br />
                   </span>
                 </div> */}
+                <p>{props.description}</p>
               </div>
               <div className="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
                 <div className="ms-1">

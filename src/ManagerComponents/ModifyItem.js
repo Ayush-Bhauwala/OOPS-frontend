@@ -42,10 +42,11 @@ function ModifyItem() {
   }, []);
 
   const onSubmit = (data) => {
-    const name = document.getElementById("productName");
-    const price = document.getElementById("price");
-    const quantity = document.getElementById("qty");
-    const description = document.getElementById("productDescription");
+    const name = document.getElementById("productName").value;
+    const price = document.getElementById("price").value;
+    const quantity = document.getElementById("qty").value;
+    const description = document.getElementById("productDescription").value;
+    const offer = document.getElementById("offer").value;
     if (name && price && quantity && description) {
       console.log(1);
       const url = "https://bargainstrial-production.up.railway.app/modifyitem";
@@ -57,6 +58,9 @@ function ModifyItem() {
           user_id: localStorage.getItem("userid"),
           price: parseInt(price),
           deliveryWithin: 1,
+          itemId: itemDetails.itemId,
+          offer: parseInt(offer),
+          description: description,
         })
         .then((res) => {
           console.log(res);
@@ -166,7 +170,7 @@ function ModifyItem() {
                       name="descrption"
                       placeholder="Address"
                       style={{ width: "100%" }}
-                      defaultValue={"sdf"}
+                      defaultValue={itemDetails.description}
                       {...register("description")}
                       required
                     />
@@ -192,7 +196,7 @@ function ModifyItem() {
                           <label for="offer">Offer %</label>
                         </div>
                       </div>
-                      <div className="col-md-6 col-lg-6">
+                      {/* <div className="col-md-6 col-lg-6">
                         <div className="form-floating mb-3">
                           <input
                             type="date"
@@ -204,7 +208,7 @@ function ModifyItem() {
                           />
                           <label for="validity-date">Valid till</label>
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                     <div className="row pt-4">
                       <div className="col col-lg-6 col-md-6"></div>

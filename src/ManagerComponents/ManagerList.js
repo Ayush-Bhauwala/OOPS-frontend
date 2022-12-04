@@ -2,9 +2,36 @@ import "./mliststyle.css";
 import Header from "../headerComponents/Header";
 import Footer from "../AccountComponents/Footer";
 import ManagerCard from "./ManagerCard";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 function ManagerList() {
   const role = localStorage.getItem("role");
+  const [managers, setManagers] = useState([]);
+  function getManagers() {
+    axios
+      .post(
+        "https://bargainstrial-production.up.railway.app/admin/getapprovedmanagers",
+        {
+          requesterId: localStorage.getItem("userid"),
+        }
+      )
+      .then((res) => setManagers(res.data));
+  }
+  useEffect(() => getManagers(), []);
+
+  function delItem(manager) {
+    setManagers(managers.filter((x) => x.email !== manager.email));
+    axios
+      .post(
+        "https://bargainstrial-production.up.railway.app/admin/removeuser",
+        {
+          email: manager.email,
+          senderid: localStorage.getItem("userid"),
+        }
+      )
+      .then((res) => console.log(res.data));
+  }
 
   return (
     <div>
@@ -17,12 +44,16 @@ function ManagerList() {
           </h3>
         </section>
         <div class="container clannad">
-          <ManagerCard name="Manager 1" />
-          <ManagerCard name="Manager 2" />
-
-          <ManagerCard name="Manager 3" />
-          <ManagerCard name="Manager 4" />
-     
+          {managers.map((manager) => (
+            <ManagerCard
+              name={manager.name}
+              phone={manager.phoneNo}
+              email={manager.email}
+              address={manager.address}
+              manager={manager}
+              delItem={delItem}
+            />
+          ))}
 
           {/* <div class="row">
             <ManagerCard name="Manager 4" />
@@ -77,7 +108,6 @@ function ManagerList() {
         <br />
         <br />
         <br />
-        <Footer />
       </div>
     </div>
   );

@@ -8,7 +8,10 @@ function CartNew(props) {
   const onCheckout = props.checkout;
   const balance = props.balance;
   const total = cartItems.reduce(
-    (a, c) => a + c.itemClass.price * c.qtybought,
+    (a, c) =>
+      a +
+      (c.itemClass.price - (c.itemClass.offer * c.itemClass.price) / 100) *
+        c.qtybought,
     0
   );
   return (
@@ -151,13 +154,19 @@ function CartNew(props) {
                             <span
                               style={{ fontSize: "25px", color: "#383f51" }}
                             >
-                              <strong>₹{item.itemClass.price}</strong>
+                              <strong>
+                                ₹
+                                {item.itemClass.price -
+                                  (item.itemClass.offer *
+                                    item.itemClass.price) /
+                                    100}
+                              </strong>
                             </span>
                             <span
                               className="text-danger ms-4"
                               style={{ fontSize: "18px" }}
                             >
-                              <s>₹ 100</s>
+                              <s>₹ {item.itemClass.price}</s>
                             </span>
                           </p>
                           {/* Price */}
@@ -187,7 +196,13 @@ function CartNew(props) {
                       return (
                         <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                           {item.itemClass.itemName}
-                          <span>₹{item.itemClass.price * item.qtybought}</span>
+                          <span>
+                            ₹
+                            {(item.itemClass.price -
+                              (item.itemClass.offer * item.itemClass.price) /
+                                100) *
+                              item.qtybought}
+                          </span>
                         </li>
                       );
                     })}

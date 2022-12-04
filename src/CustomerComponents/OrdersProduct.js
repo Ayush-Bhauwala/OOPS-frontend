@@ -33,9 +33,7 @@ function OrdersProduct(props) {
               <div className="col-md-6 col-lg-6 col-xl-6">
                 <h3>{props.name}</h3>
                 <hr style={{ width: "50%" }} />
-                <h4 className="text-success">
-                  Estimated Delivery Date: {props.edd}
-                </h4>
+                <h4 className="text-success">Ordered on: {props.sold}</h4>
               </div>
               <div className="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
                 <div className="ms-1">

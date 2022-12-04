@@ -14,6 +14,7 @@ function EWallet() {
         id: localStorage.getItem("userid"),
       })
       .then((res) => {
+        console.log(res.data);
         setBalance(res.data.balance);
       });
   }
@@ -23,11 +24,14 @@ function EWallet() {
       "https://bargainstrial-production.up.railway.app/customer/ewallet/topup";
     const password = document.getElementById("pswd").value;
     const amount = parseInt(document.getElementById("topup").value);
-    axios.patch(url, {
-      user_id: id,
-      balance: amount,
-      password: password,
-    });
+    axios
+      .patch(url, {
+        user_id: id,
+        balance: amount,
+        password: password,
+      })
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
     window.location.reload(false);
   }
 

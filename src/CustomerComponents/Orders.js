@@ -45,7 +45,7 @@ function Orders() {
                 price={order.item.price}
                 quantity={order.qtyBought}
                 discount={order.item.offer}
-                // edd="30/12/2022"
+                sold={order.soldAt}
                 image={data}
               />
             );

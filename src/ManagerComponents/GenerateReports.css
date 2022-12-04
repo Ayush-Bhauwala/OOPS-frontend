@@ -1,0 +1,29 @@
+.reportitems{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.boxclass{
+    text-align: center;
+}
+
+.report{
+    margin: 1rem;
+}
+
+.gen{
+    margin: 1rem;
+    height: 90%;
+    background-color: #ff8888;
+    transition: transform 0.2s;
+    border-color:#383f51;
+}
+
+.gen:hover{
+    transform: scale(1.1);
+    background-color: #ff8888;
+    border-color:#383f51;
+
+}

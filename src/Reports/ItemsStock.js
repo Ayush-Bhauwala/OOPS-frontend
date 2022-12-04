@@ -16,25 +16,27 @@ function ItemsStock() {
   useEffect(() => getItems(), []);
   return (
     <>
-      <h1>Item Stock Status</h1>
-      <table>
-        <thead>
-          <tr>
-            <td>Item Name</td>
-            <td>Stock</td>
-          </tr>
-        </thead>
-        <tbody>
-          {items.map((item) => {
-            return (
-              <tr>
-                <td>{item.itemName}</td>
-                <td>{item.qty}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <h1 className="text-center mb-3 mt-2">Item Stock Status</h1>
+      <div className="table-responsive text-center">
+        <table className="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Item Name</th>
+              <th scope="col">Stock</th>
+            </tr>
+          </thead>
+          <tbody className="table-group-divider">
+            {items.map((item) => {
+              return (
+                <tr>
+                  <td>{item.itemName}</td>
+                  <td>{item.qty}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 }

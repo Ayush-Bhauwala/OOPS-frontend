@@ -21,29 +21,31 @@ function OrderDetails() {
   //   useEffect(() => getOrderDetails(), []);
   return (
     <>
-      <h1>Order details of customer</h1>
-      <table>
-        <thead>
-          <tr>
-            <td>Item Name</td>
-            <td>Item Price</td>
-            <td>Quantity Bought</td>
-            <td>Date Bought</td>
-          </tr>
-        </thead>
-        <tbody>
-          {orderDetails.map((order) => {
-            return (
-              <tr>
-                <td>{order.item.itemName}</td>
-                <td>{order.item.price}</td>
-                <td>{order.qtyBought}</td>
-                <td>{order.soldAt}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <h1 className="text-center mb-3 mt-2">Order details of customer</h1>
+      <div className="table-responsive text-center">
+        <table className="table table-striped table-hover ">
+          <thead>
+            <tr>
+              <th scope="col">Item Name</th>
+              <th scope="col">Item Price</th>
+              <th scope="col">Quantity Bought</th>
+              <th scope="col">Date Bought</th>
+            </tr>
+          </thead>
+          <tbody className="table-group-divider">
+            {orderDetails.map((order) => {
+              return (
+                <tr>
+                  <td>{order.item.itemName}</td>
+                  <td>{order.item.price}</td>
+                  <td>{order.qtyBought}</td>
+                  <td>{order.soldAt}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 }

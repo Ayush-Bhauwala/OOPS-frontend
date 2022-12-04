@@ -79,7 +79,7 @@ function SignUp() {
                 </div>
                 <div className="col-md-6 col-lg-6 d-flex align-items-center">
                   <div className="card-body p-4 p-lg-3 ms-3 me-3 card-container">
-                    <h3 className="my-3  sign-up-heading fw-bold">Sign Up</h3>
+                    <h3 className="mb-3 sign-up-heading fw-bold">Sign Up</h3>
                     {popup && params.user === "CUSTOMER" && (
                       <MinimalTopupPopup />
                     )}
@@ -235,7 +235,7 @@ function SignUp() {
                       <div className="d-flex justify-content-end pt-2">
                         <button
                           type="submit"
-                          className="btn btn-lg btn-block w-100 login-button"
+                          className="btn btn-lg btn-block w-100 login-button fs-5"
                           data-bs-toggle="modal"
                           data-bs-target="#staticBackdrop"
                         >

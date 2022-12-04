@@ -101,6 +101,7 @@ function Cart() {
       )
       .then(function (response) {
         console.log(response);
+        window.location.href("http://localhost:3000/orders");
       })
       .catch(function (error) {
         console.log(error);

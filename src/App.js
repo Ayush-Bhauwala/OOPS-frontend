@@ -89,10 +89,16 @@ function App() {
           <Route path=":itemId" element={<ModifyItem />}></Route>
         </Route>
 
-        <Route path="/listofcustomers" element={<CustomerList />}></Route>
-
-        <Route path="/plist" element={<ProductList2 />}></Route>
-
+        <Route
+          path="/listofcustomers"
+          element={
+            role !== "MANAGER" && role !== "ADMIN" ? (
+              <Navigate to="/" />
+            ) : (
+              <CustomerList />
+            )
+          }
+        ></Route>
         <Route
           path="/forgotpassword"
           element={id !== null ? <Navigate to="/" /> : <ForgotPassword />}

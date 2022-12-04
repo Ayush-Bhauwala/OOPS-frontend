@@ -19,7 +19,9 @@ import ProductList2 from "./ManagerComponents/ProductList2";
 import CategoryItems from "./CustomerComponents/CategoryItems";
 import AdminDashboard from "./ManagerComponents/AdminDashboard";
 import PendingManagers from "./ManagerComponents/PendingManagers";
-
+import ItemsDate from "./Reports/ItemsDate";
+import ItemsStock from "./Reports/ItemsStock";
+import OrderDetails from "./Reports/OrderDetails";
 function App() {
   const id = localStorage.getItem("userid");
   const role = localStorage.getItem("role");
@@ -121,6 +123,25 @@ function App() {
           path="/pendingmanagers"
           element={role === "ADMIN" ? <PendingManagers /> : <Navigate to="/" />}
         ></Route>
+
+        <Route path="/itemsdate">
+          <Route
+            path=":date"
+            element={role === "ADMIN" ? <ItemsDate /> : <Navigate to="/" />}
+          ></Route>
+        </Route>
+
+        <Route
+          path="/itemsstock"
+          element={role === "ADMIN" ? <ItemsStock /> : <Navigate to="/" />}
+        ></Route>
+
+        <Route path="/orderdetails">
+          <Route
+            path=":email"
+            element={role === "ADMIN" ? <OrderDetails /> : <Navigate to="/" />}
+          ></Route>
+        </Route>
       </Routes>
     </BrowserRouter>
   );

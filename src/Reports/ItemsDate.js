@@ -26,29 +26,31 @@ function ItemsDate() {
 
   return (
     <>
-      <h1>Items sold on {date}</h1>
-      <table>
-        <thead>
-          <tr>
-            <td>Item Name</td>
-            <td>Item Price</td>
-            <td>Quantity Bought</td>
-            <td>Buyer Name</td>
-          </tr>
-        </thead>
-        <tbody>
-          {items.map((item) => {
-            return (
-              <tr>
-                <td>{item.item.itemName}</td>
-                <td>{item.item.price}</td>
-                <td>{item.qtyBought}</td>
-                <td>{item.buyer.name}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <h1 className="text-center mb-3 mt-2">Items sold on {date}</h1>
+      <div className="table-responsive text-center">
+        <table className="table table-striped table-hover ">
+          <thead>
+            <tr>
+              <th scope="col">Item Name</th>
+              <th scope="col">Item Price</th>
+              <th scope="col">Quantity Bought</th>
+              <th scope="col">Buyer Name</th>
+            </tr>
+          </thead>
+          <tbody className="table-group-divider">
+            {items.map((item) => {
+              return (
+                <tr>
+                  <td>{item.item.itemName}</td>
+                  <td>{item.item.price}</td>
+                  <td>{item.qtyBought}</td>
+                  <td>{item.buyer.name}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 }

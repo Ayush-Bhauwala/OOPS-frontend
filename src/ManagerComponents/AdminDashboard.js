@@ -52,10 +52,10 @@ function AdminDashboard() {
         </button>
       </div>
 
-      <div class="adminend">
+      <div className="adminend">
         <button
           type="button"
-          class="btn"
+          className="btn"
           onClick={() => {
             navigate("/generatereports");
           }}

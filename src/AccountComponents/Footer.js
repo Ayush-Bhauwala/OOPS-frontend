@@ -4,8 +4,8 @@ import "./Footer.css";
 function Footer() {
   return (
     <>
-      <div className="row">
-        <div className="col-lg-6 col-md-6 ps-4">
+      <div className="row flexbox-container">
+        <div className="col-lg-6 col-md-6 ps-4 flexbox-item">
           <h3>Website Information</h3>
           <hr />
           <p>
@@ -17,7 +17,7 @@ function Footer() {
           </p>
         </div>
 
-        <div className="col-lg-6 col-md-6">
+        <div className="col-lg-6 col-md-6 flexbox-item">
           <h3>Contact details</h3>
           <hr />
           Mail to:
@@ -27,7 +27,7 @@ function Footer() {
         </div>
       </div>
 
-      <div className="row text-center">
+      <div className="row text-center flexbox-container flexbox-item">
         <footer>© 2022 Bargains</footer>
       </div>
       {/* <div class = "flexbox-item flexboxitem3">

@@ -1,6 +1,5 @@
 .flexbox-container{
     display: flex;
-    
     border-color: #383f51;
     border-width: 2rem;
     align-items: flex-start;    
@@ -11,7 +10,7 @@
 
 .flexbox-item{
     background-color: #383f51;
-    padding: 1rem;
+    /* padding: 1rem; */
     flex: 1;
     color: #f6f4f3;
    
@@ -43,7 +42,3 @@
     border-color: #383f51;
 }
 
-.results-container h5{
-    padding: 2rem;
-
-}

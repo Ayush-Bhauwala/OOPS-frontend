@@ -2,10 +2,11 @@ import "./BuyProductStyles.css";
 import Header from "../headerComponents/Header";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import BuyNowPopup from "./BuyNowPopup";
 
 function BuyProduct() {
+  const navigate = useNavigate();
   const [maxQty, setMaxQty] = useState(1);
   const [itemName, setItemName] = useState("");
   const [price, setItemPrice] = useState(0);
@@ -20,14 +21,27 @@ function BuyProduct() {
   const [qty, setQty] = useState(1);
   const [itemsDetails, setItemsDetails] = useState([]);
   function getCart() {
+    // const id = localStorage.getItem("userid");
+    // const url = `https://bargainstrial-production.up.railway.app/customer/getcart`;
+    // axios
+    //   .post(url, {
+    //     user_id: id,
+    //   })
+    //   .then((res) => {
+    //     setItemsDetails(res.data);
+    //   });
+
     const id = localStorage.getItem("userid");
-    const url = `https://bargainstrial-production.up.railway.app/customer/getcart`;
     axios
-      .post(url, {
-        user_id: id,
-      })
+      .post(
+        "https://bargainstrial-production.up.railway.app/customer/getcart",
+        {
+          id: id,
+        }
+      )
       .then((res) => {
         setItemsDetails(res.data);
+        // console.log(res.data);
       });
   }
 
@@ -37,6 +51,7 @@ function BuyProduct() {
       method: "get",
       url: url,
     }).then((res) => {
+      // console.log(res.data);
       setMaxQty(res.data.qty);
       setItemName(res.data.itemName);
       setItemPrice(res.data.price);
@@ -53,21 +68,23 @@ function BuyProduct() {
     if (localStorage.getItem("userid") === null) {
       alert("Please login first.");
     } else {
-      var qtyInCart = 0;
+      let qtyInCart = 0;
       const qtybought = parseInt(
         document.getElementById("quantity_input").value
       );
       const exist = itemsDetails.find((x) => x.itemClass.itemId === productid);
       for (var i = 0; i < itemsDetails.length; i++) {
+        console.log(itemsDetails[i]);
         qtyInCart =
-          itemsDetails[i].itemClass.itemId === productid &&
-          itemsDetails[i].qtybought;
+          itemsDetails[i].itemClass.itemId === parseInt(productid) &&
+          parseInt(itemsDetails[i].qtybought);
       }
       console.log("qtybought " + qtybought);
       console.log("qtyincart " + qtyInCart);
       const totalqty = qtyInCart + qtybought;
       console.log(totalqty);
       if (maxQty >= totalqty) {
+        console.log("treu");
         if (exist) {
           setItemsDetails(
             itemsDetails.map((x) =>
@@ -111,7 +128,7 @@ function BuyProduct() {
         }
       )
       .then(function (response) {
-        console.log(response.data);
+        // console.log(response.data);
         setBalance(response.data.balance);
       })
       .catch(function (error) {
@@ -120,14 +137,20 @@ function BuyProduct() {
   }
 
   function buyNow() {
-    axios.post(
-      "https://bargainstrial-production.up.railway.app/customer/buyitem",
-      {
-        userid: userid,
-        qtybought: parseInt(document.getElementById("quantity_input").value),
-        productid: productid,
-      }
-    );
+    axios
+      .post(
+        "https://bargainstrial-production.up.railway.app/customer/buyitem",
+        {
+          userid: userid,
+          qtybought: parseInt(document.getElementById("quantity_input").value),
+          productid: productid,
+        }
+      )
+      .then((res) => {
+        alert("Order successful!")(
+          (window.location.href = "https://bargains.vercel.app/orders")
+        );
+      });
   }
 
   useEffect(() => {

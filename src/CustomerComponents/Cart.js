@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import Header from "../headerComponents/Header";
 import axios from "axios";
 import CartNew from "./CartNew";
+import { useNavigate, Navigate } from "react-router";
 
 function Cart() {
   const [itemsDetails, setItemsDetails] = useState([]);
   const [balance, setBalance] = useState(0);
+  const navigate = useNavigate();
   function getCart() {
     const id = localStorage.getItem("userid");
     axios
@@ -101,7 +103,8 @@ function Cart() {
       )
       .then(function (response) {
         console.log(response);
-        window.location.href("https://bargains.vercel.app/orders");
+        alert("Order successful!");
+        window.location.href = "https://bargains.vercel.app/orders";
       })
       .catch(function (error) {
         console.log(error);

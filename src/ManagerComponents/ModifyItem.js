@@ -75,7 +75,7 @@ function ModifyItem() {
 
   return (
     <>
-      <Header user="MANAGER" />
+      <Header user={localStorage.getItem("role")} />
 
       <div className="container-fluid px-0">
         <div className="single_product py-5 px-5 gradient-custom">

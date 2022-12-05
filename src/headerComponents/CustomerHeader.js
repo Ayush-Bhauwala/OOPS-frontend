@@ -15,45 +15,54 @@ function CustomerHeader() {
   }
   return (
     <>
-      <Link to="/orders" className="customer" style={{ marginLeft: "-5%" }}>
-        Orders
-      </Link>
-      <Link to="/cart" className="customer">
-        <i className="fa-solid fa-cart-shopping"></i>
-      </Link>
-      <div className="dropdown">
-        <button
-          className="btn dropdown-toggle customer me-1"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-          type="button"
-          style={{ width: "100%" }}
-        >
-          <i className="fa-solid fa-user"></i>
-        </button>
-        <ul className="dropdown-menu dropdown-menu-end">
-          <li>
-            <Link to="/accountdetails" className="dropdown-item">
-              Profile
-            </Link>
-          </li>
-          <li>
-            <hr className="dropdown-divider" />
-          </li>
-          <li>
-            <Link to="/ewallet" className="dropdown-item">
-              E-Wallet
-            </Link>
-          </li>
-          <li>
-            <hr className="dropdown-divider" />
-          </li>
-          <li>
-            <Link className="dropdown-item" onClick={() => logout()}>
-              Logout
-            </Link>
-          </li>
-        </ul>
+      <div className="row">
+        <div className="col-lg-4 col-md-4 col-sm-4 d-flex align-items-center">
+          <Link
+            to="/orders"
+            className="customer w-100"
+            style={{ marginLeft: "-5%" }}
+          >
+            Orders
+          </Link>
+        </div>
+        <div className="col-lg-4 col-md-4 col-sm-4 d-flex align-items-center">
+          <Link to="/cart" className="customer w-100">
+            <i className="fa-solid fa-cart-shopping"></i>
+          </Link>
+        </div>
+        <div className="dropdown col-lg-4 col-md-4 col-sm-4">
+          <button
+            className="btn dropdown-toggle customer pe-0 me-n3 w-100"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            type="button"
+          >
+            <i className="fa-solid fa-user"></i>
+          </button>
+          <ul className="dropdown-menu dropdown-menu-end">
+            <li>
+              <Link to="/accountdetails" className="dropdown-item">
+                Profile
+              </Link>
+            </li>
+            <li>
+              <hr className="dropdown-divider" />
+            </li>
+            <li>
+              <Link to="/ewallet" className="dropdown-item">
+                E-Wallet
+              </Link>
+            </li>
+            <li>
+              <hr className="dropdown-divider" />
+            </li>
+            <li>
+              <Link className="dropdown-item" onClick={() => logout()}>
+                Logout
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
     </>
   );

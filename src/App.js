@@ -22,6 +22,7 @@ import PendingManagers from "./ManagerComponents/PendingManagers";
 import ItemsDate from "./Reports/ItemsDate";
 import ItemsStock from "./Reports/ItemsStock";
 import OrderDetails from "./Reports/OrderDetails";
+import GenerateReports from "./ManagerComponents/GenerateReports";
 function App() {
   const id = localStorage.getItem("userid");
   const role = localStorage.getItem("role");
@@ -144,10 +145,15 @@ function App() {
 
         <Route path="/orderdetails">
           <Route
-            path=":email"
+            path=":email/:month"
             element={role === "ADMIN" ? <OrderDetails /> : <Navigate to="/" />}
           ></Route>
         </Route>
+
+        <Route
+          path="/generatereports"
+          element={role === "ADMIN" ? <GenerateReports /> : <Navigate to="/" />}
+        ></Route>
       </Routes>
     </BrowserRouter>
   );

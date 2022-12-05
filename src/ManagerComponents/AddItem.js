@@ -30,8 +30,8 @@ function AddItem() {
       data.price &&
       data.quantity &&
       data.description &&
-      data.category &&
-      image != null
+      data.category
+      // && image != null
     ) {
       const url =
         "https://bargainstrial-production.up.railway.app/manager/additem";
@@ -47,22 +47,25 @@ function AddItem() {
         })
         .then((res) => {
           console.log(res.data);
-          const formData = new FormData();
-          formData.append("image", image);
-          formData.append("itemid", res.data);
-          formData.append("requesterId", localStorage.getItem("userid"));
-          console.log([...formData]);
+          if (image !== null) {
+            const formData = new FormData();
+            formData.append("image", image);
+            formData.append("itemid", res.data);
+            formData.append("requesterId", localStorage.getItem("userid"));
+            console.log([...formData]);
 
-          axios({
-            method: "POST",
-            url: "https://bargainstrial-production.up.railway.app/manager/uploadimage",
-            data: formData,
-          })
-            .then((res) => {
-              console.log(res.data);
-              navigate("/");
+            axios({
+              method: "POST",
+              url: "https://bargainstrial-production.up.railway.app/manager/uploadimage",
+              data: formData,
             })
-            .catch((err) => console.log(err));
+              .then((res) => {
+                console.log(res.data);
+                navigate("/");
+              })
+              .catch((err) => console.log(err));
+            navigate("/");
+          }
         })
         .catch((err) => console.log(err));
     } else {
@@ -78,7 +81,7 @@ function AddItem() {
 
   return (
     <>
-      <Header user="manager" />
+      <Header user={localStorage.getItem("role")} />
       <div className="container-fluid px-0">
         <div className="single_product py-5 px-5 gradient-custom">
           {/* {alert && (
@@ -208,6 +211,7 @@ function AddItem() {
                             id="offer"
                             placeholder="offer"
                             name="offer"
+                            defaultValue="0"
                           />
                           <label for="offer">Offer %</label>
                         </div>

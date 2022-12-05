@@ -53,7 +53,13 @@ function AdminDashboard() {
       </div>
 
       <div class="adminend">
-        <button type="button" class="btn">
+        <button
+          type="button"
+          class="btn"
+          onClick={() => {
+            navigate("/generatereports");
+          }}
+        >
           Generate Reports
         </button>
         <br />

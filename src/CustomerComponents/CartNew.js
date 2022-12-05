@@ -7,6 +7,7 @@ function CartNew(props) {
   const decQty = props.decQty;
   const onCheckout = props.checkout;
   const balance = props.balance;
+  console.log(cartItems);
   const total = cartItems.reduce(
     (a, c) =>
       a +
@@ -162,12 +163,14 @@ function CartNew(props) {
                                     100}
                               </strong>
                             </span>
-                            <span
-                              className="text-danger ms-4"
-                              style={{ fontSize: "18px" }}
-                            >
-                              <s>₹ {item.itemClass.price}</s>
-                            </span>
+                            {item.itemClass.offer !== 0 && (
+                              <span
+                                className="text-danger ms-4"
+                                style={{ fontSize: "18px" }}
+                              >
+                                <s>₹ {item.itemClass.price}</s>
+                              </span>
+                            )}
                           </p>
                           {/* Price */}
                         </div>

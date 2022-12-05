@@ -8,7 +8,7 @@ function BuyNowPopup(props) {
   function handleClick() {
     if (parseInt(props.price) <= parseInt(props.balance)) {
       buy();
-      window.location.href("http://localhost:3000/orders");
+      navigate("/orders");
     } else {
       setAlert(true);
     }

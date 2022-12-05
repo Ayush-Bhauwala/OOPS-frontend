@@ -17,7 +17,7 @@ function BuyProduct() {
   const userid = localStorage.getItem("userid");
   const params = useParams();
   const productid = params.itemId;
-
+  const [qty, setQty] = useState(1);
   const [itemsDetails, setItemsDetails] = useState([]);
   function getCart() {
     const id = localStorage.getItem("userid");
@@ -91,11 +91,11 @@ function BuyProduct() {
           )
           .then(function (response) {
             console.log(response);
+            alert("Added successfully!");
           })
           .catch(function (error) {
             console.log(error);
           });
-        alert("Added successfully!");
       } else {
         alert("Max quantity reached");
       }
@@ -156,7 +156,7 @@ function BuyProduct() {
     <>
       <Header user={localStorage.getItem("role")} />
       <BuyNowPopup
-        price={price - (discount / 100) * price}
+        price={(price - (discount / 100) * price) * qty}
         balance={balance}
         handleClick={() => buyNow()}
       />
@@ -187,7 +187,9 @@ function BuyProduct() {
                         <Link to="/">HOME</Link>
                       </li>
                       <li className="breadcrumb-item">
-                        <Link to={`/${category}`}>{category}</Link>
+                        <Link to={`/categoryitems/${category.toUpperCase()}`}>
+                          {category}
+                        </Link>
                       </li>
                       <li className="breadcrumb-item active">{itemName}</li>
                     </ol>
@@ -276,6 +278,7 @@ function BuyProduct() {
                           defaultValue={1}
                           min="1"
                           max={maxQty}
+                          onChange={(e) => setQty(parseInt(e.target.value))}
                         />
                       </div>
                     </div>
@@ -297,6 +300,11 @@ function BuyProduct() {
                           localStorage.getItem("userid") !== null ? "modal" : ""
                         }
                         data-bs-target="#exampleModal"
+                        onClick={() => {
+                          console.log(
+                            document.getElementById("quantity_input").value
+                          );
+                        }}
                       >
                         Buy Now
                       </button>

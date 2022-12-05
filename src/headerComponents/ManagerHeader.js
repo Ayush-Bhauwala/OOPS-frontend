@@ -13,17 +13,19 @@ function ManagerHeader() {
     window.location.reload(false);
   }
   return (
-    <>
-      <Link to="/additem" className="manager">
-        <i className="fa-solid fa-circle-plus"></i>
-      </Link>
-      <div className="dropdown">
+    <div className="row">
+      <div className="col-lg-6 col-md-6 col-sm-6 d-flex align-items-center">
+        <Link to="/additem" className="manager w-100 text-center">
+          <i className="fa-solid fa-circle-plus"></i>
+        </Link>
+      </div>
+      <div className="dropdown col-lg-6 col-md-6 col-sm-6">
         <button
-          className="btn dropdown-toggle manager me-1"
+          className="btn dropdown-toggle manager me-2 "
           data-bs-toggle="dropdown"
           aria-expanded="false"
           type="button"
-          style={{ width: "100%" }}
+          style={{ width: "100%", marginLeft: "30%" }}
         >
           <i className="fa-solid fa-user"></i>
         </button>
@@ -51,7 +53,7 @@ function ManagerHeader() {
           </li>
         </ul>
       </div>
-    </>
+    </div>
   );
 }
 

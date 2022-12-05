@@ -1,3 +1,7 @@
+body {
+  overflow-x: hidden;
+}
+
 .mynavbar {
   background-color: #383f51;
   padding-bottom: 0;

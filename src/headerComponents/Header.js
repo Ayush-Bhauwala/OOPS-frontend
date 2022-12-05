@@ -20,7 +20,7 @@ function Header(props) {
   return (
     <header>
       <nav className="navbar navbar-expand-sm mynavbar">
-        <div className="container-fluid row">
+        <div className="container-fluid row container-fullwidth">
           <div className="col-lg-3 col-md-3 col-sm-3 d-flex align-items-center">
             <Link
               className="navbar-brand nav-link active name w-100"

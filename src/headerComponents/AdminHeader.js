@@ -7,7 +7,7 @@ function AdminHeader() {
       <a href="#" className="admin">
         ADMIN
       </a>
-      <ManagerHeader />;
+      <ManagerHeader />
     </>
   );
 }

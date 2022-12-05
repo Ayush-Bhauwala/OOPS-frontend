@@ -8,7 +8,7 @@ function BuyNowPopup(props) {
   function handleClick() {
     if (parseInt(props.price) <= parseInt(props.balance)) {
       buy();
-      navigate("/orders");
+      // window.location.href("https://bargains.vercel.app/orders");
     } else {
       setAlert(true);
     }

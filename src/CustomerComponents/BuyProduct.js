@@ -206,7 +206,9 @@ function BuyProduct() {
                   <hr className="singleline" />
                   <div className="row">
                     <div className="col">
-                      {" "}
+                      <span className="product_info">
+                        {maxQty === 0 ? "Out of Stock" : "In stock"}
+                      </span>
                       {/* <span className="product_info">
                         EMI starts at ₹ 2,000. No Cost EMI Available
                         <span>

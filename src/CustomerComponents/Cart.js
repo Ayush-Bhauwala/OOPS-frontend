@@ -105,6 +105,7 @@ function Cart() {
       })
       .catch(function (error) {
         console.log(error);
+        alert(error.response.data.message);
       });
   }
   return (

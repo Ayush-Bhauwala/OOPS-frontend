@@ -52,6 +52,8 @@ function SignUp() {
                 window.location.href = "https://bargains.vercel.app/";
               })
               .catch((err) => console.log(err));
+          } else {
+            window.location.href = "https://bargains.vercel.app/";
           }
           // response.data.role === "CUSTOMER"
           //   ? setPopup(true)

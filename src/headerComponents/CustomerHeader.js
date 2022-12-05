@@ -30,7 +30,7 @@ function CustomerHeader() {
             <i className="fa-solid fa-cart-shopping"></i>
           </Link>
         </div>
-        <div className="dropdown col-lg-4 col-md-4 col-sm-4">
+        <div className="dropdown col-lg-4 col-md-4 col-sm-4 float-end">
           <button
             className="btn dropdown-toggle customer pe-0 me-n3 w-100"
             data-bs-toggle="dropdown"

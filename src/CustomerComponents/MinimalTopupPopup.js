@@ -32,7 +32,7 @@ function MinimalTopupPopup() {
               data-bs-dismiss="modal"
               style={{ fontSize: "23px" }}
               onClick={() =>
-                (window.location.href = "http://localhost:3000/ewallet")
+                (window.location.href = "https://bargains.vercel.app/ewallet")
               }
             >
               Add minimum balance of ₹1000 to continue

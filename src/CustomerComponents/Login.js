@@ -29,7 +29,7 @@ function Login() {
         if (response.data != null) {
           localStorage.setItem("userid", response.data.id);
           localStorage.setItem("role", response.data.role);
-          window.location.href = "http://localhost:3000";
+          window.location.href = "https://bargains.vercel.app";
         } else {
           alert("Incorrect password!");
         }

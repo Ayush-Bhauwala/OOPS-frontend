@@ -1,4 +1,3 @@
-
 import { useNavigate } from "react-router";
 import "./plist2.css";
 
@@ -10,17 +9,18 @@ function ProductCard(props) {
   return (
     <div class="box-item">
       <div class="card cardashian">
-      <div>
-        <img
-          class="product img-fluid"
-          src={
-            data === null
-              ? "https://www.logodesign.net/logo/arrow-marketing-112ld.png"
-              : `data:image/jpeg;base64,${data}`
-          }
-        />
+        <div>
+          <img
+            class="product img-fluid"
+            src={
+              data === null
+                ? "https://www.logodesign.net/logo/arrow-marketing-112ld.png"
+                : `data:image/jpeg;base64,${data}`
+            }
+            style={{ width: "10rem" }}
+          />
         </div>
-         <hr style={{ borderTop: "1.5px solid black", width: "80%" }} />
+        <hr style={{ borderTop: "1.5px solid black", width: "80%" }} />
         <div class="card-body cardashian-body">
           <h4 class="card-title ptitle">{props.name}</h4>
           <h4 class="card-title ptitle">₹{props.price}</h4>

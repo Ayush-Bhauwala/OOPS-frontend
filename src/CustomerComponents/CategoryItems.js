@@ -36,6 +36,7 @@ function CategoryItems() {
                 discount={item.offer}
                 image={data}
                 itemId={item.itemId}
+                description={item.description}
               />
             );
           })}

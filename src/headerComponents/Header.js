@@ -1,4 +1,5 @@
 import { useNavigate, Link } from "react-router-dom";
+import Banner from "./BargainsLogo (2).png";
 import "./Headerstyles.css";
 import CustomerHeader from "./CustomerHeader";
 import LoginHeader from "./LoginHeader";
@@ -27,15 +28,15 @@ function Header(props) {
               to="/"
             >
               <img
-                src="https://www.logodesign.net/logo/arrow-marketing-112ld.png"
+                src={Banner}
                 alt="Logo"
-                className="d-inline-block align-text-top logo"
+                className="d-inline-block align-text-top logo h5 me-3"
               ></img>
               BARGAINS
             </Link>
           </div>
           <div className="collapse navbar-collapse">
-            <form className="d-flex container-md" role="search">
+            <form className="d-flex container-md container-lg" role="search">
               <input
                 className="form-control me-2 i search-bar"
                 type="search"

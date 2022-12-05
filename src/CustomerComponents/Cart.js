@@ -101,7 +101,7 @@ function Cart() {
       )
       .then(function (response) {
         console.log(response);
-        window.location.href("http://localhost:3000/orders");
+        window.location.href("https://bargains.vercel.app/orders");
       })
       .catch(function (error) {
         console.log(error);

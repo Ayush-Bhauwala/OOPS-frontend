@@ -38,7 +38,7 @@ function SignUp() {
           address: data.address,
         })
         .then(function (response) {
-          console.log(response);
+          console.log(response.data);
           if (params.user === "CUSTOMER") {
             localStorage.setItem("userid", response.data.id);
             localStorage.setItem("role", response.data.role);
@@ -48,13 +48,14 @@ function SignUp() {
                 password: data.password,
               })
               .then(function (response) {
-                console.log(response);
-              });
+                console.log(response.data);
+                window.location.href = "http://localhost:3000/";
+              })
+              .catch((err) => console.log(err));
           }
           // response.data.role === "CUSTOMER"
           //   ? setPopup(true)
           //   : (window.location.href = "http://localhost:3000/");
-          window.location.href = "http://localhost:3000/";
         })
         .catch(function (error) {
           console.log(error);

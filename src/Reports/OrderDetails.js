@@ -7,18 +7,25 @@ function OrderDetails() {
   const params = useParams();
   const email = params.email;
   console.log(email);
-  //   function getOrderDetails() {
-  //     axios
-  //       .post(
-  //         "https://bargainstrial-production.up.railway.app/admin/customerhistory",
-  //         {}
-  //       )
-  //       .then((res) => {
-  //         console.log(res.data);
-  //         setOrderDetails(res.data);
-  //       });
-  //   }
-  //   useEffect(() => getOrderDetails(), []);
+  function getOrderDetails() {
+    console.log(params.month.slice(0, 4));
+    console.log(params.month.slice(5));
+    axios
+      .post(
+        "https://bargainstrial-production.up.railway.app/admin/customerhistory",
+        {
+          email: email,
+          year: params.month.slice(0, 4),
+          month: params.month.slice(5),
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+        setOrderDetails(res.data);
+      })
+      .catch((err) => console.log(err));
+  }
+  useEffect(() => getOrderDetails(), []);
   return (
     <>
       <h1 className="text-center mb-3 mt-2">Order details of customer</h1>

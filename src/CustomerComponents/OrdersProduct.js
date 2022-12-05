@@ -39,7 +39,10 @@ function OrdersProduct(props) {
                 <div className="ms-1">
                   <div className="d-flex flex-row align-items-center mb-1 ">
                     <h3 className="mb-2 me-3">
-                      ₹ {parseInt(props.price) - parseInt(props.discount)}
+                      ₹{" "}
+                      {parseInt(props.price) -
+                        (parseInt(props.discount) * parseInt(props.price)) /
+                          100}
                     </h3>
                     {props.discount > 0 && (
                       <span className="text-danger">

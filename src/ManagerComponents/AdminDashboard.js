@@ -7,16 +7,16 @@ function AdminDashboard() {
   return (
     <div>
       <Header user={localStorage.getItem("role")} />
-      <div class="admincontainer">
+      <div className="admincontainer mt-2">
         <h1>
-          <span class="redtext">Welcome</span>, Admin.
+          <span className="redtext">Welcome</span>, Admin.
         </h1>
         <p>What would you like to do today?</p>
       </div>
-      <div class="adminbody">
+      <div className="adminbody">
         <button
           type="button"
-          class="btn btn-primary btn-lg admin-item"
+          className="btn btn-primary btn-lg admin-item"
           onClick={() => {
             navigate("/listofmanagers");
           }}
@@ -25,7 +25,7 @@ function AdminDashboard() {
         </button>
         <button
           type="button"
-          class="btn btn-primary btn-lg admin-item"
+          className="btn btn-primary btn-lg admin-item"
           onClick={() => {
             navigate("/pendingmanagers");
           }}
@@ -34,7 +34,7 @@ function AdminDashboard() {
         </button>
         <button
           type="button"
-          class="btn btn-primary btn-lg admin-item"
+          className="btn btn-primary btn-lg admin-item"
           onClick={() => {
             navigate("/listofproducts");
           }}
@@ -43,7 +43,7 @@ function AdminDashboard() {
         </button>
         <button
           type="button"
-          class="btn btn-primary btn-lg admin-item"
+          className="btn btn-primary btn-lg admin-item"
           onClick={() => {
             navigate("/listofcustomers");
           }}

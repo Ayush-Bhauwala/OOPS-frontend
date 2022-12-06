@@ -33,13 +33,14 @@ function AddItem() {
       data.category
       // && image != null
     ) {
+      console.log(document.getElementById("product-category").value);
       const url =
         "https://bargainstrial-production.up.railway.app/manager/additem";
       axios
         .post(url, {
           itemName: data.name,
           qty: parseInt(data.quantity),
-          category: data.category.toUpperCase(),
+          category: document.getElementById("product-category").value,
           user_id: localStorage.getItem("userid"),
           price: parseInt(data.price),
           deliveryWithin: 1,
@@ -66,6 +67,7 @@ function AddItem() {
               .catch((err) => console.log(err));
             navigate("/");
           }
+          navigate("/");
         })
         .catch((err) => console.log(err));
     } else {
@@ -191,10 +193,12 @@ function AddItem() {
                       aria-label="Floating label select example"
                       {...register("category")}
                     >
-                      <option selected>Groceries</option>
-                      <option value="1">Technology</option>
-                      <option value="2">Fashion</option>
-                      <option value="3">Entertainment</option>
+                      <option selected value="GROCERIES">
+                        Groceries
+                      </option>
+                      <option value="TECHNOLOGY">Technology</option>
+                      <option value="FASHION">Fashion</option>
+                      <option value="ENTERTAINMENT">Entertainment</option>
                     </select>
                     <label for="product-category">Category</label>
                   </div>

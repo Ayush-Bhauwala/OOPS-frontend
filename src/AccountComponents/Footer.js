@@ -5,19 +5,24 @@ function Footer() {
   return (
     <>
       <div className="row flexbox-container">
-        <div className="col-lg-6 col-md-6 ps-4 flexbox-item">
+        <div className="col-lg-4 col-md-4 ps-4 flexbox-item">
           <h3>Website Information</h3>
           <hr />
           <p>
-            Lorem ipsum dolor sit amet, si connecticur est il tu plait vous?
-            KIMI NO TORIKO NE NANTE SHIMAIWA KITO
+            Our website, Bargains, is an e-commerce revolution in the making! <br /><br /><br /> Created in 2022, Bargains brings you the best of deals on all sorts of items, from essentials like fruits and clothing to luxury items like the latest in tech. 
           </p>
+         
+        </div>
+
+        <div className="col-lg-4 col-md-4 flexbox-item">
+          <h3><br /> </h3>
+          <br />
           <p>
-            MINAMINO SHIMA WA MATAKI PINEAPPEPURUPURU ATTAMOPOKAPOKA ANO BAKA~
+          Committed towards our motto of <i>"All for One, One for All"</i>, we intend on becoming the one-stop shop for everything one could desire. <br /> < br/>Aided by our consumer-friendly practices and best-of-class pricing, we offer the best of the best. <br />So, what are you waiting for? Shop with us today!
           </p>
         </div>
 
-        <div className="col-lg-6 col-md-6 flexbox-item">
+        <div className="col-lg-4 col-md-4 flexbox-item">
           <h3>Contact details</h3>
           <hr />
           Mail to:

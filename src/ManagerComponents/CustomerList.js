@@ -39,7 +39,7 @@ function CustomerList() {
   useEffect(() => getCustomers(), []);
 
   return (
-    <div className="gradient-custom">
+    <div className="" style={{ backgroundColor: "#eee", color: "#383f51" }}>
       <Header user={localStorage.getItem("role")} />
       <main class="my-5" />
       <section class="text-center">

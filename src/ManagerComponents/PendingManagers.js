@@ -48,7 +48,14 @@ function PendingManagers() {
     <div>
       <Header user={localStorage.getItem("role")} />
 
-      <div className="gradient-custom pt-4">
+      <div
+        className="pt-4"
+        style={{
+          backgroundColor: "#eee",
+          color: "#383f51",
+          minHeight: "100vh",
+        }}
+      >
         <section class="text-center">
           <h3 class="managertext">
             <strong>PENDING MANAGERS</strong>

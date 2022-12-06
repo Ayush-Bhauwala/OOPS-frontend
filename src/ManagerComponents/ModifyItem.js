@@ -54,7 +54,7 @@ function ModifyItem() {
         .patch(url, {
           itemName: name,
           qty: parseInt(quantity),
-          category: itemDetails.category,
+          category: document.getElementById("product-category").value,
           user_id: localStorage.getItem("userid"),
           price: parseInt(price),
           deliveryWithin: 1,
@@ -178,7 +178,23 @@ function ModifyItem() {
                       Enter Product Description
                     </label>
                   </div>
-
+                  <div className="form-floating mb-4">
+                    <select
+                      className="form-select add-item-input"
+                      id="product-category"
+                      aria-label="Floating label select example"
+                      {...register("category")}
+                    >
+                      <option value={itemDetails.category}>
+                        {itemDetails.category}
+                      </option>
+                      <option value="GROCERIES">Groceries</option>
+                      <option value="TECHNOLOGY">Technology</option>
+                      <option value="FASHION">Fashion</option>
+                      <option value="ENTERTAINMENT">Entertainment</option>
+                    </select>
+                    <label for="product-category">Category</label>
+                  </div>
                   <div className="" style={{ color: "#383F51" }}>
                     <h1 className="fs-5 w-100 pb-2">CHANGE OFFER</h1>
                     <div className="row">

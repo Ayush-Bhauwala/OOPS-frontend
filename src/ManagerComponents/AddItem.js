@@ -193,9 +193,7 @@ function AddItem() {
                       aria-label="Floating label select example"
                       {...register("category")}
                     >
-                      <option selected value="GROCERIES">
-                        Groceries
-                      </option>
+                      <option value="GROCERIES">Groceries</option>
                       <option value="TECHNOLOGY">Technology</option>
                       <option value="FASHION">Fashion</option>
                       <option value="ENTERTAINMENT">Entertainment</option>

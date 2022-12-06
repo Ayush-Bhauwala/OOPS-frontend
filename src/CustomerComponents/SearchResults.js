@@ -42,7 +42,7 @@ function SearchResults() {
   return (
     <>
       <Header user={role} />
-      <section style={{ backgroundColor: "#eee" }}>
+      <div style={{ backgroundColor: "#eee", minHeight: "100vh" }}>
         <div className="pt-3 ms-3" style={{ color: "#383f51" }}>
           <h3>Showing search results for {searchInput}.</h3>
         </div>
@@ -75,7 +75,7 @@ function SearchResults() {
             }
           })}
         </div>
-      </section>
+      </div>
     </>
   );
 }

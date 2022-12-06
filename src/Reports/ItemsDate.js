@@ -44,7 +44,11 @@ function ItemsDate() {
                   <td>{item.item.itemName}</td>
                   <td>{item.item.price}</td>
                   <td>{item.qtyBought}</td>
-                  <td>{item.buyer.name}</td>
+                  <td>
+                    {item.buyer === null
+                      ? "User does not exist"
+                      : item.buyer.name}
+                  </td>
                 </tr>
               );
             })}

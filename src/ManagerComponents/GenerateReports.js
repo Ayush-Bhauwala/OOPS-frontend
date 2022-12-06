@@ -7,7 +7,7 @@ function GenerateReports() {
   return (
     <div class="boxclass">
       <Header user={"ADMIN"} />
-      <h5>Items sold on a date</h5>
+      <h5 className="mt-4">Items sold on a date</h5>
       <div class="reportsbox">
         <div class="reportitems">
           <label for="date" class="form-label report">

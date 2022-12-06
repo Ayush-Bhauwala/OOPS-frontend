@@ -5,6 +5,7 @@ import "../CustomerComponents/SearchResultsStyles.css";
 import Header from "../headerComponents/Header";
 import ManagerProduct from "./ManagerProduct";
 import ProductCard from "./ProductCard";
+
 function ListOfProducts() {
   const [items, setItems] = useState([]);
   const navigate = useNavigate();

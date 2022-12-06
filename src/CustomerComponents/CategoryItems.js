@@ -22,7 +22,7 @@ function CategoryItems() {
   return (
     <>
       <Header user={role} />
-      <section style={{ backgroundColor: "#eee" }}>
+      <div style={{ backgroundColor: "#eee" }}>
         <div className="pt-3 ms-3" style={{ color: "#383f51" }}>
           <h3>Showing results for {params.category.toLowerCase()}.</h3>
         </div>
@@ -41,7 +41,7 @@ function CategoryItems() {
             );
           })}
         </div>
-      </section>
+      </div>
     </>
   );
 }

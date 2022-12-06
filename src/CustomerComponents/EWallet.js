@@ -95,6 +95,9 @@ function EWallet() {
                 type="button"
                 className="btn login-button topupbtn"
                 onClick={() => topUp()}
+                onKeyDown={(e) => {
+                  e.key === "enter" && topUp();
+                }}
               >
                 Top Up
               </button>

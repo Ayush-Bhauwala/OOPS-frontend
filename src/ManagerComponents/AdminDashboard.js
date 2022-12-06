@@ -34,7 +34,7 @@ function AdminDashboard() {
         </button>
         <button
           type="button"
-          className="btn btn-primary btn-lg admin-item"
+          className="btn btn-primary btn-lg admin-item mt-2"
           onClick={() => {
             navigate("/listofproducts");
           }}
@@ -43,7 +43,7 @@ function AdminDashboard() {
         </button>
         <button
           type="button"
-          className="btn btn-primary btn-lg admin-item"
+          className="btn btn-primary btn-lg admin-item mt-2"
           onClick={() => {
             navigate("/listofcustomers");
           }}
@@ -55,7 +55,8 @@ function AdminDashboard() {
       <div className="adminend">
         <button
           type="button"
-          className="btn"
+          className="btn fw-bold mt-2 py-3"
+          style={{ color: "#383f51", fontSize: "20px" }}
           onClick={() => {
             navigate("/generatereports");
           }}

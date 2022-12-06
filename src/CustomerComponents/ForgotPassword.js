@@ -30,7 +30,7 @@ function ForgotPassword() {
   };
 
   return (
-    <section className="vh-100 gradient-custom" style={{ maxHeight: "100vh" }}>
+    <div className="vh-100 gradient-custom" style={{ minHeight: "100vh" }}>
       <div className="container align-items-center h-100">
         {Alert && (
           <div
@@ -104,7 +104,7 @@ function ForgotPassword() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 export default ForgotPassword;

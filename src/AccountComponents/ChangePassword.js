@@ -63,7 +63,7 @@ function ChangePassword() {
           </div>
         </>
       )}
-      <section className="" style={{ maxHeight: "100vh" }}>
+      <div className="" style={{ minHeight: "100vh", backgroundColor: "#eee" }}>
         <div className="container align-items-center">
           <div className="row d-flex justify-content-center align-items-center">
             <div className="col">
@@ -155,7 +155,7 @@ function ChangePassword() {
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </>
   );
 }

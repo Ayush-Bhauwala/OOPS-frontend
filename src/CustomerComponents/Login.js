@@ -42,34 +42,41 @@ function Login() {
       });
   }
   return (
-    <section className="vh-100 gradient-custom" style={{ maxHeight: "100vh" }}>
-      {Alert && (
-        <>
-          <div
-            className="alert alert-danger"
-            role="alert"
-            style={{ padding: ".5%" }}
-          >
-            <i className="fa-solid fa-triangle-exclamation"></i> All fields are
-            required!
-          </div>
-        </>
-      )}
-
-      <div className="container align-items-center h-100">
-        <div className="row d-flex justify-content-center align-items-center h-100">
-          <div className="col col-xl-10">
+    // <section className="vh-100 gradient-custom" style={{ maxHeight: "100vh" }}>
+    <div
+      className="gradient-custom py-0 align-items-center"
+      style={{ margin: "0", minHeight: "100vh" }}
+    >
+      <div
+        className="row d-flex justify-content-center align-items-center"
+        style={{ height: "100vh", margin: "0 auto" }}
+      >
+        <div className="col col-sm-10">
+          {Alert && (
+            <>
+              <div
+                className="alert alert-danger"
+                role="alert"
+                style={{ padding: ".5%" }}
+              >
+                <i className="fa-solid fa-triangle-exclamation"></i> All fields
+                are required!
+              </div>
+            </>
+          )}
+          <div className="row d-flex justify-content-center align-items-center">
             <div className="card" style={{ borderRadius: "1rem" }}>
-              <div className="row g-0">
-                <div className="col-md-6 col-lg-6 d-none d-md-block card-container align-items-center">
+              <div className="row">
+                <div className="col-md-6 col-lg-6 col-sm-6 ps-0 card-container align-items-center">
                   <img
                     src="https://i0.wp.com/images.squarespace-cdn.com/content/v1/5c46c28dc258b4167dafc178/1615340266884-YWRI6XD8G1A1HR5SLB2X/eduardo-soares-e4EmPx91Aj4-unsplash.jpg"
                     alt="login form"
                     className="img-fluid login-img"
+                    // style={{ width: "100%", height: "36rem" }}
                   />
                 </div>
-                <div className="col-md-6 col-lg-6 d-flex align-items-center">
-                  <div className="card-body p-4 p-lg-3 ms-3 me-3 card-container ">
+                <div className="col-md-6 col-lg-6 col-sm-6 d-flex align-items-center">
+                  <div className="card-body p-4 p-lg-3 ms-2 me-2 card-container ">
                     <div className="d-flex align-items-center mb-3 pb-1">
                       <img
                         className="login-logo"
@@ -152,7 +159,7 @@ function Login() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 

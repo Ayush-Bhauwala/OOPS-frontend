@@ -31,7 +31,7 @@ function Orders() {
   return (
     <>
       <Header user="CUSTOMER" />
-      <section style={{ backgroundColor: "#eee" }}>
+      <div style={{ backgroundColor: "#eee" }}>
         <div className="pt-3 text-center" style={{ color: "#383f51" }}>
           <h1>Your Orders</h1>
         </div>
@@ -51,7 +51,7 @@ function Orders() {
             );
           })}
         </div>
-      </section>
+      </div>
     </>
   );
 }

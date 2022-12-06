@@ -35,7 +35,13 @@ function ListOfProducts() {
       <div className="pt-3 ms-3" style={{ color: "#383f51" }}>
         <h3>LIST OF PRODUCTS</h3>
       </div>
-      <section style={{ backgroundColor: "#eee" }}>
+      <div
+        style={{
+          backgroundColor: "#eee",
+          color: "#383f51",
+          minHeight: "100vh",
+        }}
+      >
         <div className="py-3 container clannad rounded">
           {items.map((item) => {
             const data = item.image === null ? "" : item.image.imageData;
@@ -51,7 +57,7 @@ function ListOfProducts() {
             );
           })}
         </div>
-      </section>
+      </div>
     </>
   );
 }

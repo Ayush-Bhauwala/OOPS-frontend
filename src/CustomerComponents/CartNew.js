@@ -22,7 +22,14 @@ function CartNew(props) {
         balance={balance}
         handleClick={onCheckout}
       ></BuyNowPopup>
-      <section className="h-100 gradient-custom" style={{ height: "100%" }}>
+      <div
+        className="align-items-center"
+        style={{
+          minHeight: "100vh",
+          backgroundColor: "#eee",
+          color: "#383f51",
+        }}
+      >
         <div className="container py-5" style={{ height: "100vh" }}>
           <div className="row d-flex justify-content-center my-4">
             <div className="col-md-8">
@@ -242,7 +249,7 @@ function CartNew(props) {
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </>
   );
 }

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import $ from "jquery";
 
 function BuyNowPopup(props) {
   const navigate = useNavigate();
@@ -7,10 +8,14 @@ function BuyNowPopup(props) {
   const buy = props.handleClick;
   function handleClick() {
     if (parseInt(props.price) <= parseInt(props.balance)) {
+      setAlert(false);
       buy();
       // window.location.href("https://bargains.vercel.app/orders");
     } else {
       setAlert(true);
+      // $(".modal").modal("hide");
+      // $("body").removeClass("modal-open");
+      // $(".modal-backdrop").remove();
     }
   }
 
@@ -31,7 +36,17 @@ function BuyNowPopup(props) {
               style={{ padding: ".75%", fontSize: "25px" }}
             >
               <i className="fa-solid fa-triangle-exclamation"></i> Insufficient
-              funds! <Link to="/ewallet">Top Up</Link>
+              funds!{" "}
+              <Link
+                to="/ewallet"
+                onClick={() => {
+                  $(".modal").modal("hide");
+                  $("body").removeClass("modal-open");
+                  $(".modal-backdrop").remove();
+                }}
+              >
+                Top Up
+              </Link>
             </div>
           </>
         )}

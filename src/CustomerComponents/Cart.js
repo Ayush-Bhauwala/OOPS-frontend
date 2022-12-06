@@ -93,7 +93,6 @@ function Cart() {
       });
   }
   function checkout() {
-    setItemsDetails([]);
     axios
       .post(
         "https://bargainstrial-production.up.railway.app/customer/buyfromcart",
@@ -103,6 +102,7 @@ function Cart() {
       )
       .then(function (response) {
         console.log(response);
+        setItemsDetails([]);
         alert("Order successful!");
         window.location.href = "https://bargains.vercel.app/orders";
       })

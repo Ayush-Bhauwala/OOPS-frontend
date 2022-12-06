@@ -17,6 +17,23 @@ function AccountDetails() {
     });
   }
 
+  function delAcct() {
+    axios
+      .post(
+        "https://bargainstrial-production.up.railway.app/customer/deleteaccount",
+        {
+          email: accountDetails.email,
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+        localStorage.removeItem("userid");
+        localStorage.removeItem("role");
+        navigate("/");
+      })
+      .catch((err) => console.log(err.response.data.message));
+  }
+
   function saveInfo() {
     const name = document.getElementById("name").value;
     const phoneNo = parseInt(document.getElementById("phone").value);
@@ -139,6 +156,19 @@ function AccountDetails() {
                   </div>
                 </div>
               </div>
+              {role !== "ADMIN" && (
+                <button
+                  className="btn btn-lg btn-block w-100 login-button"
+                  style={{
+                    backgroundColor: "#ff3333",
+                    color: "white",
+                    borderRadius: "0",
+                  }}
+                  onClick={() => delAcct()}
+                >
+                  DELETE ACCOUNT
+                </button>
+              )}
             </div>
           </div>
         </div>

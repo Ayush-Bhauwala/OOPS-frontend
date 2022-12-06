@@ -33,5 +33,7 @@
 .signup-input-field {
   border-radius: 1rem;
   padding: 0 auto;
+  width: 90%;
+
   /* font-size: 14px; */
 }

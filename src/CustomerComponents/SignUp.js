@@ -66,13 +66,19 @@ function SignUp() {
   };
 
   return (
-    <section className="vh-100 gradient-custom" style={{ maxHeight: "100vh" }}>
-      <div className="container align-items-center h-100 ">
-        <div className="row d-flex justify-content-center align-items-center h-100">
-          <div className="col col-xl-10">
+    <div
+      className="gradient-custom py-0 align-items-center"
+      style={{ margin: "0", minHeight: "100vh" }}
+    >
+      <div
+        className="row d-flex justify-content-center align-items-center"
+        style={{ height: "100vh", margin: "0 auto" }}
+      >
+        <div className="col col-sm-10">
+          <div className="row d-flex justify-content-center align-items-center">
             <div className="card" style={{ borderRadius: "1rem" }}>
-              <div className="row g-0">
-                <div className="col-md-6 col-lg-6 d-none d-md-block  card-container align-items-center">
+              <div className="row">
+                <div className="col-md-6 col-lg-6 col-sm-6  ps-0 card-container align-items-center">
                   <img
                     src="https://i0.wp.com/images.squarespace-cdn.com/content/v1/5c46c28dc258b4167dafc178/1615340266884-YWRI6XD8G1A1HR5SLB2X/eduardo-soares-e4EmPx91Aj4-unsplash.jpg"
                     alt="img"
@@ -195,7 +201,6 @@ function SignUp() {
                           id="address"
                           name="Address"
                           placeholder="Address"
-                          style={{ width: "100%" }}
                           {...register("address")}
                           required
                         />
@@ -255,7 +260,7 @@ function SignUp() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 

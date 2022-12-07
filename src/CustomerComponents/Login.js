@@ -110,6 +110,7 @@ function Login() {
                       <div className="form-floating mb-4">
                         <input
                           type="password"
+                          
                           className="form-control login-input-field"
                           placeholder="Password"
                           id="password"

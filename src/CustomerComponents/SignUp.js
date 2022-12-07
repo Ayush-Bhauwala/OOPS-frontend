@@ -209,6 +209,7 @@ function SignUp() {
                       <div className="form-floating mb-3">
                         <input
                           type="password"
+                          minLength={8}
                           name="password"
                           className="form-control signup-input-field"
                           id="password"
@@ -221,6 +222,7 @@ function SignUp() {
                       <div className="form-floating mb-3">
                         <input
                           type="password"
+                          minLength={8}
                           name="confirm password"
                           className="form-control signup-input-field"
                           id="confirm-password"

@@ -127,7 +127,7 @@ function CartNew(props) {
                                     value={item.qtybought}
                                     max={item.itemClass.qty}
                                     type="number"
-                                    className="form-control ms-2 text-center"
+                                    className="form-control ms-2 text-center cart-quantity"
                                   />
                                 </div>
                                 <div className="col col-md-3 col-lg-3">
@@ -181,6 +181,10 @@ function CartNew(props) {
                           </p>
                           {/* Price */}
                         </div>
+                        <hr
+                          className="mt-2"
+                          style={{ border: "1px solid black" }}
+                        />
                       </div>
                     );
                   })}

@@ -35,16 +35,21 @@ function AccountDetails() {
   }
 
   function saveInfo() {
-    const name = document.getElementById("name").value;
+    const name = document.getElementById("username").value;
     const phoneNo = parseInt(document.getElementById("phone").value);
     const address = document.getElementById("address").value;
     const url = "https://bargainstrial-production.up.railway.app/modifyuser";
-    axios.post(url, {
-      id: id,
-      name: name,
-      phoneNo: phoneNo,
-      address: address,
-    });
+    axios
+      .post(url, {
+        id: id,
+        name: name,
+        phoneNo: phoneNo,
+        address: address,
+      })
+      .then((res) => {
+        console.log(res.data);
+        alert("saved");
+      });
   }
 
   useEffect(() => {

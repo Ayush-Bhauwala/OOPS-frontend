@@ -325,11 +325,12 @@ function BuyProduct() {
                           localStorage.getItem("userid") !== null ? "modal" : ""
                         }
                         data-bs-target="#exampleModal"
-                       
                         onClick={() => {
                           console.log(
                             document.getElementById("quantity_input").value
                           );
+                          localStorage.getItem("userid") === null &&
+                            alert("Please login first.");
                         }}
                       >
                         Buy Now
